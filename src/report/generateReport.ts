@@ -14,6 +14,7 @@ import type { ProjectionResult } from '../engine/types';
 import { captureChart, type CapturedImage, type ChartCapturer } from './captureChart';
 import { A4 } from './pageLayout';
 import { renderReport, type PdfDoc, type PdfFactory } from './pdfRenderer';
+import { registerReportFonts } from './registerFonts';
 import { buildReportFileName, buildReportModel } from './reportModel';
 
 /** Stage labels surfaced to the UI during generation. */
@@ -36,12 +37,17 @@ export interface GenerateReportOptions {
 /** The default jsPDF factory: an A4 portrait document measured in points. */
 async function defaultFactory(): Promise<PdfFactory> {
   const { jsPDF } = await import('jspdf');
-  return () =>
-    new jsPDF({
+  return () => {
+    const doc = new jsPDF({
       orientation: 'portrait',
       unit: 'pt',
       format: [A4.width, A4.height],
-    }) as unknown as PdfDoc;
+    });
+    // Register the embedded Unicode fonts so the rupee sign and all digits
+    // render correctly (the WinAnsi built-ins corrupt ₹ and mis-space numbers).
+    registerReportFonts(doc as unknown as Parameters<typeof registerReportFonts>[0]);
+    return doc as unknown as PdfDoc;
+  };
 }
 
 async function safeCapture(

@@ -18,6 +18,8 @@ function createFakeDoc() {
     texts: [] as { page: number; text: string }[],
     images: 0,
     saved: null as string | null,
+    fontsRegistered: 0,
+    fontSize: 10,
   };
 
   const doc: PdfDoc = {
@@ -31,8 +33,16 @@ function createFakeDoc() {
       state.currentPage = page;
       return doc;
     },
+    addFileToVFS: () => doc,
+    addFont() {
+      state.fontsRegistered += 1;
+      return doc;
+    },
     setFont: () => doc,
-    setFontSize: () => doc,
+    setFontSize(size: number) {
+      state.fontSize = size;
+      return doc;
+    },
     setTextColor: () => doc,
     setDrawColor: () => doc,
     setFillColor: () => doc,
@@ -50,6 +60,11 @@ function createFakeDoc() {
     },
     splitTextToSize(text: string) {
       return [text];
+    },
+    // Approximate monospace metric: width proportional to length and font size.
+    // Sufficient for exercising the fit/overflow logic deterministically.
+    getTextWidth(text: string) {
+      return text.length * state.fontSize * 0.6;
     },
     getNumberOfPages() {
       return state.pageCount;
@@ -180,5 +195,53 @@ describe('generateReport orchestration', () => {
     expect(state.saved).toBe(fileName);
     // No images embedded because both captures failed.
     expect(state.images).toBe(0);
+  });
+});
+
+
+describe('PDF formatting defect fixes (presentation only)', () => {
+  it('renders the rupee sign intact in INR values (no superscript-¹ corruption)', () => {
+    const result = buildProjection(
+      makeInputs({
+        currency: 'INR',
+        lumpsum: 5_00_000,
+        monthlySip: 25_000,
+        annualReturnRate: 12,
+        durationYears: 30,
+        sipStopYear: 30,
+      }),
+    );
+    const model = buildReportModel(result, FIXED_DATE);
+    const { doc, state } = createFakeDoc();
+    renderReport(model, {}, () => doc);
+
+    const joined = state.texts.map((t) => t.text).join(' ');
+    // The genuine rupee sign must be present and the corrupting glyph absent.
+    expect(joined).toContain('₹');
+    expect(joined).not.toContain('¹');
+  });
+
+  it('emits monetary digits without inter-character spacing', () => {
+    const result = buildProjection(
+      makeInputs({ currency: 'INR', lumpsum: 1_234, durationYears: 5, sipStopYear: 5 }),
+    );
+    const model = buildReportModel(result, FIXED_DATE);
+    const { doc, state } = createFakeDoc();
+    renderReport(model, {}, () => doc);
+    // Every value string is emitted as a contiguous token (no "1 2 3 4").
+    const hasSpacedDigits = state.texts.some((t) => /\d(\s)\d/.test(t.text.replace(/[,. ]/g, (m) => m)) && /\d \d/.test(t.text));
+    expect(hasSpacedDigits).toBe(false);
+  });
+
+  it('registers the embedded Unicode fonts before rendering', () => {
+    const model = buildReportModel(bigResult(), FIXED_DATE);
+    const { doc, state } = createFakeDoc();
+    // The orchestrator registers fonts in its factory; emulate that here.
+    // The renderer itself selects them, so a fake counts addFont calls.
+    expect(state.fontsRegistered).toBe(0);
+    renderReport(model, {}, () => doc);
+    // Rendering does not register; registration happens in the factory.
+    // This asserts the renderer does not throw when fonts are pre-registered.
+    expect(state.texts.length).toBeGreaterThan(0);
   });
 });

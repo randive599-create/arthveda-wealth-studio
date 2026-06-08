@@ -25,12 +25,57 @@ import {
 } from './pageLayout';
 import type { CapturedImage } from './captureChart';
 import type { ReportLedgerRow, ReportModel, ReportPair } from './reportModel';
+import { REPORT_FONT_MONO, REPORT_FONT_SERIF } from './registerFonts';
 
 const INK = '#111827';
 const INK_SECONDARY = '#4b5563';
 const ACCENT = '#064e3b';
 const HAIRLINE = '#e5e7eb';
 const MIST = '#f9fafb';
+
+// Embedded Unicode font families (registered on the document by the factory).
+// MONO renders values, labels, body, and the ledger; SERIF renders headings.
+// Both contain the Indian Rupee glyph, so currency text is never corrupted.
+const FONT_MONO = REPORT_FONT_MONO;
+const FONT_SERIF = REPORT_FONT_SERIF;
+
+/**
+ * Find the largest font size (between `max` and `min`) at which `text` fits
+ * within `maxWidth`, using the mono font. Guarantees values never overflow.
+ * Falls back to `min` if even that does not fit (caller's column is sized so
+ * this is rare; `min` keeps it readable).
+ */
+function fitFontSize(
+  doc: PdfDoc,
+  text: string,
+  maxWidth: number,
+  max: number,
+  min: number,
+): number {
+  for (let size = max; size >= min; size -= 0.5) {
+    doc.setFont(FONT_MONO, 'bold').setFontSize(size);
+    if (doc.getTextWidth(text) <= maxWidth) {
+      return size;
+    }
+  }
+  return min;
+}
+
+/**
+ * Truncate `text` with an ellipsis so it fits `maxWidth` at the given size.
+ * Used for labels (not values) so a long label can never collide with its value.
+ */
+function fitText(doc: PdfDoc, text: string, maxWidth: number, size: number): string {
+  doc.setFont(FONT_MONO, 'normal').setFontSize(size);
+  if (doc.getTextWidth(text) <= maxWidth) {
+    return text;
+  }
+  let truncated = text;
+  while (truncated.length > 1 && doc.getTextWidth(`${truncated}…`) > maxWidth) {
+    truncated = truncated.slice(0, -1);
+  }
+  return `${truncated}…`;
+}
 
 /**
  * The minimal slice of the jsPDF API the renderer relies on. Declaring it as an
@@ -41,6 +86,8 @@ export interface PdfDoc {
   internal: { pages: unknown[]; getNumberOfPages?: () => number };
   addPage(): PdfDoc;
   setPage(page: number): PdfDoc;
+  addFileToVFS(fileName: string, data: string): unknown;
+  addFont(fileName: string, fontName: string, fontStyle: string): unknown;
   setFont(family: string, style?: string): PdfDoc;
   setFontSize(size: number): PdfDoc;
   setTextColor(color: string): PdfDoc;
@@ -59,6 +106,7 @@ export interface PdfDoc {
     h: number,
   ): PdfDoc;
   splitTextToSize(text: string, maxWidth: number): string[];
+  getTextWidth(text: string): number;
   getNumberOfPages(): number;
   save(filename: string): void;
   output(type: string): unknown;
@@ -127,11 +175,11 @@ class ReportWriter {
   sectionTitle(title: string, eyebrow?: string): void {
     this.ensure(48);
     if (eyebrow) {
-      this.doc.setFont('courier', 'normal').setFontSize(8).setTextColor(ACCENT);
+      this.doc.setFont(FONT_MONO, 'normal').setFontSize(8).setTextColor(ACCENT);
       this.doc.text(eyebrow.toUpperCase(), MARGIN.left, this.cursor.y);
       this.advance(12);
     }
-    this.doc.setFont('times', 'bold').setFontSize(18).setTextColor(INK);
+    this.doc.setFont(FONT_SERIF, 'bold').setFontSize(18).setTextColor(INK);
     this.doc.text(title, MARGIN.left, this.cursor.y);
     this.advance(10);
     this.doc.setDrawColor(ACCENT).setLineWidth(1);
@@ -144,13 +192,23 @@ class ReportWriter {
     const rowHeight = 20;
     const labelX = MARGIN.left + 6;
     const valueX = A4.width - MARGIN.right - 6;
+    const maxLabelWidth = (A4.width - MARGIN.left - MARGIN.right) * 0.5 - 12;
+    const maxValueWidth = (A4.width - MARGIN.left - MARGIN.right) * 0.5 - 12;
     for (const pair of pairs) {
       this.ensure(rowHeight);
       this.doc.setDrawColor(HAIRLINE).setLineWidth(0.5);
-      this.doc.line(MARGIN.left, this.cursor.y + rowHeight - 6, A4.width - MARGIN.right, this.cursor.y + rowHeight - 6);
-      this.doc.setFont('helvetica', 'normal').setFontSize(10).setTextColor(INK_SECONDARY);
-      this.doc.text(pair.label, labelX, this.cursor.y + 8);
-      this.doc.setFont('courier', 'normal').setFontSize(10).setTextColor(INK);
+      this.doc.line(
+        MARGIN.left,
+        this.cursor.y + rowHeight - 6,
+        A4.width - MARGIN.right,
+        this.cursor.y + rowHeight - 6,
+      );
+      this.doc.setFont(FONT_MONO, 'normal').setFontSize(10).setTextColor(INK_SECONDARY);
+      this.doc.text(fitText(this.doc, pair.label, maxLabelWidth, 10), labelX, this.cursor.y + 8);
+      // Values use a fitted font size so large currency figures never overflow
+      // into the label column or past the right margin.
+      const valueSize = fitFontSize(this.doc, pair.value, maxValueWidth, 10, 7);
+      this.doc.setFont(FONT_MONO, 'bold').setFontSize(valueSize).setTextColor(INK);
       this.doc.text(pair.value, valueX, this.cursor.y + 8, { align: 'right' });
       this.advance(rowHeight);
     }
@@ -159,7 +217,7 @@ class ReportWriter {
 
   /** Draw wrapped paragraph text and advance the cursor. */
   paragraph(text: string, size = 10, color = INK_SECONDARY): void {
-    this.doc.setFont('helvetica', 'normal').setFontSize(size).setTextColor(color);
+    this.doc.setFont(FONT_MONO, 'normal').setFontSize(size).setTextColor(color);
     const lines = this.doc.splitTextToSize(text, contentWidth());
     const lineHeight = size * 1.4;
     for (const line of lines) {
@@ -176,19 +234,19 @@ function renderCover(w: ReportWriter, model: ReportModel): void {
   const centerX = A4.width / 2;
   let y = 200;
 
-  doc.setFont('times', 'bold').setFontSize(40).setTextColor(INK);
+  doc.setFont(FONT_SERIF, 'bold').setFontSize(40).setTextColor(INK);
   doc.text(model.cover.brand, centerX, y, { align: 'center' });
   y += 26;
 
-  doc.setFont('courier', 'normal').setFontSize(11).setTextColor(ACCENT);
+  doc.setFont(FONT_MONO, 'normal').setFontSize(11).setTextColor(ACCENT);
   doc.text(model.cover.division, centerX, y, { align: 'center' });
   y += 28;
 
-  doc.setFont('times', 'italic').setFontSize(18).setTextColor(INK_SECONDARY);
+  doc.setFont(FONT_SERIF, 'normal').setFontSize(18).setTextColor(INK_SECONDARY);
   doc.text(model.cover.product, centerX, y, { align: 'center' });
   y += 40;
 
-  doc.setFont('helvetica', 'normal').setFontSize(10).setTextColor(INK_SECONDARY);
+  doc.setFont(FONT_MONO, 'normal').setFontSize(10).setTextColor(INK_SECONDARY);
   const tagline = doc.splitTextToSize(model.cover.tagline, contentWidth() - 80);
   for (const line of tagline) {
     doc.text(line, centerX, y, { align: 'center' });
@@ -200,11 +258,11 @@ function renderCover(w: ReportWriter, model: ReportModel): void {
   doc.line(MARGIN.left + 80, y, A4.width - MARGIN.right - 80, y);
   y += 30;
 
-  doc.setFont('times', 'bold').setFontSize(22).setTextColor(INK);
+  doc.setFont(FONT_SERIF, 'bold').setFontSize(22).setTextColor(INK);
   doc.text(model.cover.title, centerX, y, { align: 'center' });
   y += 28;
 
-  doc.setFont('courier', 'normal').setFontSize(10).setTextColor(INK_SECONDARY);
+  doc.setFont(FONT_MONO, 'normal').setFontSize(10).setTextColor(INK_SECONDARY);
   doc.text(`Generated ${model.cover.generatedDate}`, centerX, y, { align: 'center' });
   y += 16;
   doc.text(model.cover.currencyLabel, centerX, y, { align: 'center' });
@@ -241,7 +299,7 @@ function renderLedger(w: ReportWriter, model: ReportModel): void {
   const drawHeader = () => {
     doc.setFillColor(MIST);
     doc.rect(MARGIN.left, w.y, contentWidth(), LEDGER_HEADER_HEIGHT, 'F');
-    doc.setFont('courier', 'normal').setFontSize(7.5).setTextColor(INK_SECONDARY);
+    doc.setFont(FONT_MONO, 'bold').setFontSize(7).setTextColor(INK_SECONDARY);
     columns.forEach((col, i) => {
       const isNumeric = i >= 2;
       const nextEdge = i + 1 < offsets.length ? offsets[i + 1] : rightEdge;
@@ -279,14 +337,18 @@ function renderLedger(w: ReportWriter, model: ReportModel): void {
         const isNumeric = i >= 2;
         if (isNumeric) {
           const nextEdge = i + 1 < offsets.length ? offsets[i + 1] : rightEdge;
-          doc.setFont('courier', 'normal').setFontSize(7.5).setTextColor(INK);
+          const cellWidth = nextEdge - offsets[i] - 6;
+          const size = fitFontSize(doc, value, cellWidth, 7.5, 5.5);
+          doc.setFont(FONT_MONO, 'normal').setFontSize(size).setTextColor(INK);
           doc.text(value, nextEdge - 4, w.y + 12, { align: 'right' });
         } else if (i === 0) {
-          doc.setFont('courier', 'bold').setFontSize(7.5).setTextColor(INK);
+          doc.setFont(FONT_MONO, 'bold').setFontSize(7.5).setTextColor(INK);
           doc.text(value, offsets[i] + 4, w.y + 12);
         } else {
-          doc.setFont('helvetica', 'normal').setFontSize(7.5).setTextColor(INK_SECONDARY);
-          doc.text(value, offsets[i] + 4, w.y + 12);
+          const nextEdge = i + 1 < offsets.length ? offsets[i + 1] : rightEdge;
+          const cellWidth = nextEdge - offsets[i] - 6;
+          doc.setFont(FONT_MONO, 'normal').setFontSize(7).setTextColor(INK_SECONDARY);
+          doc.text(fitText(doc, value, cellWidth, 7), offsets[i] + 4, w.y + 12);
         }
       });
       w.advance(LEDGER_ROW_HEIGHT);
@@ -302,7 +364,7 @@ function stampFooters(doc: PdfDoc): void {
     const y = A4.height - MARGIN.bottom + 8;
     doc.setDrawColor(HAIRLINE).setLineWidth(0.5);
     doc.line(MARGIN.left, y - 10, A4.width - MARGIN.right, y - 10);
-    doc.setFont('helvetica', 'normal').setFontSize(8).setTextColor(INK_SECONDARY);
+    doc.setFont(FONT_MONO, 'normal').setFontSize(8).setTextColor(INK_SECONDARY);
     doc.text('ArthVeda · Private Office', MARGIN.left, y);
     doc.text(`Page ${page} of ${total}`, A4.width / 2, y, { align: 'center' });
     doc.text('Illustrative projections only. Not investment advice.', A4.width - MARGIN.right, y, {
@@ -368,11 +430,11 @@ export function renderReport(model: ReportModel, charts: ReportCharts, factory: 
   w.sectionTitle('AI Wealth Insights', 'Section 7');
   for (const group of model.insightGroups) {
     w.ensure(40);
-    w.document.setFont('courier', 'normal').setFontSize(9).setTextColor(ACCENT);
+    w.document.setFont(FONT_MONO, 'normal').setFontSize(9).setTextColor(ACCENT);
     w.document.text(group.title.toUpperCase(), MARGIN.left, w.y);
     w.advance(16);
     for (const insight of group.insights) {
-      w.document.setFont('times', 'bold').setFontSize(11).setTextColor(INK);
+      w.document.setFont(FONT_SERIF, 'bold').setFontSize(11).setTextColor(INK);
       const head = w.document.splitTextToSize(insight.headline, contentWidth());
       for (const line of head) {
         w.ensure(15);
