@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+/*
+ * ArthVeda · Private Office — Design Tokens (Tailwind v4, CSS-first)
+ *
+ * All colors are declared as sRGB hex so they remain compatible with the PDF
+ * rasterizer (html2canvas-pro) and so the on-screen palette and exported report
+ * are byte-identical. Do not introduce oklch()/lab() values in the print path.
+ *
+ * The three brand fonts (Cormorant Garamond, Work Sans, IBM Plex Mono) are
+ * loaded in index.html. They will be self-hosted as woff2 in the PDF phase for
+ * deterministic rasterization; the family tokens below remain the single source
+ * of truth regardless of how the files are delivered.
+ */
+@theme {
+  /* Surfaces & text */
+  --color-canvas: #ffffff;
+  --color-ink: #111827;
+  --color-ink-secondary: #4b5563;
+
+  /* Brand accent */
+  --color-accent: #064e3b;
+  --color-accent-hover: #047857;
+  /* Faint emerald wash for the hero metric (flat tint, not a gradient). */
+  --color-accent-wash: #ecfdf5;
+
+  /* Data series */
+  --color-returns: #10b981;
+  --color-invested: #9ca3af;
+
+  /* Insight category — risk accent (amber) */
+  --color-risk: #d97706;
+  --color-risk-strong: #b45309;
+
+  /* Hairline borders & subtle fills */
+  --color-hairline: #e5e7eb;
+  --color-mist: #f9fafb;
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Work Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Institutional radii (crisp, never pill-shaped) */
+  --radius-card: 8px;
+  --radius-control: 6px;
+}
+
+html {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tabular, monospace figures align cleanly in cards, tables, and tooltips. */
+.font-mono {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}

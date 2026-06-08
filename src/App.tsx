@@ -1,0 +1,63 @@
+/**
+ * Application composition root.
+ *
+ * Wires the studio shell: header + branding, the responsive two-column grid,
+ * the sticky summary bar, the dashboard, the visualizations, the wealth journey
+ * and milestone sections, the AI insights, and the year-by-year projection
+ * ledger. The charts are lazily loaded to keep the initial bundle lean.
+ */
+
+import { lazy, Suspense } from 'react';
+import { AppShell } from './components/layout/AppShell';
+import { DashboardGrid } from './components/dashboard/DashboardGrid';
+import { ParametersPanel } from './components/parameters/ParametersPanel';
+import { ChartSkeleton } from './components/charts/ChartSkeleton';
+import { WealthJourneyTimeline } from './components/timeline/WealthJourneyTimeline';
+import { MilestoneCountdown } from './components/milestones/MilestoneCountdown';
+import { AIWealthInsights } from './components/insights/AIWealthInsights';
+import { ProjectionTable } from './components/table/ProjectionTable';
+import { DownloadReportButton } from './components/report/DownloadReportButton';
+import { ShareScenarioButton } from './components/report/ShareScenarioButton';
+import { FaqSection } from './components/faq/FaqSection';
+
+// Recharts is a large dependency; load the charts lazily so it is split into
+// its own chunk and does not block the initial paint of the studio shell.
+const WealthMountain = lazy(() =>
+  import('./components/charts/WealthMountain').then((m) => ({ default: m.WealthMountain })),
+);
+const WealthDonut = lazy(() =>
+  import('./components/charts/WealthDonut').then((m) => ({ default: m.WealthDonut })),
+);
+
+export default function App() {
+  return (
+    <AppShell
+      parameters={<ParametersPanel />}
+      studio={
+        <>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-secondary">
+              Projection Studio
+            </p>
+            <div className="flex items-center gap-3">
+              <ShareScenarioButton />
+              <DownloadReportButton />
+            </div>
+          </div>
+          <DashboardGrid />
+          <Suspense fallback={<ChartSkeleton title="Wealth Mountain" eyebrow="Primary Visualization" />}>
+            <WealthMountain />
+          </Suspense>
+          <Suspense fallback={<ChartSkeleton title="Wealth Composition" eyebrow="Secondary Visualization" />}>
+            <WealthDonut />
+          </Suspense>
+          <WealthJourneyTimeline />
+          <MilestoneCountdown />
+          <AIWealthInsights />
+          <ProjectionTable />
+          <FaqSection />
+        </>
+      }
+    />
+  );
+}
