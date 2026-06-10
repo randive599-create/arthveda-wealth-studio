@@ -7,11 +7,11 @@
  *
  * The renderer is decoupled from jsPDF construction via an injected factory so
  * it can be exercised against a lightweight fake in tests without bundling a
- * real PDF engine into the test environment. The ArthVeda brand mark is drawn
- * as native vectors at the top-left of the first page. The footer (disclaimer
- * left, website address centred, "Page X of Y" right) is stamped on every page
- * in a final pass, inside a dedicated footer zone, once the total page count is
- * known.
+ * real PDF engine into the test environment. The first-page header carries the
+ * ArthVeda brand mark (drawn as native vectors) on the left and the website URL
+ * + contact email on the right. The footer (disclaimer left, website address
+ * centred, "Page X of Y" right) is stamped on every page in a final pass,
+ * inside a dedicated footer zone, once the total page count is known.
  */
 
 import {
@@ -43,6 +43,10 @@ const MIST = '#f9fafb';
 
 /** The official ArthVeda website address, shown in the footer of every page. */
 const WEBSITE = 'arthvedawealth.in';
+/** Full website URL shown in the first-page report header. */
+const WEBSITE_URL = 'https://arthvedawealth.in';
+/** Contact email shown in the first-page report header. */
+const EMAIL = 'info@arthvedawealth.in';
 
 // Embedded Unicode font families (registered on the document by the factory).
 // MONO renders values, labels, body, and the ledger; SERIF renders headings.
@@ -312,7 +316,10 @@ function renderCover(w: ReportWriter, model: ReportModel): void {
   const doc = w.document;
   const centerX = A4.width / 2;
 
-  // Letterhead: brand mark + wordmark at the top-left of the first page.
+  // Letterhead header (first page): brand mark + wordmark on the left, and the
+  // website + contact email right-aligned opposite it. The two blocks sit in
+  // the same top band but at opposite margins, so they never overlap, and a
+  // hairline rule beneath separates the header from the cover content below.
   const markSize = 30;
   drawBrandMark(doc, MARGIN.left, MARGIN.top, markSize);
   const wordmarkX = MARGIN.left + markSize + 12;
@@ -320,6 +327,15 @@ function renderCover(w: ReportWriter, model: ReportModel): void {
   doc.text('ArthVeda', wordmarkX, MARGIN.top + 13);
   doc.setFont(FONT_MONO, 'normal').setFontSize(7).setTextColor(ACCENT);
   doc.text('PRIVATE OFFICE', wordmarkX, MARGIN.top + 25);
+
+  const contactX = A4.width - MARGIN.right;
+  doc.setFont(FONT_MONO, 'normal').setFontSize(8).setTextColor(ACCENT);
+  doc.text(WEBSITE_URL, contactX, MARGIN.top + 11, { align: 'right' });
+  doc.setFont(FONT_MONO, 'normal').setFontSize(8).setTextColor(INK_SECONDARY);
+  doc.text(EMAIL, contactX, MARGIN.top + 24, { align: 'right' });
+
+  doc.setDrawColor(HAIRLINE).setLineWidth(0.5);
+  doc.line(MARGIN.left, MARGIN.top + 38, contactX, MARGIN.top + 38);
 
   let y = 200;
 

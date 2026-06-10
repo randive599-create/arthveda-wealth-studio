@@ -184,6 +184,15 @@ describe('renderReport', () => {
     const domains = state.texts.filter((t) => t.text === 'arthvedawealth.in');
     expect(domains.length).toBe(state.pageCount);
   });
+
+  it('shows the website URL and contact email in the first-page header', () => {
+    const model = buildReportModel(bigResult(), FIXED_DATE);
+    const { doc, state } = createFakeDoc();
+    renderReport(model, { mountain: fakeImage, donut: fakeImage }, () => doc);
+    const headerTexts = state.texts.filter((t) => t.page === 1).map((t) => t.text);
+    expect(headerTexts).toContain('https://arthvedawealth.in');
+    expect(headerTexts).toContain('info@arthvedawealth.in');
+  });
 });
 
 describe('generateReport orchestration', () => {

@@ -16,6 +16,15 @@ export function TrustFooter() {
           Figures assume constant rates and monthly compounding and will differ from actual market
           outcomes.
         </p>
+        <p className="mt-4 text-sm text-ink-secondary" data-testid={TESTIDS.footerContact}>
+          Contact:{' '}
+          <a
+            href="mailto:info@arthvedawealth.in"
+            className="font-medium text-accent underline-offset-2 hover:text-accent-hover hover:underline"
+          >
+            info@arthvedawealth.in
+          </a>
+        </p>
       </div>
     </footer>
   );

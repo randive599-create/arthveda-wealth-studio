@@ -111,6 +111,7 @@ export const TESTIDS = {
   errorBoundary: 'error-boundary',
 
   trustFooter: 'trust-footer',
+  footerContact: 'footer-contact',
 } as const;
 
 type TestIdValue = (typeof TESTIDS)[keyof typeof TESTIDS];

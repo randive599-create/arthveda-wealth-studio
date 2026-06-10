@@ -228,6 +228,27 @@ describe('PDF branding — logo & website', () => {
     expect(headerText!.y).toBeLessThan(120);
   });
 
+  it('shows the website URL and email in the header without overlapping the logo', () => {
+    const { state } = render();
+    const website = state.texts.find((t) => t.page === 1 && t.text === 'https://arthvedawealth.in');
+    const email = state.texts.find((t) => t.page === 1 && t.text === 'info@arthvedawealth.in');
+    const wordmark = state.texts.find((t) => t.page === 1 && t.text === 'ArthVeda');
+    expect(website).toBeDefined();
+    expect(email).toBeDefined();
+    expect(wordmark).toBeDefined();
+
+    for (const t of [website!, email!]) {
+      // Header band, inside the page margins, right-aligned.
+      expect(t.y).toBeLessThan(120);
+      const [start, end] = xRange(t);
+      expect(start).toBeGreaterThanOrEqual(MARGIN.left - 0.5);
+      expect(end).toBeLessThanOrEqual(RIGHT_EDGE + 0.5);
+      // The right-aligned contact block clears the left wordmark.
+      const [, wordmarkRight] = xRange(wordmark!);
+      expect(start).toBeGreaterThan(wordmarkRight);
+    }
+  });
+
   it('shows the website address centered in the footer on every page', () => {
     const { state } = render();
     for (let page = 1; page <= state.pageCount; page += 1) {
