@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './styles/fonts.css';
 
 /*
  * ArthVeda · Private Office — Design Tokens (Tailwind v4, CSS-first)
@@ -8,9 +9,10 @@
  * are byte-identical. Do not introduce oklch()/lab() values in the print path.
  *
  * The three brand fonts (Cormorant Garamond, Work Sans, IBM Plex Mono) are
- * loaded in index.html. They will be self-hosted as woff2 in the PDF phase for
- * deterministic rasterization; the family tokens below remain the single source
- * of truth regardless of how the files are delivered.
+ * self-hosted as woff2 (see ./styles/fonts.css, imported above) with
+ * font-display: swap. Self-hosting removes the render-blocking Google Fonts
+ * request and its cross-origin connection chain, which is the dominant FCP/LCP
+ * cost on mobile. The family tokens below remain the single source of truth.
  */
 @theme {
   /* Surfaces & text */

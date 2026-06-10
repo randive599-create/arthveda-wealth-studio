@@ -57,11 +57,25 @@
       content="ArthVeda Private Office — Wealth Projection Studio. Visualize every stage of your financial journey in one institutional-grade projection studio."
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Fonts are self-hosted (see src/styles/fonts.css) with font-display: swap,
+      so there is no render-blocking third-party stylesheet. Preload only the
+      two fonts needed for the above-the-fold LCP: the Cormorant Garamond 700
+      "ArthVeda" wordmark (the LCP element) and the Work Sans 400 body text.
+    -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/cormorant-garamond-700-latin.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/work-sans-400-latin.woff2"
+      crossorigin
     />
 
 

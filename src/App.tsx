@@ -18,7 +18,6 @@ import { AIWealthInsights } from './components/insights/AIWealthInsights';
 import { ProjectionTable } from './components/table/ProjectionTable';
 import { DownloadReportButton } from './components/report/DownloadReportButton';
 import { ShareScenarioButton } from './components/report/ShareScenarioButton';
-import { FaqSection } from './components/faq/FaqSection';
 
 // Recharts is a large dependency; load the charts lazily so it is split into
 // its own chunk and does not block the initial paint of the studio shell.
@@ -27,6 +26,13 @@ const WealthMountain = lazy(() =>
 );
 const WealthDonut = lazy(() =>
   import('./components/charts/WealthDonut').then((m) => ({ default: m.WealthDonut })),
+);
+
+// The FAQ is below the fold and not needed for first paint; code-split it into
+// its own chunk. It still injects its FAQPage JSON-LD on mount, so SEO markup
+// is preserved.
+const FaqSection = lazy(() =>
+  import('./components/faq/FaqSection').then((m) => ({ default: m.FaqSection })),
 );
 
 export default function App() {
@@ -55,7 +61,9 @@ export default function App() {
           <MilestoneCountdown />
           <AIWealthInsights />
           <ProjectionTable />
-          <FaqSection />
+          <Suspense fallback={null}>
+            <FaqSection />
+          </Suspense>
         </>
       }
     />
