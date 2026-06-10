@@ -7,18 +7,22 @@
  *
  * The renderer is decoupled from jsPDF construction via an injected factory so
  * it can be exercised against a lightweight fake in tests without bundling a
- * real PDF engine into the test environment. The footer (brand, page X of Y,
- * disclaimer) is stamped on every page in a final pass once the total page
- * count is known.
+ * real PDF engine into the test environment. The footer (disclaimer on the
+ * left, "Page X of Y" on the right) is stamped on every page in a final pass,
+ * inside a dedicated footer zone, once the total page count is known.
  */
 
 import {
   A4,
   MARGIN,
+  CHART_BOTTOM_PADDING,
   columnOffsets,
   contentBottom,
+  contentHeight,
   contentTop,
   contentWidth,
+  footerZoneTop,
+  HEADING_BLOCK_HEIGHT,
   LEDGER_HEADER_HEIGHT,
   LEDGER_ROW_HEIGHT,
   paginateLedger,
@@ -41,9 +45,9 @@ const FONT_SERIF = REPORT_FONT_SERIF;
 
 /**
  * Find the largest font size (between `max` and `min`) at which `text` fits
- * within `maxWidth`, using the mono font. Guarantees values never overflow.
- * Falls back to `min` if even that does not fit (caller's column is sized so
- * this is rare; `min` keeps it readable).
+ * within `maxWidth`, using the given font family/style. Guarantees values and
+ * single-line headings never overflow. Falls back to `min` if even that does
+ * not fit (`min` keeps it readable).
  */
 function fitFontSize(
   doc: PdfDoc,
@@ -51,9 +55,11 @@ function fitFontSize(
   maxWidth: number,
   max: number,
   min: number,
+  family: string = FONT_MONO,
+  style: string = 'bold',
 ): number {
   for (let size = max; size >= min; size -= 0.5) {
-    doc.setFont(FONT_MONO, 'bold').setFontSize(size);
+    doc.setFont(family, style).setFontSize(size);
     if (doc.getTextWidth(text) <= maxWidth) {
       return size;
     }
@@ -171,20 +177,39 @@ class ReportWriter {
     this.cursor.y = value;
   }
 
-  /** Draw a section heading (eyebrow optional) and advance the cursor. */
-  sectionTitle(title: string, eyebrow?: string): void {
-    this.ensure(48);
+  /**
+   * Draw a section heading (eyebrow/section-number optional) and advance the
+   * cursor. The eyebrow and title sit on their own baselines with a generous
+   * gap so the section number can never collide with the title, and the title
+   * is font-fitted so it always renders on a single line. `reserveAfter` asks
+   * the writer to keep at least that much of the section body on the same page
+   * as the heading (keep-with-next) so a heading is never left orphaned at the
+   * bottom of a page.
+   */
+  sectionTitle(title: string, eyebrow?: string, reserveAfter = 0): void {
+    // Keep-with-next: ensure the whole heading block plus the first slice of
+    // body content fits before we commit to drawing the heading here.
+    this.ensure(HEADING_BLOCK_HEIGHT + reserveAfter);
+
+    const top = this.cursor.y;
+
     if (eyebrow) {
       this.doc.setFont(FONT_MONO, 'normal').setFontSize(8).setTextColor(ACCENT);
-      this.doc.text(eyebrow.toUpperCase(), MARGIN.left, this.cursor.y);
-      this.advance(12);
+      this.doc.text(eyebrow.toUpperCase(), MARGIN.left, top + 8);
     }
-    this.doc.setFont(FONT_SERIF, 'bold').setFontSize(18).setTextColor(INK);
-    this.doc.text(title, MARGIN.left, this.cursor.y);
-    this.advance(10);
+
+    // Title baseline sits well below the eyebrow baseline so the 18pt cap
+    // height never reaches up into the eyebrow row.
+    const titleBaseline = top + (eyebrow ? 30 : 18);
+    const titleSize = fitFontSize(this.doc, title, contentWidth(), 18, 12, FONT_SERIF, 'bold');
+    this.doc.setFont(FONT_SERIF, 'bold').setFontSize(titleSize).setTextColor(INK);
+    this.doc.text(title, MARGIN.left, titleBaseline);
+
+    const ruleY = titleBaseline + 8;
     this.doc.setDrawColor(ACCENT).setLineWidth(1);
-    this.doc.line(MARGIN.left, this.cursor.y, MARGIN.left + 40, this.cursor.y);
-    this.advance(18);
+    this.doc.line(MARGIN.left, ruleY, MARGIN.left + 40, ruleY);
+
+    this.cursor.y = ruleY + 16;
   }
 
   /** Draw a two-column label/value table and advance the cursor. */
@@ -268,46 +293,160 @@ function renderCover(w: ReportWriter, model: ReportModel): void {
   doc.text(model.cover.currencyLabel, centerX, y, { align: 'center' });
 }
 
-/** Render a captured chart image, scaled to fit the content width. */
-function renderChart(w: ReportWriter, image: CapturedImage | undefined, caption?: string): void {
+/** Vertical space a single-line chart caption consumes. */
+const CAPTION_HEIGHT = 18;
+
+/**
+ * Compute a footer-safe draw box for a chart. The chart is sized to the full
+ * content width, then shrunk (preserving aspect ratio) if its natural height
+ * would exceed `availableHeight`. This guarantees the chart — including the
+ * x-axis labels baked into the image — never extends into the footer zone.
+ */
+function fitChartBox(
+  image: CapturedImage,
+  availableHeight: number,
+): { drawWidth: number; drawHeight: number } {
+  const maxWidth = contentWidth();
+  const aspect = image.width > 0 ? image.height / image.width : 0;
+  let drawWidth = maxWidth;
+  let drawHeight = maxWidth * aspect;
+
+  const maxHeight = Math.max(0, availableHeight - CHART_BOTTOM_PADDING);
+  if (drawHeight > maxHeight) {
+    drawHeight = maxHeight;
+    drawWidth = aspect > 0 ? drawHeight / aspect : maxWidth;
+  }
+  return { drawWidth, drawHeight };
+}
+
+/**
+ * Render a chart section (heading + captured image) as an atomic, footer-safe
+ * unit:
+ *   - keep-with-next: the heading and chart are measured together; if they do
+ *     not both fit in the remaining page space the section starts on a new page
+ *     so the heading is never orphaned (Wealth Mountain / Wealth Composition).
+ *   - footer-safe: the chart's draw box is clamped to the space above the
+ *     footer zone, shrinking the drawing area if needed so x-axis labels never
+ *     collide with the page number or disclaimer.
+ */
+function renderChartSection(
+  w: ReportWriter,
+  title: string,
+  eyebrow: string,
+  image: CapturedImage | undefined,
+  caption?: string,
+): void {
   if (!image || image.width <= 0 || image.height <= 0) {
+    w.sectionTitle(title, eyebrow, 24);
     w.paragraph('Chart preview is unavailable in this export.', 10, INK_SECONDARY);
+    if (caption) {
+      w.paragraph(caption, 10, ACCENT);
+    }
     return;
   }
-  const maxWidth = contentWidth();
-  const aspect = image.height / image.width;
-  const drawWidth = maxWidth;
-  const drawHeight = maxWidth * aspect;
 
-  w.ensure(drawHeight + (caption ? 18 : 0));
-  w.document.addImage(image.dataUrl, 'PNG', MARGIN.left, w.y, drawWidth, drawHeight);
-  w.advance(drawHeight + 8);
+  const captionSpace = caption ? CAPTION_HEIGHT : 0;
+
+  // Height the chart would take on a fresh page beneath the heading. Used to
+  // decide whether the heading + chart can stay together on the current page.
+  const freshAvailable = contentHeight() - HEADING_BLOCK_HEIGHT - captionSpace;
+  const fresh = fitChartBox(image, freshAvailable);
+  const needed = HEADING_BLOCK_HEIGHT + fresh.drawHeight + captionSpace + 8;
+
+  // Keep-with-next: break to a new page first if the section cannot fit here.
+  w.ensure(needed);
+
+  // Heading (space already guaranteed above, so this will not break again).
+  w.sectionTitle(title, eyebrow);
+
+  // Clamp to the real space above the footer on the (possibly new) page.
+  const available = contentBottom() - w.y;
+  const box = fitChartBox(image, available - captionSpace);
+  const x = MARGIN.left + (contentWidth() - box.drawWidth) / 2;
+  w.document.addImage(image.dataUrl, 'PNG', x, w.y, box.drawWidth, box.drawHeight);
+  w.advance(box.drawHeight + 8);
 
   if (caption) {
     w.paragraph(caption, 10, ACCENT);
   }
 }
 
+/**
+ * Wrap a (short) header label onto at most two lines that each fit `maxWidth`
+ * at `size`. Single-word labels are returned as-is (the per-column font fit
+ * keeps them inside the cell); multi-word labels are split greedily so long
+ * titles such as "Infl. Adj. Corpus" stack instead of colliding with the next
+ * column.
+ */
+function wrapHeader(doc: PdfDoc, text: string, maxWidth: number, size: number): string[] {
+  doc.setFont(FONT_MONO, 'bold').setFontSize(size);
+  if (doc.getTextWidth(text) <= maxWidth) {
+    return [text];
+  }
+  const words = text.split(' ');
+  if (words.length === 1) {
+    return [text];
+  }
+  let line1 = words[0];
+  let i = 1;
+  while (i < words.length && doc.getTextWidth(`${line1} ${words[i]}`) <= maxWidth) {
+    line1 = `${line1} ${words[i]}`;
+    i += 1;
+  }
+  const line2 = words.slice(i).join(' ');
+  return line2 ? [line1, line2] : [line1];
+}
+
 /** Render the ledger across as many pages as needed, repeating the header. */
 function renderLedger(w: ReportWriter, model: ReportModel): void {
   const doc = w.document;
   const columns = model.ledgerColumns;
-  const weights = columns.map((_, i) => (i === 1 ? 1.4 : i === 0 ? 0.6 : 1));
+  // Per-column relative widths tuned so the wide numeric columns (Total
+  // Invested, End Corpus, Infl. Adj. Corpus) and the textual Phase column get
+  // enough room; columnOffsets normalizes these to the content width.
+  const weights = columns.map((_, i) => {
+    switch (i) {
+      case 0:
+        return 0.5; // Year
+      case 1:
+        return 1.05; // Phase (text)
+      case 3:
+        return 1.15; // Total Invested
+      case 6:
+        return 1.15; // End Corpus
+      case 7:
+        return 1.2; // Infl. Adj. Corpus
+      default:
+        return 1.0; // SIP, Withdrawal, Return
+    }
+  });
   const offsets = columnOffsets(weights);
   const rightEdge = A4.width - MARGIN.right;
 
   const drawHeader = () => {
     doc.setFillColor(MIST);
     doc.rect(MARGIN.left, w.y, contentWidth(), LEDGER_HEADER_HEIGHT, 'F');
-    doc.setFont(FONT_MONO, 'bold').setFontSize(7).setTextColor(INK_SECONDARY);
+    const headerSize = 6.5;
+    const lineHeight = headerSize + 1.5;
+    doc.setTextColor(INK_SECONDARY);
     columns.forEach((col, i) => {
       const isNumeric = i >= 2;
+      const left = offsets[i];
       const nextEdge = i + 1 < offsets.length ? offsets[i + 1] : rightEdge;
-      if (isNumeric) {
-        doc.text(col.toUpperCase(), nextEdge - 4, w.y + 14, { align: 'right' });
-      } else {
-        doc.text(col.toUpperCase(), offsets[i] + 4, w.y + 14);
-      }
+      const cellWidth = nextEdge - left - 8;
+      const lines = wrapHeader(doc, col.toUpperCase(), cellWidth, headerSize);
+      // Vertically center the (1- or 2-line) header within the header band.
+      const blockHeight = lines.length * lineHeight;
+      const firstBaseline = w.y + (LEDGER_HEADER_HEIGHT - blockHeight) / 2 + headerSize;
+      doc.setFont(FONT_MONO, 'bold').setFontSize(headerSize);
+      lines.forEach((line, li) => {
+        const baseline = firstBaseline + li * lineHeight;
+        if (isNumeric) {
+          doc.text(line, nextEdge - 4, baseline, { align: 'right' });
+        } else {
+          doc.text(line, left + 4, baseline);
+        }
+      });
     });
     w.advance(LEDGER_HEADER_HEIGHT);
   };
@@ -356,20 +495,33 @@ function renderLedger(w: ReportWriter, model: ReportModel): void {
   });
 }
 
-/** Stamp the repeating footer on every page once the total is known. */
+/**
+ * Stamp the repeating footer on every page once the total page count is known.
+ *
+ * The footer lives in a dedicated zone between the content bottom and the page
+ * bottom margin, so it can never overlap body content and always stays inside
+ * the page margins. To guarantee the two footer elements never collide, they
+ * are placed on opposite ends of the same baseline:
+ *   - left  : the illustrative-only disclaimer
+ *   - right : "Page X of Y"
+ * The disclaimer (≈250pt at 8pt) and the page number (≈70pt) sit well clear of
+ * each other across the ~500pt content width.
+ */
 function stampFooters(doc: PdfDoc): void {
   const total = doc.getNumberOfPages();
+  const zoneTop = footerZoneTop();
+  const ruleY = zoneTop + 8;
+  const baseline = zoneTop + 20;
+  const leftX = MARGIN.left;
+  const rightX = A4.width - MARGIN.right;
+
   for (let page = 1; page <= total; page += 1) {
     doc.setPage(page);
-    const y = A4.height - MARGIN.bottom + 8;
     doc.setDrawColor(HAIRLINE).setLineWidth(0.5);
-    doc.line(MARGIN.left, y - 10, A4.width - MARGIN.right, y - 10);
+    doc.line(leftX, ruleY, rightX, ruleY);
     doc.setFont(FONT_MONO, 'normal').setFontSize(8).setTextColor(INK_SECONDARY);
-    doc.text('ArthVeda · Private Office', MARGIN.left, y);
-    doc.text(`Page ${page} of ${total}`, A4.width / 2, y, { align: 'center' });
-    doc.text('Illustrative projections only. Not investment advice.', A4.width - MARGIN.right, y, {
-      align: 'right',
-    });
+    doc.text('Illustrative projections only. Not investment advice.', leftX, baseline);
+    doc.text(`Page ${page} of ${total}`, rightX, baseline, { align: 'right' });
   }
 }
 
@@ -387,33 +539,35 @@ export function renderReport(model: ReportModel, charts: ReportCharts, factory: 
   // Page 1 — Cover.
   renderCover(w, model);
 
+  // Reserve enough body to keep a heading with the first ~two rows of its
+  // table so a heading is never stranded at the bottom of a page.
+  const PAIR_RESERVE = 44;
+
   // Section 1 — Projection Summary.
   w.newPage();
-  w.sectionTitle('Projection Summary', 'Section 1');
+  w.sectionTitle('Projection Summary', 'Section 1', PAIR_RESERVE);
   w.pairTable(model.summary);
 
   // Section 2 — Planning Assumptions.
-  w.sectionTitle('Planning Assumptions', 'Section 2');
+  w.sectionTitle('Planning Assumptions', 'Section 2', PAIR_RESERVE);
   w.pairTable(model.assumptions);
 
-  // Section 3 — Wealth Mountain.
+  // Section 3 — Wealth Mountain (heading + chart kept together, footer-safe).
   w.newPage();
-  w.sectionTitle('Wealth Mountain', 'Section 3');
-  renderChart(w, charts.mountain);
+  renderChartSection(w, 'Wealth Mountain', 'Section 3', charts.mountain);
 
-  // Section 4 — Wealth Composition.
-  w.sectionTitle('Wealth Composition', 'Section 4');
-  renderChart(w, charts.donut, model.compositionSentence);
+  // Section 4 — Wealth Composition (heading + chart kept together, footer-safe).
+  renderChartSection(w, 'Wealth Composition', 'Section 4', charts.donut, model.compositionSentence);
 
   // Section 5 — Wealth Journey Timeline.
   w.newPage();
-  w.sectionTitle('Wealth Journey Timeline', 'Section 5');
+  w.sectionTitle('Wealth Journey Timeline', 'Section 5', PAIR_RESERVE);
   w.pairTable(
     model.timeline.map((node) => ({ label: `${node.event} · ${node.year}`, value: node.corpus })),
   );
 
   // Section 6 — Milestone Achievement Report.
-  w.sectionTitle(model.milestoneTitle, 'Section 6');
+  w.sectionTitle(model.milestoneTitle, 'Section 6', PAIR_RESERVE);
   if (model.milestones.length > 0) {
     w.pairTable(
       model.milestones.map((m) => ({
@@ -427,7 +581,7 @@ export function renderReport(model: ReportModel, charts: ReportCharts, factory: 
 
   // Section 7 — AI Wealth Insights.
   w.newPage();
-  w.sectionTitle('AI Wealth Insights', 'Section 7');
+  w.sectionTitle('AI Wealth Insights', 'Section 7', 40);
   for (const group of model.insightGroups) {
     w.ensure(40);
     w.document.setFont(FONT_MONO, 'normal').setFontSize(9).setTextColor(ACCENT);
@@ -447,9 +601,9 @@ export function renderReport(model: ReportModel, charts: ReportCharts, factory: 
     w.advance(6);
   }
 
-  // Section 8 — Projection Ledger.
+  // Section 8 — Projection Ledger (keep heading with header + first rows).
   w.newPage();
-  w.sectionTitle('Projection Ledger', 'Section 8');
+  w.sectionTitle('Projection Ledger', 'Section 8', LEDGER_HEADER_HEIGHT + 2 * LEDGER_ROW_HEIGHT);
   renderLedger(w, model);
 
   // Footer on every page.

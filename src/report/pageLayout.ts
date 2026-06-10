@@ -24,10 +24,28 @@ export const MARGIN = {
 /** Vertical space reserved for the repeating page footer. */
 export const FOOTER_HEIGHT = 28;
 
+/**
+ * Vertical space a section heading block (eyebrow + title + accent rule +
+ * trailing gap) occupies. The renderer reserves at least this much — plus the
+ * first slice of the section body — before drawing a heading so a heading is
+ * never stranded at the bottom of a page (keep-with-next).
+ */
+export const HEADING_BLOCK_HEIGHT = 60;
+
+/**
+ * Padding kept between the bottom of a rasterized chart and the footer zone, so
+ * a chart's x-axis labels can never touch or enter the footer.
+ */
+export const CHART_BOTTOM_PADDING = 12;
+
 /** Height of a single ledger table row in points. */
 export const LEDGER_ROW_HEIGHT = 18;
-/** Height of the repeated ledger header row in points. */
-export const LEDGER_HEADER_HEIGHT = 22;
+/**
+ * Height of the repeated ledger header row in points. Sized to hold up to two
+ * wrapped header lines so long column titles (e.g. "Infl. Adj. Corpus") never
+ * overlap their neighbours.
+ */
+export const LEDGER_HEADER_HEIGHT = 26;
 
 /** The usable content width between the left and right margins. */
 export function contentWidth(): number {
@@ -47,6 +65,16 @@ export function contentBottom(): number {
 /** The usable content height for a full page (excluding margins and footer). */
 export function contentHeight(): number {
   return contentBottom() - contentTop();
+}
+
+/**
+ * The y-coordinate of the top of the dedicated footer zone. The footer (rule,
+ * disclaimer, page number) is drawn inside the band between this line and the
+ * bottom margin, so it never overlaps body content and never leaves the page
+ * margins.
+ */
+export function footerZoneTop(): number {
+  return contentBottom();
 }
 
 /**
