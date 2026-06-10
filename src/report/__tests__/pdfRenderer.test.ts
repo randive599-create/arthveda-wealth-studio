@@ -17,6 +17,8 @@ function createFakeDoc() {
     currentPage: 1,
     texts: [] as { page: number; text: string }[],
     images: 0,
+    roundedRects: 0,
+    triangles: 0,
     saved: null as string | null,
     fontsRegistered: 0,
     fontSize: 10,
@@ -54,6 +56,14 @@ function createFakeDoc() {
     },
     line: () => doc,
     rect: () => doc,
+    roundedRect() {
+      state.roundedRects += 1;
+      return doc;
+    },
+    triangle() {
+      state.triangles += 1;
+      return doc;
+    },
     addImage() {
       state.images += 1;
       return doc;
@@ -155,6 +165,24 @@ describe('renderReport', () => {
     const allText = state.texts.map((t) => t.text);
     expect(allText).toContain('ARTHVEDA');
     expect(allText).toContain('Wealth Projection Report');
+  });
+
+  it('draws the vector brand mark on the first page', () => {
+    const model = buildReportModel(bigResult(), FIXED_DATE);
+    const { doc, state } = createFakeDoc();
+    renderReport(model, { mountain: fakeImage, donut: fakeImage }, () => doc);
+    // The brand mark is one rounded square + two chevron triangles (vectors,
+    // not a raster image), so it stays crisp at any scale.
+    expect(state.roundedRects).toBeGreaterThanOrEqual(1);
+    expect(state.triangles).toBeGreaterThanOrEqual(2);
+  });
+
+  it('shows the website address on every page footer', () => {
+    const model = buildReportModel(bigResult(), FIXED_DATE);
+    const { doc, state } = createFakeDoc();
+    renderReport(model, { mountain: fakeImage, donut: fakeImage }, () => doc);
+    const domains = state.texts.filter((t) => t.text === 'arthvedawealth.in');
+    expect(domains.length).toBe(state.pageCount);
   });
 });
 

@@ -7,9 +7,11 @@
  *
  * The renderer is decoupled from jsPDF construction via an injected factory so
  * it can be exercised against a lightweight fake in tests without bundling a
- * real PDF engine into the test environment. The footer (disclaimer on the
- * left, "Page X of Y" on the right) is stamped on every page in a final pass,
- * inside a dedicated footer zone, once the total page count is known.
+ * real PDF engine into the test environment. The ArthVeda brand mark is drawn
+ * as native vectors at the top-left of the first page. The footer (disclaimer
+ * left, website address centred, "Page X of Y" right) is stamped on every page
+ * in a final pass, inside a dedicated footer zone, once the total page count is
+ * known.
  */
 
 import {
@@ -34,8 +36,13 @@ import { REPORT_FONT_MONO, REPORT_FONT_SERIF } from './registerFonts';
 const INK = '#111827';
 const INK_SECONDARY = '#4b5563';
 const ACCENT = '#064e3b';
+const EMERALD = '#10b981';
+const WHITE = '#ffffff';
 const HAIRLINE = '#e5e7eb';
 const MIST = '#f9fafb';
+
+/** The official ArthVeda website address, shown in the footer of every page. */
+const WEBSITE = 'arthvedawealth.in';
 
 // Embedded Unicode font families (registered on the document by the factory).
 // MONO renders values, labels, body, and the ledger; SERIF renders headings.
@@ -103,6 +110,24 @@ export interface PdfDoc {
   text(text: string | string[], x: number, y: number, options?: { align?: string }): PdfDoc;
   line(x1: number, y1: number, x2: number, y2: number): PdfDoc;
   rect(x: number, y: number, w: number, h: number, style?: string): PdfDoc;
+  roundedRect(
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    rx: number,
+    ry: number,
+    style?: string,
+  ): PdfDoc;
+  triangle(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    x3: number,
+    y3: number,
+    style?: string,
+  ): PdfDoc;
   addImage(
     data: string,
     format: string,
@@ -253,10 +278,49 @@ class ReportWriter {
   }
 }
 
+/**
+ * Draw the ArthVeda brand mark as crisp vector primitives — the same monogram
+ * used on the website (public/favicon.svg / BrandMark): an emerald rounded
+ * square enclosing a white "A" chevron with an emerald accent bar. Drawing it
+ * with native PDF vectors (rather than a raster image) keeps it sharp at any
+ * size, preserves the exact 1:1 aspect ratio, and never pixelates. Coordinates
+ * mirror the favicon's 32-unit viewBox, scaled to `size`.
+ */
+function drawBrandMark(doc: PdfDoc, x: number, y: number, size: number): void {
+  const k = size / 32;
+  const px = (v: number) => x + v * k;
+  const py = (v: number) => y + v * k;
+
+  // Emerald rounded square.
+  doc.setFillColor(ACCENT);
+  doc.roundedRect(x, y, size, size, 6 * k, 6 * k, 'F');
+
+  // White "A" chevron = a solid triangle with the centre notched out by an
+  // emerald triangle the same colour as the square (matches favicon path).
+  doc.setFillColor(WHITE);
+  doc.triangle(px(16), py(6), px(25), py(26), px(7), py(26), 'F');
+  doc.setFillColor(ACCENT);
+  doc.triangle(px(16), py(15), px(20.5), py(26), px(11.5), py(26), 'F');
+
+  // Emerald accent cross-bar.
+  doc.setFillColor(EMERALD);
+  doc.rect(px(13.4), py(19.2), 5.2 * k, 2.2 * k, 'F');
+}
+
 /** Render the cover page. The writer's first page is reused as the cover. */
 function renderCover(w: ReportWriter, model: ReportModel): void {
   const doc = w.document;
   const centerX = A4.width / 2;
+
+  // Letterhead: brand mark + wordmark at the top-left of the first page.
+  const markSize = 30;
+  drawBrandMark(doc, MARGIN.left, MARGIN.top, markSize);
+  const wordmarkX = MARGIN.left + markSize + 12;
+  doc.setFont(FONT_SERIF, 'bold').setFontSize(15).setTextColor(INK);
+  doc.text('ArthVeda', wordmarkX, MARGIN.top + 13);
+  doc.setFont(FONT_MONO, 'normal').setFontSize(7).setTextColor(ACCENT);
+  doc.text('PRIVATE OFFICE', wordmarkX, MARGIN.top + 25);
+
   let y = 200;
 
   doc.setFont(FONT_SERIF, 'bold').setFontSize(40).setTextColor(INK);
@@ -500,12 +564,14 @@ function renderLedger(w: ReportWriter, model: ReportModel): void {
  *
  * The footer lives in a dedicated zone between the content bottom and the page
  * bottom margin, so it can never overlap body content and always stays inside
- * the page margins. To guarantee the two footer elements never collide, they
- * are placed on opposite ends of the same baseline:
- *   - left  : the illustrative-only disclaimer
- *   - right : "Page X of Y"
- * The disclaimer (≈250pt at 8pt) and the page number (≈70pt) sit well clear of
- * each other across the ~500pt content width.
+ * the page margins. Three elements share one baseline, positioned so they can
+ * never collide across the ~500pt content width:
+ *   - left   : the illustrative-only disclaimer
+ *   - center : the website address (arthvedawealth.in)
+ *   - right  : "Page X of Y"
+ * The footer is set at 6.5pt: in IBM Plex Mono (0.6em advance) the disclaimer
+ * is ≈203pt (ends ≈x251), the centered domain spans ≈x264–x331, and the page
+ * number begins ≈x520 — leaving clear gaps between every element.
  */
 function stampFooters(doc: PdfDoc): void {
   const total = doc.getNumberOfPages();
@@ -514,13 +580,17 @@ function stampFooters(doc: PdfDoc): void {
   const baseline = zoneTop + 20;
   const leftX = MARGIN.left;
   const rightX = A4.width - MARGIN.right;
+  const centerX = A4.width / 2;
 
   for (let page = 1; page <= total; page += 1) {
     doc.setPage(page);
     doc.setDrawColor(HAIRLINE).setLineWidth(0.5);
     doc.line(leftX, ruleY, rightX, ruleY);
-    doc.setFont(FONT_MONO, 'normal').setFontSize(8).setTextColor(INK_SECONDARY);
+    doc.setFont(FONT_MONO, 'normal').setFontSize(6.5).setTextColor(INK_SECONDARY);
     doc.text('Illustrative projections only. Not investment advice.', leftX, baseline);
+    doc.setTextColor(ACCENT);
+    doc.text(WEBSITE, centerX, baseline, { align: 'center' });
+    doc.setTextColor(INK_SECONDARY);
     doc.text(`Page ${page} of ${total}`, rightX, baseline, { align: 'right' });
   }
 }

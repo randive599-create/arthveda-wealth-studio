@@ -43,6 +43,11 @@ interface ImageRecord {
   h: number;
 }
 
+interface ShapeRecord {
+  page: number;
+  kind: 'roundedRect' | 'triangle';
+}
+
 function createGeometryDoc() {
   const state = {
     pageCount: 1,
@@ -50,6 +55,7 @@ function createGeometryDoc() {
     fontSize: 10,
     texts: [] as TextRecord[],
     images: [] as ImageRecord[],
+    shapes: [] as ShapeRecord[],
   };
 
   const widthOf = (text: string) => text.length * state.fontSize * 0.6;
@@ -84,6 +90,14 @@ function createGeometryDoc() {
     },
     line: () => doc,
     rect: () => doc,
+    roundedRect() {
+      state.shapes.push({ page: state.currentPage, kind: 'roundedRect' });
+      return doc;
+    },
+    triangle() {
+      state.shapes.push({ page: state.currentPage, kind: 'triangle' });
+      return doc;
+    },
     addImage(_data: string, _fmt: string, x: number, y: number, w: number, h: number) {
       state.images.push({ page: state.currentPage, x, y, w, h });
       return doc;
@@ -147,21 +161,28 @@ function render(result = bigInrResult()) {
 
 const RIGHT_EDGE = A4.width - MARGIN.right;
 const FOOTER_DISCLAIMER = 'Illustrative projections only. Not investment advice.';
+const WEBSITE = 'arthvedawealth.in';
 const isPageNumber = (s: string) => /^Page \d+ of \d+$/.test(s);
 const isEyebrow = (s: string) => /^SECTION \d+$/.test(s);
+const isFooterText = (s: string) =>
+  s === FOOTER_DISCLAIMER || s === WEBSITE || isPageNumber(s);
 
 describe('PDF layout — footer zone (issue 1)', () => {
-  it('never lets the disclaimer and page number overlap on any page', () => {
+  it('never lets the disclaimer, website, and page number overlap on any page', () => {
     const { state } = render();
     for (let page = 1; page <= state.pageCount; page += 1) {
       const disclaimer = state.texts.find((t) => t.page === page && t.text === FOOTER_DISCLAIMER);
+      const website = state.texts.find((t) => t.page === page && t.text === WEBSITE);
       const pageNo = state.texts.find((t) => t.page === page && isPageNumber(t.text));
       expect(disclaimer).toBeDefined();
+      expect(website).toBeDefined();
       expect(pageNo).toBeDefined();
       const [, disclaimerRight] = xRange(disclaimer!);
+      const [websiteLeft, websiteRight] = xRange(website!);
       const [pageNoLeft] = xRange(pageNo!);
-      // Disclaimer (left) must end before the page number (right) begins.
-      expect(disclaimerRight).toBeLessThan(pageNoLeft);
+      // Left → center → right, each clearing the next.
+      expect(disclaimerRight).toBeLessThan(websiteLeft);
+      expect(websiteRight).toBeLessThan(pageNoLeft);
     }
   });
 
@@ -169,9 +190,7 @@ describe('PDF layout — footer zone (issue 1)', () => {
     const { state } = render();
     const bottomMarginEdge = A4.height - MARGIN.bottom;
     for (let page = 1; page <= state.pageCount; page += 1) {
-      const footers = state.texts.filter(
-        (t) => t.page === page && (t.text === FOOTER_DISCLAIMER || isPageNumber(t.text)),
-      );
+      const footers = state.texts.filter((t) => t.page === page && isFooterText(t.text));
       for (const f of footers) {
         // Below the body content area but above the bottom page margin.
         expect(f.y).toBeGreaterThanOrEqual(contentBottom());
@@ -183,12 +202,42 @@ describe('PDF layout — footer zone (issue 1)', () => {
     }
   });
 
-  it('stamps exactly one footer pair per page', () => {
+  it('stamps the disclaimer, website, and page number once per page', () => {
     const { state } = render();
     const disclaimers = state.texts.filter((t) => t.text === FOOTER_DISCLAIMER);
+    const websites = state.texts.filter((t) => t.text === WEBSITE);
     const pageNumbers = state.texts.filter((t) => isPageNumber(t.text));
     expect(disclaimers).toHaveLength(state.pageCount);
+    expect(websites).toHaveLength(state.pageCount);
     expect(pageNumbers).toHaveLength(state.pageCount);
+  });
+});
+
+describe('PDF branding — logo & website', () => {
+  it('draws the vector brand mark on the first page (top-left header)', () => {
+    const { state } = render();
+    const page1Shapes = state.shapes.filter((s) => s.page === 1);
+    // Rounded square + two chevron triangles = the favicon monogram as vectors.
+    expect(page1Shapes.some((s) => s.kind === 'roundedRect')).toBe(true);
+    expect(page1Shapes.filter((s) => s.kind === 'triangle').length).toBeGreaterThanOrEqual(2);
+
+    // The mark sits in the top-left header band, inside the margins.
+    const headerText = state.texts.find((t) => t.page === 1 && t.text === 'ArthVeda');
+    expect(headerText).toBeDefined();
+    expect(headerText!.x).toBeGreaterThanOrEqual(MARGIN.left - 0.5);
+    expect(headerText!.y).toBeLessThan(120);
+  });
+
+  it('shows the website address centered in the footer on every page', () => {
+    const { state } = render();
+    for (let page = 1; page <= state.pageCount; page += 1) {
+      const website = state.texts.find((t) => t.page === page && t.text === WEBSITE);
+      expect(website).toBeDefined();
+      expect(website!.align).toBe('center');
+      const [start, end] = xRange(website!);
+      expect(start).toBeGreaterThanOrEqual(MARGIN.left - 0.5);
+      expect(end).toBeLessThanOrEqual(RIGHT_EDGE + 0.5);
+    }
   });
 });
 
@@ -273,9 +322,7 @@ describe('PDF layout — ledger header widths (issue 7)', () => {
 describe('PDF layout — no content clipped past margins (issue 9)', () => {
   it('keeps all body text out of the footer zone', () => {
     const { state } = render();
-    const bodyTexts = state.texts.filter(
-      (t) => t.text !== FOOTER_DISCLAIMER && !isPageNumber(t.text),
-    );
+    const bodyTexts = state.texts.filter((t) => !isFooterText(t.text));
     for (const t of bodyTexts) {
       expect(t.y).toBeLessThanOrEqual(contentBottom() + 0.5);
     }
