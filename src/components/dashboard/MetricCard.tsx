@@ -20,15 +20,17 @@ export interface MetricCardProps {
 
 export function MetricCard({ label, value, subValue, icon, testId }: MetricCardProps) {
   return (
-    <Card className="flex h-full flex-col justify-between p-5" data-testid={testId}>
+    <Card className="flex h-full min-w-0 flex-col justify-between p-5" data-testid={testId}>
       <div className="flex items-start justify-between gap-3">
         <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-secondary">
           {label}
         </p>
         {icon ? <span className="text-ink-secondary">{icon}</span> : null}
       </div>
-      <div className="mt-6">
-        <p className="font-mono text-xl font-semibold leading-tight text-ink sm:text-2xl">
+      <div className="mt-6 min-w-0">
+        {/* break-words guards against clipping if a value ever exceeds the
+            column; font sizes are unchanged so desktop typography is intact. */}
+        <p className="font-mono text-xl font-semibold leading-tight text-ink break-words sm:text-2xl">
           {value}
         </p>
         {subValue ? (

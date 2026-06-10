@@ -59,7 +59,7 @@ export function MetricsStrip() {
         {items.map((item, index) => (
           <div
             key={item.testId}
-            className={`p-5 ${index >= 2 ? 'border-t border-hairline lg:border-t-0' : ''} ${
+            className={`min-w-0 p-5 ${index >= 2 ? 'border-t border-hairline lg:border-t-0' : ''} ${
               index % 2 === 1 ? 'border-l border-hairline lg:border-l-0' : ''
             }`}
             data-testid={item.testId}
@@ -67,7 +67,15 @@ export function MetricsStrip() {
             <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-secondary">
               {item.label}
             </dt>
-            <dd className="mt-2 font-mono text-lg font-semibold text-ink">{item.value}</dd>
+            {/*
+              Narrow 2-up cells on mobile: the value uses a viewport clamp so
+              large INR figures fit each cell on 320–430px screens. The clamp
+              caps at 1.125rem (= text-lg), so the value is identical to the
+              previous design at ≥640px. break-words is the wrap fallback.
+            */}
+            <dd className="mt-2 font-mono text-[clamp(0.9rem,3.4vw,1.125rem)] font-semibold text-ink break-words">
+              {item.value}
+            </dd>
           </div>
         ))}
       </dl>

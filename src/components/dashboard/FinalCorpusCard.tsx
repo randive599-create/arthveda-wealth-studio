@@ -42,10 +42,18 @@ export function FinalCorpusCard({ label, value, subValue, testId }: FinalCorpusC
         </div>
       </div>
 
+      {/*
+        Mobile-only responsive sizing. The base font size is a viewport clamp so
+        large INR values (e.g. ₹11,03,89,301) always fit inside the card on
+        320–430px screens instead of overflowing the `overflow-hidden` border.
+        The `sm:`/`lg:` font sizes are unchanged, so they override the clamp at
+        ≥640px and the desktop hero typography is byte-identical. `break-words`
+        is a last-resort wrap so pathologically large values can never clip.
+      */}
       <p
         className="
-          mt-7 font-mono text-5xl font-semibold leading-[0.95] tracking-[-0.02em]
-          text-ink sm:text-6xl lg:text-7xl
+          mt-7 font-mono text-[clamp(1.5rem,7.5vw,3rem)] font-semibold leading-[0.95]
+          tracking-[-0.02em] text-ink break-words sm:text-6xl lg:text-7xl
         "
       >
         {value}
