@@ -9,9 +9,9 @@
  * it can be exercised against a lightweight fake in tests without bundling a
  * real PDF engine into the test environment. The first-page header carries the
  * ArthVeda brand mark (drawn as native vectors) on the left and the website URL
- * + contact email on the right. The footer (disclaimer left, website address
- * centred, "Page X of Y" right) is stamped on every page in a final pass,
- * inside a dedicated footer zone, once the total page count is known.
+ * + contact email on the right. The footer is stamped on every page in a final
+ * pass inside a dedicated zone: the disclaimer and page number on the first
+ * row, and a centered brand line (office · website · email) on the second.
  */
 
 import {
@@ -580,34 +580,35 @@ function renderLedger(w: ReportWriter, model: ReportModel): void {
  *
  * The footer lives in a dedicated zone between the content bottom and the page
  * bottom margin, so it can never overlap body content and always stays inside
- * the page margins. Three elements share one baseline, positioned so they can
- * never collide across the ~500pt content width:
- *   - left   : the illustrative-only disclaimer
- *   - center : the website address (arthvedawealth.in)
- *   - right  : "Page X of Y"
- * The footer is set at 6.5pt: in IBM Plex Mono (0.6em advance) the disclaimer
- * is ≈203pt (ends ≈x251), the centered domain spans ≈x264–x331, and the page
- * number begins ≈x520 — leaving clear gaps between every element.
+ * the page margins. It uses two rows so the compliance text, page number, and
+ * full brand line all fit without colliding:
+ *   - row 1: disclaimer (left)              ·  "Page X of Y" (right)
+ *   - row 2: "ArthVeda Private Office · arthvedawealth.in · info@arthvedawealth.in" (centered)
+ * Row 1 is 6.5pt; the centered brand line is 6pt (≈245pt wide), comfortably
+ * inside the ~500pt content width.
  */
 function stampFooters(doc: PdfDoc): void {
   const total = doc.getNumberOfPages();
   const zoneTop = footerZoneTop();
-  const ruleY = zoneTop + 8;
-  const baseline = zoneTop + 20;
+  const ruleY = zoneTop + 5;
+  const row1 = zoneTop + 14;
+  const row2 = zoneTop + 23;
   const leftX = MARGIN.left;
   const rightX = A4.width - MARGIN.right;
   const centerX = A4.width / 2;
+  const brandLine = `ArthVeda Private Office · ${WEBSITE} · ${EMAIL}`;
 
   for (let page = 1; page <= total; page += 1) {
     doc.setPage(page);
     doc.setDrawColor(HAIRLINE).setLineWidth(0.5);
     doc.line(leftX, ruleY, rightX, ruleY);
+    // Row 1 — compliance disclaimer (left) and page number (right).
     doc.setFont(FONT_MONO, 'normal').setFontSize(6.5).setTextColor(INK_SECONDARY);
-    doc.text('Illustrative projections only. Not investment advice.', leftX, baseline);
-    doc.setTextColor(ACCENT);
-    doc.text(WEBSITE, centerX, baseline, { align: 'center' });
-    doc.setTextColor(INK_SECONDARY);
-    doc.text(`Page ${page} of ${total}`, rightX, baseline, { align: 'right' });
+    doc.text('Illustrative projections only. Not investment advice.', leftX, row1);
+    doc.text(`Page ${page} of ${total}`, rightX, row1, { align: 'right' });
+    // Row 2 — centered brand line (office · website · email).
+    doc.setFont(FONT_MONO, 'normal').setFontSize(6).setTextColor(ACCENT);
+    doc.text(brandLine, centerX, row2, { align: 'center' });
   }
 }
 

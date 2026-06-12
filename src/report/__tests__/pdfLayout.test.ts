@@ -162,27 +162,35 @@ function render(result = bigInrResult()) {
 const RIGHT_EDGE = A4.width - MARGIN.right;
 const FOOTER_DISCLAIMER = 'Illustrative projections only. Not investment advice.';
 const WEBSITE = 'arthvedawealth.in';
+const EMAIL = 'info@arthvedawealth.in';
 const isPageNumber = (s: string) => /^Page \d+ of \d+$/.test(s);
 const isEyebrow = (s: string) => /^SECTION \d+$/.test(s);
+// The footer brand line carries the office name, website, and contact email.
+const isBrandLine = (s: string) =>
+  s.includes('ArthVeda Private Office') && s.includes(WEBSITE) && s.includes(EMAIL);
 const isFooterText = (s: string) =>
-  s === FOOTER_DISCLAIMER || s === WEBSITE || isPageNumber(s);
+  s === FOOTER_DISCLAIMER || isPageNumber(s) || isBrandLine(s);
 
 describe('PDF layout — footer zone (issue 1)', () => {
-  it('never lets the disclaimer, website, and page number overlap on any page', () => {
+  it('never lets the disclaimer, page number, and brand line overlap on any page', () => {
     const { state } = render();
     for (let page = 1; page <= state.pageCount; page += 1) {
       const disclaimer = state.texts.find((t) => t.page === page && t.text === FOOTER_DISCLAIMER);
-      const website = state.texts.find((t) => t.page === page && t.text === WEBSITE);
       const pageNo = state.texts.find((t) => t.page === page && isPageNumber(t.text));
+      const brand = state.texts.find((t) => t.page === page && isBrandLine(t.text));
       expect(disclaimer).toBeDefined();
-      expect(website).toBeDefined();
       expect(pageNo).toBeDefined();
+      expect(brand).toBeDefined();
+      // Row 1: disclaimer (left) must end before the page number (right) begins.
       const [, disclaimerRight] = xRange(disclaimer!);
-      const [websiteLeft, websiteRight] = xRange(website!);
       const [pageNoLeft] = xRange(pageNo!);
-      // Left → center → right, each clearing the next.
-      expect(disclaimerRight).toBeLessThan(websiteLeft);
-      expect(websiteRight).toBeLessThan(pageNoLeft);
+      expect(disclaimerRight).toBeLessThan(pageNoLeft);
+      // Row 2: the brand line sits on a separate, lower baseline and stays
+      // within the margins, so it can never collide with row 1.
+      expect(brand!.y).toBeGreaterThan(disclaimer!.y);
+      const [brandStart, brandEnd] = xRange(brand!);
+      expect(brandStart).toBeGreaterThanOrEqual(MARGIN.left - 0.5);
+      expect(brandEnd).toBeLessThanOrEqual(RIGHT_EDGE + 0.5);
     }
   });
 
@@ -202,14 +210,14 @@ describe('PDF layout — footer zone (issue 1)', () => {
     }
   });
 
-  it('stamps the disclaimer, website, and page number once per page', () => {
+  it('stamps the disclaimer, page number, and brand line once per page', () => {
     const { state } = render();
     const disclaimers = state.texts.filter((t) => t.text === FOOTER_DISCLAIMER);
-    const websites = state.texts.filter((t) => t.text === WEBSITE);
     const pageNumbers = state.texts.filter((t) => isPageNumber(t.text));
+    const brandLines = state.texts.filter((t) => isBrandLine(t.text));
     expect(disclaimers).toHaveLength(state.pageCount);
-    expect(websites).toHaveLength(state.pageCount);
     expect(pageNumbers).toHaveLength(state.pageCount);
+    expect(brandLines).toHaveLength(state.pageCount);
   });
 });
 
@@ -249,13 +257,16 @@ describe('PDF branding — logo & website', () => {
     }
   });
 
-  it('shows the website address centered in the footer on every page', () => {
+  it('shows the brand line (office · website · email) centered in the footer on every page', () => {
     const { state } = render();
     for (let page = 1; page <= state.pageCount; page += 1) {
-      const website = state.texts.find((t) => t.page === page && t.text === WEBSITE);
-      expect(website).toBeDefined();
-      expect(website!.align).toBe('center');
-      const [start, end] = xRange(website!);
+      const brand = state.texts.find((t) => t.page === page && isBrandLine(t.text));
+      expect(brand).toBeDefined();
+      expect(brand!.align).toBe('center');
+      // Contains both the website and the (untruncated) contact email.
+      expect(brand!.text).toContain(WEBSITE);
+      expect(brand!.text).toContain(EMAIL);
+      const [start, end] = xRange(brand!);
       expect(start).toBeGreaterThanOrEqual(MARGIN.left - 0.5);
       expect(end).toBeLessThanOrEqual(RIGHT_EDGE + 0.5);
     }

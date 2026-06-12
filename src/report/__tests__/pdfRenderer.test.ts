@@ -177,12 +177,14 @@ describe('renderReport', () => {
     expect(state.triangles).toBeGreaterThanOrEqual(2);
   });
 
-  it('shows the website address on every page footer', () => {
+  it('shows the website and contact email in the footer brand line on every page', () => {
     const model = buildReportModel(bigResult(), FIXED_DATE);
     const { doc, state } = createFakeDoc();
     renderReport(model, { mountain: fakeImage, donut: fakeImage }, () => doc);
-    const domains = state.texts.filter((t) => t.text === 'arthvedawealth.in');
-    expect(domains.length).toBe(state.pageCount);
+    const brandLines = state.texts.filter(
+      (t) => t.text.includes('ArthVeda Private Office') && t.text.includes('info@arthvedawealth.in'),
+    );
+    expect(brandLines.length).toBe(state.pageCount);
   });
 
   it('shows the website URL and contact email in the first-page header', () => {
