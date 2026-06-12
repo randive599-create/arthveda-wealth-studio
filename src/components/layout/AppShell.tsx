@@ -2,9 +2,13 @@
  * Application shell and responsive grid.
  *
  * Layout (desktop, lg+): a 12-column grid — a sticky 4/12 Parameters column on
- * the left and an 8/12 Projection Studio column on the right. Below lg the grid
- * collapses to a single column: parameters first, then the studio, with extra
- * bottom padding so the mobile fixed summary bar never overlaps content.
+ * the left and an 8/12 Projection Studio column on the right. On lg+ the
+ * Parameters column is independently scrollable (its own overflow within the
+ * viewport height) so users can reach every input without scrolling the page
+ * and pushing the charts/results out of view. Below lg the grid collapses to a
+ * single column — parameters first, then the studio — with normal page
+ * scrolling and extra bottom padding so the mobile fixed summary bar never
+ * overlaps content.
  *
  * This phase wires the structure and the dashboard. Parameter inputs and charts
  * are deliberately not yet present; their containers are established here so the
@@ -36,7 +40,19 @@ export function AppShell({ parameters, studio }: AppShellProps) {
             aria-label="Projection parameters"
             data-testid={TESTIDS.parametersColumn}
           >
-            <div className="lg:sticky lg:top-6">{parameters}</div>
+            {/*
+              On lg+, the sticky wrapper becomes its own scroll container sized
+              to the viewport (top gap 1.5rem + bottom gap 1.5rem = 3rem), so
+              the Plan Inputs panel scrolls independently while the right column
+              stays put. overflow-x is hidden to guarantee no horizontal
+              scrollbar. The currency control is a native <select>, whose
+              dropdown renders in the browser top layer and is therefore never
+              clipped by this overflow. Below lg none of this applies — the
+              panel stacks and the page scrolls normally.
+            */}
+            <div className="lg:sticky lg:top-6 lg:max-h-[calc(100vh_-_3rem)] lg:overflow-y-auto lg:overflow-x-hidden">
+              {parameters}
+            </div>
           </aside>
 
           <main
