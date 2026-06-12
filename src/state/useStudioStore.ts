@@ -26,7 +26,7 @@ import type {
   StepUpConfig,
 } from '../engine/types';
 import { buildShareUrl, readScenarioFromUrl, writeScenarioToUrl } from '../share/urlSync';
-import { DEFAULT_INPUTS } from './defaults';
+import { DEFAULT_INPUTS, SIP_CALCULATOR_PRESET } from './defaults';
 import { clampInputs } from './schema';
 
 /** Tunable behaviour for a store instance. */
@@ -78,6 +78,23 @@ export interface StudioState extends StudioActions {
   scenarioLoadedFromUrl: boolean;
 }
 
+/**
+ * Per-route default scenario. SEO landing pages (e.g. /sip-calculator) open
+ * with a preset tuned to that page's topic instead of the studio default. This
+ * only changes the *initial* inputs — the engine, formulas, and every action
+ * remain identical. Returns `null` when there is no route-specific preset.
+ */
+function presetForCurrentPath(): ProjectionInputs | null {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+  const path = window.location.pathname.replace(/\/+$/, '');
+  if (path === '/sip-calculator') {
+    return SIP_CALCULATOR_PRESET;
+  }
+  return null;
+}
+
 /** Resolve the initial inputs: a valid URL scenario if present, else defaults. */
 function resolveInitialInputs(enableUrlSync: boolean): {
   inputs: ProjectionInputs;
@@ -87,6 +104,11 @@ function resolveInitialInputs(enableUrlSync: boolean): {
     const raw = readScenarioFromUrl();
     if (raw !== null) {
       return { inputs: clampInputs(raw, DEFAULT_INPUTS), fromUrl: true };
+    }
+    // No shared scenario: honour a route-specific preset (e.g. SIP landing page).
+    const preset = presetForCurrentPath();
+    if (preset !== null) {
+      return { inputs: clampInputs(preset, DEFAULT_INPUTS), fromUrl: false };
     }
   }
   return { inputs: DEFAULT_INPUTS, fromUrl: false };

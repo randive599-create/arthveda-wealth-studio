@@ -19,6 +19,12 @@ import { ProjectionTable } from './components/table/ProjectionTable';
 import { DownloadReportButton } from './components/report/DownloadReportButton';
 import { ShareScenarioButton } from './components/report/ShareScenarioButton';
 
+// Route-split the SIP landing page so the home studio bundle does not carry its
+// SEO content; it loads as its own chunk only on /sip-calculator.
+const SipCalculatorPage = lazy(() =>
+  import('./pages/sip/SipCalculatorPage').then((m) => ({ default: m.SipCalculatorPage })),
+);
+
 // Recharts is a large dependency; load the charts lazily so it is split into
 // its own chunk and does not block the initial paint of the studio shell.
 const WealthMountain = lazy(() =>
@@ -35,7 +41,8 @@ const FaqSection = lazy(() =>
   import('./components/faq/FaqSection').then((m) => ({ default: m.FaqSection })),
 );
 
-export default function App() {
+/** The default Wealth Projection Studio (home page). */
+function StudioPage() {
   return (
     <AppShell
       parameters={<ParametersPanel />}
@@ -68,4 +75,23 @@ export default function App() {
       }
     />
   );
+}
+
+/** Normalize a pathname by stripping a trailing slash (except root). */
+function currentPath(): string {
+  if (typeof window === 'undefined') {
+    return '/';
+  }
+  return window.location.pathname.replace(/\/+$/, '') || '/';
+}
+
+export default function App() {
+  if (currentPath() === '/sip-calculator') {
+    return (
+      <Suspense fallback={null}>
+        <SipCalculatorPage />
+      </Suspense>
+    );
+  }
+  return <StudioPage />;
 }

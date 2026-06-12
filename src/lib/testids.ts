@@ -107,6 +107,12 @@ export const TESTIDS = {
   faqSection: 'faq-section',
   faqItem: (index: number) => `faq-item-${index}`,
 
+  // SIP calculator landing page
+  sipCalculatorPage: 'sip-calculator-page',
+  sipFaqSection: 'sip-faq-section',
+  sipFaqItem: (index: number) => `sip-faq-item-${index}`,
+  sipInternalLinks: 'sip-internal-links',
+
   // Resilience
   errorBoundary: 'error-boundary',
 
