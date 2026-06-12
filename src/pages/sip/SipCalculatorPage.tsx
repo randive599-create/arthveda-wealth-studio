@@ -46,7 +46,7 @@ export function SipCalculatorPage() {
               SIP Calculator
             </p>
             <h1 className="mt-2 font-heading text-3xl font-bold leading-tight text-ink sm:text-4xl">
-              SIP Calculator — Calculate SIP Returns &amp; Future Wealth
+              SIP Calculator India — Calculate SIP Returns &amp; Future Wealth
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base">
               Estimate the future value of your Systematic Investment Plan, model step-up SIP
