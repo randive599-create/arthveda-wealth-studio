@@ -10,8 +10,9 @@ import { Plus } from 'lucide-react';
 import { Card } from '../../components/primitives/Card';
 import { SectionHeading } from '../../components/primitives/SectionHeading';
 import { ExploreCalculators } from '../../components/navigation/ExploreCalculators';
+import { formatCurrency } from '../../format/currency';
 import { TESTIDS } from '../../lib/testids';
-import { SIP_FAQ, buildSipExampleRows } from './sipContent';
+import { SIP_FAQ, SIP_TARGET_RETURN_PCT, buildSipExampleRows, buildSipTargetRows } from './sipContent';
 
 const SIP_BENEFITS: { title: string; body: string }[] = [
   {
@@ -49,6 +50,8 @@ const ARTHVEDA_REASONS: string[] = [
 
 export function SipSeoContent() {
   const exampleRows = buildSipExampleRows();
+  const targetRows = buildSipTargetRows();
+  const money = (value: number) => formatCurrency(value, 'INR');
 
   return (
     <div className="space-y-8">
@@ -149,6 +152,34 @@ export function SipSeoContent() {
             </li>
           ))}
         </ul>
+      </Card>
+
+      {/* How much SIP do you need for a target corpus (engine-generated) */}
+      <Card className="p-6" data-testid={TESTIDS.sipTargets}>
+        <SectionHeading
+          eyebrow="Goal planning"
+          title="How much SIP do you need?"
+          description={`Monthly SIP required to reach each target at an assumed ${SIP_TARGET_RETURN_PCT}% annual return. These are engine-generated estimates.`}
+        />
+        <div className="mt-6 space-y-5">
+          {targetRows.map((row) => (
+            <div key={row.target}>
+              <h3 className="font-heading text-lg font-bold leading-snug text-ink">
+                How much SIP is required for {row.label}?
+              </h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-secondary">
+                At {SIP_TARGET_RETURN_PCT}% p.a., you need approximately{' '}
+                {row.durations.map((d, index) => (
+                  <span key={d.years}>
+                    <strong className="text-ink">{money(d.monthlySip)}/month</strong> for {d.years}{' '}
+                    years
+                    {index < row.durations.length - 1 ? ', ' : '.'}
+                  </span>
+                ))}
+              </p>
+            </div>
+          ))}
+        </div>
       </Card>
 
       {/* Explore other calculators */}

@@ -126,6 +126,24 @@ export const TESTIDS = {
   sipFaqItem: (index: number) => `sip-faq-item-${index}`,
   sipInternalLinks: 'sip-internal-links',
 
+  // Dedicated SIP calculator experience
+  sipCalculator: 'sip-calculator',
+  sipControls: 'sip-controls',
+  sipAdvancedToggle: 'sip-advanced-toggle',
+  sipAdvancedFields: 'sip-advanced-fields',
+  sipAmountPreset: (amount: number) => `sip-amount-preset-${amount}`,
+  sipDurationPreset: (years: number) => `sip-duration-preset-${years}`,
+  sipSummary: 'sip-summary',
+  sipAdvancedResults: 'sip-advanced-results',
+  sipOutput: (key: string) => `sip-output-${key}`,
+  sipChart: (key: string) => `sip-chart-${key}`,
+  sipComparison: 'sip-comparison',
+  sipComparisonRow: (amount: number) => `sip-comparison-row-${amount}`,
+  sipTargets: 'sip-targets',
+  sipReportButton: 'sip-report-button',
+  sipReportSuccess: 'sip-report-success',
+  sipReportError: 'sip-report-error',
+
   // Retirement calculator landing page
   retirementCalculatorPage: 'retirement-calculator-page',
   retirementFaqSection: 'retirement-faq-section',

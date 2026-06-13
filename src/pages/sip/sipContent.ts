@@ -165,3 +165,50 @@ export function buildSipExampleRows(years: number[] = [5, 10, 15, 20]): SipExamp
       returns: formatCurrency(row.returns, currency),
     }));
 }
+
+
+/* ------------------------------------------------------------------------- *
+ * "How much SIP is required for ₹X crore?" — engine-generated target figures *
+ * ------------------------------------------------------------------------- */
+
+import { requiredMonthlySip } from './sipModel';
+
+/** Representative return + durations used by the target-SIP SEO section. */
+export const SIP_TARGET_RETURN_PCT = 12;
+export const SIP_TARGET_DURATIONS = [15, 20, 25] as const;
+
+export interface SipTargetDuration {
+  years: number;
+  monthlySip: number;
+}
+
+export interface SipTargetRow {
+  /** Target corpus in INR. */
+  target: number;
+  /** Display label, e.g. "₹1 Crore". */
+  label: string;
+  /** Required monthly SIP for each representative duration. */
+  durations: SipTargetDuration[];
+}
+
+/**
+ * Engine-generated answer to "How much SIP is required for ₹1 / ₹5 / ₹10
+ * Crore?": the monthly SIP needed at a 12% assumed return over 15, 20 and 25
+ * years. Values come from the engine via `requiredMonthlySip` — none are
+ * hand-written.
+ */
+export function buildSipTargetRows(): SipTargetRow[] {
+  const targets: { target: number; label: string }[] = [
+    { target: 10_000_000, label: '₹1 Crore' },
+    { target: 50_000_000, label: '₹5 Crore' },
+    { target: 100_000_000, label: '₹10 Crore' },
+  ];
+  return targets.map(({ target, label }) => ({
+    target,
+    label,
+    durations: SIP_TARGET_DURATIONS.map((years) => ({
+      years,
+      monthlySip: requiredMonthlySip(target, SIP_TARGET_RETURN_PCT, years),
+    })),
+  }));
+}

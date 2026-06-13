@@ -116,8 +116,9 @@ const sipBody = renderToStaticMarkup(
         SIP Calculator India — Calculate SIP Returns &amp; Future Wealth
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base">
-        Estimate the future value of your Systematic Investment Plan, model step-up SIP growth, and
-        see your inflation-adjusted wealth — powered by the ArthVeda projection engine.
+        Estimate the maturity value of your Systematic Investment Plan, the wealth you create, and
+        your returns. Expand advanced options for step-up and inflation, and compare how different
+        monthly SIPs grow.
       </p>
     </header>
     <SipSeoContent />
