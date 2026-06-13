@@ -209,7 +209,7 @@ writeRoute(
   renderLandingBody(
     'SWP Calculator',
     'SWP Calculator — Systematic Withdrawal Plan & Monthly Income',
-    'Model a Systematic Withdrawal Plan: draw a monthly income from your corpus, watch the remaining balance keep compounding, and see how long it lasts — powered by the ArthVeda projection engine.',
+    'Model a Systematic Withdrawal Plan from an existing corpus: see how long your money lasts, your total withdrawals, the inflation-adjusted value of your income, and the probability your portfolio survives the full term.',
     <SwpSeoContent />,
   ),
 );

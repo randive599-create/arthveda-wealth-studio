@@ -138,6 +138,17 @@ export const TESTIDS = {
   swpFaqItem: (index: number) => `swp-faq-item-${index}`,
   swpInternalLinks: 'swp-internal-links',
 
+  // Dedicated SWP calculator experience
+  swpCalculator: 'swp-calculator',
+  swpControls: 'swp-controls',
+  swpSummary: 'swp-summary',
+  swpSurvivalIndicator: 'swp-survival-indicator',
+  swpOutput: (key: string) => `swp-output-${key}`,
+  swpChart: (key: string) => `swp-chart-${key}`,
+  swpReportButton: 'swp-report-button',
+  swpReportSuccess: 'swp-report-success',
+  swpReportError: 'swp-report-error',
+
   // Lumpsum calculator landing page
   lumpsumCalculatorPage: 'lumpsum-calculator-page',
   lumpsumFaqSection: 'lumpsum-faq-section',
