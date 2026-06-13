@@ -155,6 +155,17 @@ export const TESTIDS = {
   lumpsumFaqItem: (index: number) => `lumpsum-faq-item-${index}`,
   lumpsumInternalLinks: 'lumpsum-internal-links',
 
+  // Dedicated Lumpsum calculator experience
+  lumpsumCalculator: 'lumpsum-calculator',
+  lumpsumControls: 'lumpsum-controls',
+  lumpsumSummary: 'lumpsum-summary',
+  lumpsumHeadline: 'lumpsum-headline',
+  lumpsumOutput: (key: string) => `lumpsum-output-${key}`,
+  lumpsumChart: (key: string) => `lumpsum-chart-${key}`,
+  lumpsumReportButton: 'lumpsum-report-button',
+  lumpsumReportSuccess: 'lumpsum-report-success',
+  lumpsumReportError: 'lumpsum-report-error',
+
   // FIRE calculator landing page
   fireCalculatorPage: 'fire-calculator-page',
   fireFaqSection: 'fire-faq-section',

@@ -224,7 +224,7 @@ writeRoute(
   renderLandingBody(
     'Lumpsum Calculator',
     'Lumpsum Calculator — One-Time Investment Growth Projection',
-    'Project the future value of a one-time lumpsum investment with monthly compounding, and see your inflation-adjusted wealth — powered by the ArthVeda projection engine.',
+    'Project the future value of a one-time investment: see your final corpus, total gain, CAGR, inflation-adjusted wealth, and how many times your money grows.',
     <LumpsumSeoContent />,
   ),
 );
