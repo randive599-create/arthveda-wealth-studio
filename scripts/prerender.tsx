@@ -24,6 +24,14 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { SipSeoContent } from '../src/pages/sip/SipSeoContent';
 import { SIP_META, SIP_INTERNAL_LINKS, buildSipFaqJsonLd } from '../src/pages/sip/sipContent';
+import { RetirementSeoContent } from '../src/pages/retirement/RetirementSeoContent';
+import { RETIREMENT_META, buildRetirementFaqJsonLd } from '../src/pages/retirement/retirementContent';
+import { SwpSeoContent } from '../src/pages/swp/SwpSeoContent';
+import { SWP_META, buildSwpFaqJsonLd } from '../src/pages/swp/swpContent';
+import { LumpsumSeoContent } from '../src/pages/lumpsum/LumpsumSeoContent';
+import { LUMPSUM_META, buildLumpsumFaqJsonLd } from '../src/pages/lumpsum/lumpsumContent';
+import { FireSeoContent } from '../src/pages/fire/FireSeoContent';
+import { FIRE_META, buildFireFaqJsonLd } from '../src/pages/fire/fireContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -128,6 +136,114 @@ sipHtml = injectBeforeHeadClose(
 sipHtml = injectIntoRoot(sipHtml, sipBody);
 writeFileSync(resolve(DIST, 'sip-calculator.html'), sipHtml);
 
+// --- shared helpers for the additional calculator landing pages -------------
+
+/** Render a landing page's static SEO body (header + long-form content). */
+function renderLandingBody(
+  eyebrow: string,
+  title: string,
+  intro: string,
+  content: React.ReactElement,
+): string {
+  return renderToStaticMarkup(
+    <div className="mx-auto w-full max-w-[1400px] space-y-8 px-5 py-10 sm:px-8">
+      <header>
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-secondary">
+          {eyebrow}
+        </p>
+        <h1 className="mt-2 font-heading text-3xl font-bold leading-tight text-ink sm:text-4xl">
+          {title}
+        </h1>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base">
+          {intro}
+        </p>
+      </header>
+      {content}
+    </div>,
+  );
+}
+
+/** Write a fully prerendered route HTML file: head + FAQ JSON-LD + body. */
+function writeRoute(
+  outFile: string,
+  meta: { title: string; description: string; canonical: string },
+  faqKey: string,
+  faqJsonLd: string,
+  bodyHtml: string,
+): void {
+  let html = setHead(template, {
+    title: meta.title,
+    description: meta.description,
+    canonical: meta.canonical,
+  });
+  html = injectBeforeHeadClose(
+    html,
+    `<script type="application/ld+json" data-arthveda="${faqKey}">${faqJsonLd}</script>`,
+  );
+  html = injectIntoRoot(html, bodyHtml);
+  writeFileSync(resolve(DIST, outFile), html);
+}
+
+// --- /retirement-calculator --------------------------------------------------
+
+writeRoute(
+  'retirement-calculator.html',
+  RETIREMENT_META,
+  'retirement-faq',
+  buildRetirementFaqJsonLd(),
+  renderLandingBody(
+    'Retirement Calculator',
+    'Retirement Calculator India — Plan Your Corpus & Retirement Income',
+    'Estimate the corpus you need to retire and the monthly income it can sustain. Model your accumulation years, a post-retirement withdrawal phase, and inflation — powered by the ArthVeda projection engine.',
+    <RetirementSeoContent />,
+  ),
+);
+
+// --- /swp-calculator ---------------------------------------------------------
+
+writeRoute(
+  'swp-calculator.html',
+  SWP_META,
+  'swp-faq',
+  buildSwpFaqJsonLd(),
+  renderLandingBody(
+    'SWP Calculator',
+    'SWP Calculator — Systematic Withdrawal Plan & Monthly Income',
+    'Model a Systematic Withdrawal Plan: draw a monthly income from your corpus, watch the remaining balance keep compounding, and see how long it lasts — powered by the ArthVeda projection engine.',
+    <SwpSeoContent />,
+  ),
+);
+
+// --- /lumpsum-calculator -----------------------------------------------------
+
+writeRoute(
+  'lumpsum-calculator.html',
+  LUMPSUM_META,
+  'lumpsum-faq',
+  buildLumpsumFaqJsonLd(),
+  renderLandingBody(
+    'Lumpsum Calculator',
+    'Lumpsum Calculator — One-Time Investment Growth Projection',
+    'Project the future value of a one-time lumpsum investment with monthly compounding, and see your inflation-adjusted wealth — powered by the ArthVeda projection engine.',
+    <LumpsumSeoContent />,
+  ),
+);
+
+// --- /fire-calculator --------------------------------------------------------
+
+writeRoute(
+  'fire-calculator.html',
+  FIRE_META,
+  'fire-faq',
+  buildFireFaqJsonLd(),
+  renderLandingBody(
+    'FIRE Calculator',
+    'FIRE Calculator — Financial Independence & Early Retirement',
+    'Estimate your path to Financial Independence, Retire Early. Model an aggressive savings plan, project your FI corpus, and see your inflation-adjusted target — powered by the ArthVeda projection engine.',
+    <FireSeoContent />,
+  ),
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -168,4 +284,7 @@ const homeHtml = injectIntoRoot(template, homeBody);
 writeFileSync(resolve(DIST, 'index.html'), homeHtml);
 
 // eslint-disable-next-line no-console
-console.log('prerender: wrote dist/index.html and dist/sip-calculator.html');
+console.log(
+  'prerender: wrote dist/index.html, dist/sip-calculator.html, dist/retirement-calculator.html, ' +
+    'dist/swp-calculator.html, dist/lumpsum-calculator.html and dist/fire-calculator.html',
+);

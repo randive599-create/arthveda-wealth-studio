@@ -4,6 +4,10 @@
   "framework": "vite",
   "rewrites": [
     { "source": "/sip-calculator", "destination": "/sip-calculator.html" },
+    { "source": "/retirement-calculator", "destination": "/retirement-calculator.html" },
+    { "source": "/swp-calculator", "destination": "/swp-calculator.html" },
+    { "source": "/lumpsum-calculator", "destination": "/lumpsum-calculator.html" },
+    { "source": "/fire-calculator", "destination": "/fire-calculator.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

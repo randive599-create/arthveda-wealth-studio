@@ -113,6 +113,30 @@ export const TESTIDS = {
   sipFaqItem: (index: number) => `sip-faq-item-${index}`,
   sipInternalLinks: 'sip-internal-links',
 
+  // Retirement calculator landing page
+  retirementCalculatorPage: 'retirement-calculator-page',
+  retirementFaqSection: 'retirement-faq-section',
+  retirementFaqItem: (index: number) => `retirement-faq-item-${index}`,
+  retirementInternalLinks: 'retirement-internal-links',
+
+  // SWP calculator landing page
+  swpCalculatorPage: 'swp-calculator-page',
+  swpFaqSection: 'swp-faq-section',
+  swpFaqItem: (index: number) => `swp-faq-item-${index}`,
+  swpInternalLinks: 'swp-internal-links',
+
+  // Lumpsum calculator landing page
+  lumpsumCalculatorPage: 'lumpsum-calculator-page',
+  lumpsumFaqSection: 'lumpsum-faq-section',
+  lumpsumFaqItem: (index: number) => `lumpsum-faq-item-${index}`,
+  lumpsumInternalLinks: 'lumpsum-internal-links',
+
+  // FIRE calculator landing page
+  fireCalculatorPage: 'fire-calculator-page',
+  fireFaqSection: 'fire-faq-section',
+  fireFaqItem: (index: number) => `fire-faq-item-${index}`,
+  fireInternalLinks: 'fire-internal-links',
+
   // Resilience
   errorBoundary: 'error-boundary',
 

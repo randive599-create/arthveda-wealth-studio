@@ -7,7 +7,7 @@
  * ledger. The charts are lazily loaded to keep the initial bundle lean.
  */
 
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, type LazyExoticComponent } from 'react';
 import { AppShell } from './components/layout/AppShell';
 import { DashboardGrid } from './components/dashboard/DashboardGrid';
 import { ParametersPanel } from './components/parameters/ParametersPanel';
@@ -19,10 +19,26 @@ import { ProjectionTable } from './components/table/ProjectionTable';
 import { DownloadReportButton } from './components/report/DownloadReportButton';
 import { ShareScenarioButton } from './components/report/ShareScenarioButton';
 
-// Route-split the SIP landing page so the home studio bundle does not carry its
-// SEO content; it loads as its own chunk only on /sip-calculator.
+// Route-split each calculator landing page so the home studio bundle does not
+// carry their SEO content; each loads as its own chunk only on its route.
 const SipCalculatorPage = lazy(() =>
   import('./pages/sip/SipCalculatorPage').then((m) => ({ default: m.SipCalculatorPage })),
+);
+const RetirementCalculatorPage = lazy(() =>
+  import('./pages/retirement/RetirementCalculatorPage').then((m) => ({
+    default: m.RetirementCalculatorPage,
+  })),
+);
+const SwpCalculatorPage = lazy(() =>
+  import('./pages/swp/SwpCalculatorPage').then((m) => ({ default: m.SwpCalculatorPage })),
+);
+const LumpsumCalculatorPage = lazy(() =>
+  import('./pages/lumpsum/LumpsumCalculatorPage').then((m) => ({
+    default: m.LumpsumCalculatorPage,
+  })),
+);
+const FireCalculatorPage = lazy(() =>
+  import('./pages/fire/FireCalculatorPage').then((m) => ({ default: m.FireCalculatorPage })),
 );
 
 // Recharts is a large dependency; load the charts lazily so it is split into
@@ -85,11 +101,21 @@ function currentPath(): string {
   return window.location.pathname.replace(/\/+$/, '') || '/';
 }
 
+/** Map of pathname -> route-split landing page component. */
+const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
+  '/sip-calculator': SipCalculatorPage,
+  '/retirement-calculator': RetirementCalculatorPage,
+  '/swp-calculator': SwpCalculatorPage,
+  '/lumpsum-calculator': LumpsumCalculatorPage,
+  '/fire-calculator': FireCalculatorPage,
+};
+
 export default function App() {
-  if (currentPath() === '/sip-calculator') {
+  const RoutePage = ROUTES[currentPath()];
+  if (RoutePage) {
     return (
       <Suspense fallback={null}>
-        <SipCalculatorPage />
+        <RoutePage />
       </Suspense>
     );
   }
