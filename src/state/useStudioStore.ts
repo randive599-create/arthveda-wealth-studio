@@ -26,7 +26,14 @@ import type {
   StepUpConfig,
 } from '../engine/types';
 import { buildShareUrl, readScenarioFromUrl, writeScenarioToUrl } from '../share/urlSync';
-import { DEFAULT_INPUTS, SIP_CALCULATOR_PRESET } from './defaults';
+import {
+  DEFAULT_INPUTS,
+  FIRE_CALCULATOR_PRESET,
+  LUMPSUM_CALCULATOR_PRESET,
+  RETIREMENT_CALCULATOR_PRESET,
+  SIP_CALCULATOR_PRESET,
+  SWP_CALCULATOR_PRESET,
+} from './defaults';
 import { clampInputs } from './schema';
 
 /** Tunable behaviour for a store instance. */
@@ -79,20 +86,26 @@ export interface StudioState extends StudioActions {
 }
 
 /**
- * Per-route default scenario. SEO landing pages (e.g. /sip-calculator) open
- * with a preset tuned to that page's topic instead of the studio default. This
- * only changes the *initial* inputs — the engine, formulas, and every action
- * remain identical. Returns `null` when there is no route-specific preset.
+ * Per-route default scenario. Each SEO calculator landing page opens with a
+ * preset tuned to that page's topic instead of the studio default. This only
+ * changes the *initial* inputs — the engine, formulas, and every action remain
+ * identical. Returns `null` when there is no route-specific preset (e.g. the
+ * home studio at `/`).
  */
+const ROUTE_PRESETS: Record<string, ProjectionInputs> = {
+  '/sip-calculator': SIP_CALCULATOR_PRESET,
+  '/retirement-calculator': RETIREMENT_CALCULATOR_PRESET,
+  '/swp-calculator': SWP_CALCULATOR_PRESET,
+  '/lumpsum-calculator': LUMPSUM_CALCULATOR_PRESET,
+  '/fire-calculator': FIRE_CALCULATOR_PRESET,
+};
+
 function presetForCurrentPath(): ProjectionInputs | null {
   if (typeof window === 'undefined') {
     return null;
   }
   const path = window.location.pathname.replace(/\/+$/, '');
-  if (path === '/sip-calculator') {
-    return SIP_CALCULATOR_PRESET;
-  }
-  return null;
+  return ROUTE_PRESETS[path] ?? null;
 }
 
 /** Resolve the initial inputs: a valid URL scenario if present, else defaults. */
