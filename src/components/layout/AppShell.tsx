@@ -23,8 +23,11 @@ import { StickySummaryBar } from './StickySummaryBar';
 import { TrustFooter } from './TrustFooter';
 
 export interface AppShellProps {
-  /** Left column content (parameters). */
-  parameters: ReactNode;
+  /**
+   * Left column content (parameters). Required for the default 'studio'
+   * variant; ignored by the 'full' variant.
+   */
+  parameters?: ReactNode;
   /** Right column content (dashboard, and later charts/table). */
   studio: ReactNode;
   /**
@@ -37,9 +40,47 @@ export interface AppShellProps {
    * than the generic "ArthVeda" wordmark heading.
    */
   showHero?: boolean;
+  /**
+   * Layout variant.
+   *
+   *   - 'studio' (default): the 4/12 sticky Parameters column + 8/12 studio
+   *     column, with the store-backed sticky summary bar. Used by the generic
+   *     Wealth Projection Studio and the SEO landing pages.
+   *   - 'full': a single full-width content column with no parameters aside and
+   *     no store-backed summary bar. Used by self-contained pages (the
+   *     dedicated FIRE calculator) that own their entire layout and do not read
+   *     the shared studio store.
+   */
+  variant?: 'studio' | 'full';
 }
 
-export function AppShell({ parameters, studio, showHero = true }: AppShellProps) {
+export function AppShell({
+  parameters,
+  studio,
+  showHero = true,
+  variant = 'studio',
+}: AppShellProps) {
+  if (variant === 'full') {
+    return (
+      <div className="min-h-screen bg-canvas text-ink" data-testid={TESTIDS.appShell}>
+        <CalculatorNav />
+
+        {showHero && <StudioHeader />}
+
+        <div
+          className={
+            'mx-auto w-full max-w-[1400px] px-5 pb-28 sm:px-8 lg:pb-12' +
+            (showHero ? '' : ' pt-8 sm:pt-10')
+          }
+        >
+          {studio}
+        </div>
+
+        <TrustFooter />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-canvas text-ink" data-testid={TESTIDS.appShell}>
       <CalculatorNav />

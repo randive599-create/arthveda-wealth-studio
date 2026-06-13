@@ -239,7 +239,7 @@ writeRoute(
   renderLandingBody(
     'FIRE Calculator',
     'FIRE Calculator — Financial Independence & Early Retirement',
-    'Estimate your path to Financial Independence, Retire Early. Model an aggressive savings plan, project your FI corpus, and see your inflation-adjusted target — powered by the ArthVeda projection engine.',
+    'Find your FIRE number, project your corpus to your target retirement age, and see whether you are on track for financial independence — with inflation-adjusted targets and a clear wealth gap.',
     <FireSeoContent />,
   ),
 );

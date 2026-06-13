@@ -150,6 +150,17 @@ export const TESTIDS = {
   fireFaqItem: (index: number) => `fire-faq-item-${index}`,
   fireInternalLinks: 'fire-internal-links',
 
+  // Dedicated FIRE calculator experience
+  fireCalculator: 'fire-calculator',
+  fireControls: 'fire-controls',
+  fireSummary: 'fire-summary',
+  fireSuccessIndicator: 'fire-success-indicator',
+  fireOutput: (key: string) => `fire-output-${key}`,
+  fireChart: (key: string) => `fire-chart-${key}`,
+  fireReportButton: 'fire-report-button',
+  fireReportSuccess: 'fire-report-success',
+  fireReportError: 'fire-report-error',
+
   // Resilience
   errorBoundary: 'error-boundary',
 
