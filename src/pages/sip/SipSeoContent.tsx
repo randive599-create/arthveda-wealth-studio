@@ -6,11 +6,12 @@
  * SectionHeading) and the shared currency formatter — no new visual language.
  */
 
-import { Plus, ArrowUpRight } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { Card } from '../../components/primitives/Card';
 import { SectionHeading } from '../../components/primitives/SectionHeading';
+import { ExploreCalculators } from '../../components/navigation/ExploreCalculators';
 import { TESTIDS } from '../../lib/testids';
-import { SIP_FAQ, SIP_INTERNAL_LINKS, buildSipExampleRows } from './sipContent';
+import { SIP_FAQ, buildSipExampleRows } from './sipContent';
 
 const SIP_BENEFITS: { title: string; body: string }[] = [
   {
@@ -150,37 +151,8 @@ export function SipSeoContent() {
         </ul>
       </Card>
 
-      {/* Internal links to the other calculators */}
-      <Card className="p-6" data-testid={TESTIDS.sipInternalLinks}>
-        <SectionHeading eyebrow="Explore" title="More ArthVeda calculators" />
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {SIP_INTERNAL_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="
-                group flex items-start justify-between gap-3 rounded-[var(--radius-control)]
-                border border-hairline p-4 transition-colors hover:border-accent
-              "
-            >
-              <span>
-                <span className="font-heading text-lg font-bold leading-snug text-ink group-hover:text-accent">
-                  {link.label}
-                </span>
-                <span className="mt-1 block text-sm leading-relaxed text-ink-secondary">
-                  {link.description}
-                </span>
-              </span>
-              <ArrowUpRight
-                size={18}
-                strokeWidth={1.75}
-                aria-hidden="true"
-                className="mt-1 shrink-0 text-ink-secondary transition-colors group-hover:text-accent"
-              />
-            </a>
-          ))}
-        </div>
-      </Card>
+      {/* Explore other calculators */}
+      <ExploreCalculators currentPath="/sip-calculator" />
 
       {/* SIP FAQ */}
       <Card className="p-6" data-testid={TESTIDS.sipFaqSection}>

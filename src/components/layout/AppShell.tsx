@@ -17,6 +17,7 @@
 
 import type { ReactNode } from 'react';
 import { TESTIDS } from '../../lib/testids';
+import { CalculatorNav } from './CalculatorNav';
 import { StudioHeader } from './StudioHeader';
 import { StickySummaryBar } from './StickySummaryBar';
 import { TrustFooter } from './TrustFooter';
@@ -41,6 +42,8 @@ export interface AppShellProps {
 export function AppShell({ parameters, studio, showHero = true }: AppShellProps) {
   return (
     <div className="min-h-screen bg-canvas text-ink" data-testid={TESTIDS.appShell}>
+      <CalculatorNav />
+
       {showHero && <StudioHeader />}
 
       <div

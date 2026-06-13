@@ -6,11 +6,12 @@
  * primitives — no new visual language.
  */
 
-import { Plus, ArrowUpRight } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { Card } from '../../components/primitives/Card';
 import { SectionHeading } from '../../components/primitives/SectionHeading';
+import { ExploreCalculators } from '../../components/navigation/ExploreCalculators';
 import { TESTIDS } from '../../lib/testids';
-import { FIRE_FAQ, FIRE_INTERNAL_LINKS, buildFireExampleRows } from './fireContent';
+import { FIRE_FAQ, buildFireExampleRows } from './fireContent';
 
 const FIRE_BENEFITS: { title: string; body: string }[] = [
   {
@@ -150,37 +151,8 @@ export function FireSeoContent() {
         </ul>
       </Card>
 
-      {/* Internal links */}
-      <Card className="p-6" data-testid={TESTIDS.fireInternalLinks}>
-        <SectionHeading eyebrow="Explore" title="More ArthVeda calculators" />
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {FIRE_INTERNAL_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="
-                group flex items-start justify-between gap-3 rounded-[var(--radius-control)]
-                border border-hairline p-4 transition-colors hover:border-accent
-              "
-            >
-              <span>
-                <span className="font-heading text-lg font-bold leading-snug text-ink group-hover:text-accent">
-                  {link.label}
-                </span>
-                <span className="mt-1 block text-sm leading-relaxed text-ink-secondary">
-                  {link.description}
-                </span>
-              </span>
-              <ArrowUpRight
-                size={18}
-                strokeWidth={1.75}
-                aria-hidden="true"
-                className="mt-1 shrink-0 text-ink-secondary transition-colors group-hover:text-accent"
-              />
-            </a>
-          ))}
-        </div>
-      </Card>
+      {/* Explore other calculators */}
+      <ExploreCalculators currentPath="/fire-calculator" />
 
       {/* FAQ */}
       <Card className="p-6" data-testid={TESTIDS.fireFaqSection}>

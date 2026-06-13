@@ -18,6 +18,7 @@ import { AIWealthInsights } from './components/insights/AIWealthInsights';
 import { ProjectionTable } from './components/table/ProjectionTable';
 import { DownloadReportButton } from './components/report/DownloadReportButton';
 import { ShareScenarioButton } from './components/report/ShareScenarioButton';
+import { getCurrentPath } from './lib/path';
 
 // Route-split each calculator landing page so the home studio bundle does not
 // carry their SEO content; each loads as its own chunk only on its route.
@@ -93,14 +94,6 @@ function StudioPage() {
   );
 }
 
-/** Normalize a pathname by stripping a trailing slash (except root). */
-function currentPath(): string {
-  if (typeof window === 'undefined') {
-    return '/';
-  }
-  return window.location.pathname.replace(/\/+$/, '') || '/';
-}
-
 /** Map of pathname -> route-split landing page component. */
 const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
   '/sip-calculator': SipCalculatorPage,
@@ -111,7 +104,7 @@ const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
 };
 
 export default function App() {
-  const RoutePage = ROUTES[currentPath()];
+  const RoutePage = ROUTES[getCurrentPath()];
   if (RoutePage) {
     return (
       <Suspense fallback={null}>

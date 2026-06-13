@@ -8,6 +8,19 @@
 
 export const TESTIDS = {
   appShell: 'app-shell',
+
+  // Sitewide calculator navigation (top bar)
+  calculatorNav: 'calculator-nav',
+  navBrand: 'nav-brand',
+  navToggle: 'nav-toggle',
+  navMenuDesktop: 'nav-menu-desktop',
+  navMenuMobile: 'nav-menu-mobile',
+  navLink: (path: string) => `nav-link-${path === '/' ? 'home' : path.replace(/^\//, '')}`,
+
+  // "Explore Other Calculators" cross-link section
+  exploreCalculators: 'explore-calculators',
+  exploreCalculatorCard: (path: string) => `explore-card-${path.replace(/^\//, '')}`,
+
   header: 'studio-header',
   brandMark: 'brand-mark',
   brandWordmark: 'brand-wordmark',
