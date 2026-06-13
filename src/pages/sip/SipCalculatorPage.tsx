@@ -38,6 +38,7 @@ export function SipCalculatorPage() {
 
   return (
     <AppShell
+      showHero={false}
       parameters={<ParametersPanel />}
       studio={
         <div className="space-y-8" data-testid={TESTIDS.sipCalculatorPage}>

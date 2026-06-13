@@ -26,14 +26,31 @@ export interface AppShellProps {
   parameters: ReactNode;
   /** Right column content (dashboard, and later charts/table). */
   studio: ReactNode;
+  /**
+   * Whether to render the ArthVeda brand hero (StudioHeader) above the grid.
+   *
+   * Defaults to `true` for the home Wealth Projection Studio (`/`). The
+   * dedicated calculator landing pages pass `false`: their own page H1 + intro
+   * must lead the page so the calculator-specific content sits above the fold,
+   * and so the page exposes a single, calculator-specific <h1> for SEO rather
+   * than the generic "ArthVeda" wordmark heading.
+   */
+  showHero?: boolean;
 }
 
-export function AppShell({ parameters, studio }: AppShellProps) {
+export function AppShell({ parameters, studio, showHero = true }: AppShellProps) {
   return (
     <div className="min-h-screen bg-canvas text-ink" data-testid={TESTIDS.appShell}>
-      <StudioHeader />
+      {showHero && <StudioHeader />}
 
-      <div className="mx-auto w-full max-w-[1400px] px-5 pb-28 sm:px-8 lg:pb-12">
+      <div
+        className={
+          'mx-auto w-full max-w-[1400px] px-5 pb-28 sm:px-8 lg:pb-12' +
+          // Without the hero the grid would be flush against the viewport top,
+          // so add top padding to give the page H1 breathing room.
+          (showHero ? '' : ' pt-8 sm:pt-10')
+        }
+      >
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
           <aside
             className="lg:col-span-4"
