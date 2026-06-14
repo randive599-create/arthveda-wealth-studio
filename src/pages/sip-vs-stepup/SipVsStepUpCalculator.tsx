@@ -29,7 +29,7 @@ export function SipVsStepUpCalculator() {
       data-testid={TESTIDS.stepUpCalculator}
     >
       <aside className="lg:col-span-4" aria-label="Comparison inputs">
-        <div className="lg:sticky lg:top-6">
+        <div className="lg:sticky lg:top-6 lg:max-h-[calc(100vh_-_3rem)] lg:overflow-y-auto lg:overflow-x-hidden">
           <StepUpControls inputs={inputs} onChange={update} />
         </div>
       </aside>

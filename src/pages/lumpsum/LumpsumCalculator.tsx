@@ -28,7 +28,7 @@ export function LumpsumCalculator() {
       data-testid={TESTIDS.lumpsumCalculator}
     >
       <aside className="lg:col-span-4" aria-label="Lumpsum inputs">
-        <div className="lg:sticky lg:top-6">
+        <div className="lg:sticky lg:top-6 lg:max-h-[calc(100vh_-_3rem)] lg:overflow-y-auto lg:overflow-x-hidden">
           <LumpsumControls inputs={inputs} onChange={update} />
         </div>
       </aside>

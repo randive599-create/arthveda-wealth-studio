@@ -30,7 +30,7 @@ export function SipCalculator() {
       data-testid={TESTIDS.sipCalculator}
     >
       <aside className="lg:col-span-4" aria-label="SIP inputs">
-        <div className="lg:sticky lg:top-6">
+        <div className="lg:sticky lg:top-6 lg:max-h-[calc(100vh_-_3rem)] lg:overflow-y-auto lg:overflow-x-hidden">
           <SipControls
             inputs={inputs}
             advanced={advanced}
