@@ -195,7 +195,7 @@ writeRoute(
   renderLandingBody(
     'Retirement Calculator',
     'Retirement Calculator India — Plan Your Corpus & Retirement Income',
-    'Estimate the corpus you need to retire and the monthly income it can sustain. Model your accumulation years, a post-retirement withdrawal phase, and inflation — powered by the ArthVeda projection engine.',
+    'Plan both phases of retirement: accumulate your corpus to your retirement age, then draw an inflation-growing income through retirement. See the corpus you need, your projected corpus, your wealth gap, and whether your income is sustainable.',
     <RetirementSeoContent />,
   ),
 );

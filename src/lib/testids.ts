@@ -150,6 +150,17 @@ export const TESTIDS = {
   retirementFaqItem: (index: number) => `retirement-faq-item-${index}`,
   retirementInternalLinks: 'retirement-internal-links',
 
+  // Dedicated Retirement planner experience
+  retirementPlanner: 'retirement-planner',
+  retirementControls: 'retirement-controls',
+  retirementSummary: 'retirement-summary',
+  retirementSustainability: 'retirement-sustainability',
+  retirementOutput: (key: string) => `retirement-output-${key}`,
+  retirementChart: (key: string) => `retirement-chart-${key}`,
+  retirementReportButton: 'retirement-report-button',
+  retirementReportSuccess: 'retirement-report-success',
+  retirementReportError: 'retirement-report-error',
+
   // SWP calculator landing page
   swpCalculatorPage: 'swp-calculator-page',
   swpFaqSection: 'swp-faq-section',
