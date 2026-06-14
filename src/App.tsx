@@ -18,6 +18,7 @@ import { AIWealthInsights } from './components/insights/AIWealthInsights';
 import { ProjectionTable } from './components/table/ProjectionTable';
 import { DownloadReportButton } from './components/report/DownloadReportButton';
 import { ShareScenarioButton } from './components/report/ShareScenarioButton';
+import { ExploreCalculators } from './components/navigation/ExploreCalculators';
 import { getCurrentPath } from './lib/path';
 
 // Route-split each calculator landing page so the home studio bundle does not
@@ -40,6 +41,11 @@ const LumpsumCalculatorPage = lazy(() =>
 );
 const FireCalculatorPage = lazy(() =>
   import('./pages/fire/FireCalculatorPage').then((m) => ({ default: m.FireCalculatorPage })),
+);
+const SipVsStepUpCalculatorPage = lazy(() =>
+  import('./pages/sip-vs-stepup/SipVsStepUpCalculatorPage').then((m) => ({
+    default: m.SipVsStepUpCalculatorPage,
+  })),
 );
 
 // Recharts is a large dependency; load the charts lazily so it is split into
@@ -88,6 +94,7 @@ function StudioPage() {
           <Suspense fallback={null}>
             <FaqSection />
           </Suspense>
+          <ExploreCalculators currentPath="/" />
         </>
       }
     />
@@ -101,6 +108,7 @@ const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
   '/swp-calculator': SwpCalculatorPage,
   '/lumpsum-calculator': LumpsumCalculatorPage,
   '/fire-calculator': FireCalculatorPage,
+  '/sip-vs-stepup-sip-calculator': SipVsStepUpCalculatorPage,
 };
 
 export default function App() {

@@ -8,6 +8,7 @@
     { "source": "/swp-calculator", "destination": "/swp-calculator.html" },
     { "source": "/lumpsum-calculator", "destination": "/lumpsum-calculator.html" },
     { "source": "/fire-calculator", "destination": "/fire-calculator.html" },
+    { "source": "/sip-vs-stepup-sip-calculator", "destination": "/sip-vs-stepup-sip-calculator.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

@@ -47,7 +47,7 @@ export function CalculatorNav() {
 
         {/* Desktop: horizontal links */}
         <ul
-          className="hidden items-center gap-1 lg:flex"
+          className="hidden items-center gap-1 xl:flex"
           data-testid={TESTIDS.navMenuDesktop}
         >
           {NAV_ITEMS.map((item) => {
@@ -75,7 +75,7 @@ export function CalculatorNav() {
           aria-controls="primary-nav-mobile"
           aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
           data-testid={TESTIDS.navToggle}
-          className="inline-flex items-center justify-center rounded-[var(--radius-control)] border border-hairline p-2 text-ink transition-colors hover:bg-mist lg:hidden"
+          className="inline-flex items-center justify-center rounded-[var(--radius-control)] border border-hairline p-2 text-ink transition-colors hover:bg-mist xl:hidden"
         >
           {open ? (
             <X size={20} strokeWidth={1.75} aria-hidden="true" />
@@ -90,7 +90,7 @@ export function CalculatorNav() {
         <ul
           id="primary-nav-mobile"
           data-testid={TESTIDS.navMenuMobile}
-          className="flex flex-col gap-1 border-t border-hairline px-5 pb-3 pt-2 sm:px-8 lg:hidden"
+          className="flex flex-col gap-1 border-t border-hairline px-5 pb-3 pt-2 sm:px-8 xl:hidden"
         >
           {NAV_ITEMS.map((item) => {
             const active = isActivePath(current, item.path);

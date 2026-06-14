@@ -50,6 +50,12 @@ export const CALCULATORS: CalculatorEntry[] = [
     short: 'FIRE',
     description: 'Estimate your path to Financial Independence, Retire Early.',
   },
+  {
+    path: '/sip-vs-stepup-sip-calculator',
+    label: 'SIP vs Step-Up SIP',
+    short: 'SIP vs Step-Up',
+    description: 'Compare a normal SIP against a step-up SIP and see the extra wealth created.',
+  },
 ];
 
 export interface NavItem {

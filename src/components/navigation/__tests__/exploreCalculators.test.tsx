@@ -18,7 +18,7 @@ describe('ExploreCalculators', () => {
     for (const calc of CALCULATORS) {
       expect(queryByTestId(TESTIDS.exploreCalculatorCard(calc.path))).not.toBeNull();
     }
-    expect(CALCULATORS).toHaveLength(5);
+    expect(CALCULATORS).toHaveLength(6);
     unmount();
   });
 

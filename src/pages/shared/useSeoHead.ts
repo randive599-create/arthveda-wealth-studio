@@ -17,12 +17,22 @@ export interface SeoMeta {
   canonical: string;
 }
 
+/** An extra structured-data (JSON-LD) block to inject, e.g. a BreadcrumbList. */
+export interface ExtraJsonLd {
+  /** Stable `data-arthveda` key for the script tag. */
+  key: string;
+  /** Build the JSON-LD string. */
+  build: () => string;
+}
+
 export interface SeoHeadOptions {
   meta: SeoMeta;
   /** Stable `data-arthveda` key for the FAQ JSON-LD script, e.g. "retirement-faq". */
   faqKey: string;
   /** Build the FAQPage JSON-LD string for this page. */
   buildFaqJsonLd: () => string;
+  /** Optional additional JSON-LD blocks (e.g. a breadcrumb). Defaults to none. */
+  extraJsonLd?: ExtraJsonLd[];
 }
 
 function upsert<T extends HTMLElement>(selector: string, create: () => T): T {
@@ -51,7 +61,7 @@ function metaByName(name: string): HTMLMetaElement {
   });
 }
 
-export function useSeoHead({ meta, faqKey, buildFaqJsonLd }: SeoHeadOptions): void {
+export function useSeoHead({ meta, faqKey, buildFaqJsonLd, extraJsonLd }: SeoHeadOptions): void {
   useEffect(() => {
     if (typeof document === 'undefined') {
       return;
@@ -73,22 +83,33 @@ export function useSeoHead({ meta, faqKey, buildFaqJsonLd }: SeoHeadOptions): vo
     metaByName('twitter:title').setAttribute('content', meta.title);
     metaByName('twitter:description').setAttribute('content', meta.description);
 
-    // FAQPage JSON-LD: reuse the prerendered <script> if it exists (so we never
-    // emit a duplicate), otherwise create one and remove it on unmount.
-    const selector = `script[data-arthveda="${faqKey}"]`;
-    const existing = document.head.querySelector<HTMLScriptElement>(selector);
-    const jsonLd = existing ?? document.createElement('script');
-    jsonLd.type = 'application/ld+json';
-    jsonLd.dataset.arthveda = faqKey;
-    jsonLd.textContent = buildFaqJsonLd();
-    if (!existing) {
-      document.head.appendChild(jsonLd);
+    // Inject each JSON-LD block (FAQ + any extras). Reuse the prerendered
+    // <script> if present (so we never duplicate); track the ones we create so
+    // they can be removed on unmount.
+    const blocks: { key: string; build: () => string }[] = [
+      { key: faqKey, build: buildFaqJsonLd },
+      ...(extraJsonLd ?? []),
+    ];
+    const created: HTMLScriptElement[] = [];
+    for (const block of blocks) {
+      const selector = `script[data-arthveda="${block.key}"]`;
+      const existing = document.head.querySelector<HTMLScriptElement>(selector);
+      const jsonLd = existing ?? document.createElement('script');
+      jsonLd.type = 'application/ld+json';
+      jsonLd.dataset.arthveda = block.key;
+      jsonLd.textContent = block.build();
+      if (!existing) {
+        document.head.appendChild(jsonLd);
+        created.push(jsonLd);
+      }
     }
 
     return () => {
-      if (!existing && jsonLd.parentNode) {
-        jsonLd.parentNode.removeChild(jsonLd);
+      for (const el of created) {
+        if (el.parentNode) {
+          el.parentNode.removeChild(el);
+        }
       }
     };
-  }, [meta, faqKey, buildFaqJsonLd]);
+  }, [meta, faqKey, buildFaqJsonLd, extraJsonLd]);
 }

@@ -32,6 +32,12 @@ import { LumpsumSeoContent } from '../src/pages/lumpsum/LumpsumSeoContent';
 import { LUMPSUM_META, buildLumpsumFaqJsonLd } from '../src/pages/lumpsum/lumpsumContent';
 import { FireSeoContent } from '../src/pages/fire/FireSeoContent';
 import { FIRE_META, buildFireFaqJsonLd } from '../src/pages/fire/fireContent';
+import { StepUpSeoContent } from '../src/pages/sip-vs-stepup/StepUpSeoContent';
+import {
+  STEPUP_META,
+  buildStepUpBreadcrumbJsonLd,
+  buildStepUpFaqJsonLd,
+} from '../src/pages/sip-vs-stepup/stepUpContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -171,6 +177,7 @@ function writeRoute(
   faqKey: string,
   faqJsonLd: string,
   bodyHtml: string,
+  extraJsonLd: { key: string; json: string }[] = [],
 ): void {
   let html = setHead(template, {
     title: meta.title,
@@ -181,6 +188,12 @@ function writeRoute(
     html,
     `<script type="application/ld+json" data-arthveda="${faqKey}">${faqJsonLd}</script>`,
   );
+  for (const block of extraJsonLd) {
+    html = injectBeforeHeadClose(
+      html,
+      `<script type="application/ld+json" data-arthveda="${block.key}">${block.json}</script>`,
+    );
+  }
   html = injectIntoRoot(html, bodyHtml);
   writeFileSync(resolve(DIST, outFile), html);
 }
@@ -245,6 +258,22 @@ writeRoute(
   ),
 );
 
+// --- /sip-vs-stepup-sip-calculator -------------------------------------------
+
+writeRoute(
+  'sip-vs-stepup-sip-calculator.html',
+  STEPUP_META,
+  'stepup-faq',
+  buildStepUpFaqJsonLd(),
+  renderLandingBody(
+    'SIP vs Step-Up SIP',
+    'SIP vs Step-Up SIP Calculator India',
+    'Compare a normal SIP against a step-up SIP — by percentage or fixed amount — and see the extra wealth created, how many years you save, the equivalent flat SIP, and how much faster your money grows.',
+    <StepUpSeoContent />,
+  ),
+  [{ key: 'stepup-breadcrumb', json: buildStepUpBreadcrumbJsonLd() }],
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -276,6 +305,14 @@ const homeBody = renderToStaticMarkup(
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href="/sip-vs-stepup-sip-calculator"
+            className="text-accent underline-offset-2 hover:underline"
+          >
+            SIP vs Step-Up SIP
+          </a>
+        </li>
       </ul>
     </nav>
   </div>,
@@ -287,5 +324,6 @@ writeFileSync(resolve(DIST, 'index.html'), homeHtml);
 // eslint-disable-next-line no-console
 console.log(
   'prerender: wrote dist/index.html, dist/sip-calculator.html, dist/retirement-calculator.html, ' +
-    'dist/swp-calculator.html, dist/lumpsum-calculator.html and dist/fire-calculator.html',
+    'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html and ' +
+    'dist/sip-vs-stepup-sip-calculator.html',
 );

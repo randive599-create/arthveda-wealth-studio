@@ -126,6 +126,28 @@ export const TESTIDS = {
   sipFaqItem: (index: number) => `sip-faq-item-${index}`,
   sipInternalLinks: 'sip-internal-links',
 
+  // SIP vs Step-Up SIP comparison calculator
+  stepUpCalculatorPage: 'stepup-calculator-page',
+  stepUpCalculator: 'stepup-calculator',
+  stepUpControls: 'stepup-controls',
+  stepUpMethodToggle: 'stepup-method-toggle',
+  stepUpMethodOption: (method: string) => `stepup-method-${method}`,
+  stepUpExample: 'stepup-example',
+  stepUpSummary: 'stepup-summary',
+  stepUpUnique: 'stepup-unique',
+  stepUpOutput: (key: string) => `stepup-output-${key}`,
+  stepUpChart: (key: string) => `stepup-chart-${key}`,
+  stepUpComparison: 'stepup-comparison',
+  stepUpComparisonRow: (year: number) => `stepup-comparison-row-${year}`,
+  stepUpGrowthTable: 'stepup-growth-table',
+  stepUpAmountPreset: (amount: number) => `stepup-amount-preset-${amount}`,
+  stepUpDurationPreset: (years: number) => `stepup-duration-preset-${years}`,
+  stepUpPercentPreset: (pct: number) => `stepup-percent-preset-${pct}`,
+  stepUpStepAmountPreset: (amount: number) => `stepup-step-amount-preset-${amount}`,
+  stepUpReportButton: 'stepup-report-button',
+  stepUpReportSuccess: 'stepup-report-success',
+  stepUpReportError: 'stepup-report-error',
+
   // Dedicated SIP calculator experience
   sipCalculator: 'sip-calculator',
   sipControls: 'sip-controls',
