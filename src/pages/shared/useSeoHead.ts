@@ -27,11 +27,11 @@ export interface ExtraJsonLd {
 
 export interface SeoHeadOptions {
   meta: SeoMeta;
-  /** Stable `data-arthveda` key for the FAQ JSON-LD script, e.g. "retirement-faq". */
-  faqKey: string;
-  /** Build the FAQPage JSON-LD string for this page. */
-  buildFaqJsonLd: () => string;
-  /** Optional additional JSON-LD blocks (e.g. a breadcrumb). Defaults to none. */
+  /** Optional FAQ JSON-LD key (e.g. "retirement-faq"). Provide with buildFaqJsonLd. */
+  faqKey?: string;
+  /** Optional FAQPage JSON-LD builder. */
+  buildFaqJsonLd?: () => string;
+  /** Optional additional JSON-LD blocks (e.g. a breadcrumb or organization). */
   extraJsonLd?: ExtraJsonLd[];
 }
 
@@ -87,7 +87,7 @@ export function useSeoHead({ meta, faqKey, buildFaqJsonLd, extraJsonLd }: SeoHea
     // <script> if present (so we never duplicate); track the ones we create so
     // they can be removed on unmount.
     const blocks: { key: string; build: () => string }[] = [
-      { key: faqKey, build: buildFaqJsonLd },
+      ...(faqKey && buildFaqJsonLd ? [{ key: faqKey, build: buildFaqJsonLd }] : []),
       ...(extraJsonLd ?? []),
     ];
     const created: HTMLScriptElement[] = [];

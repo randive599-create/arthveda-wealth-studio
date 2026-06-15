@@ -24,8 +24,8 @@ describe('CalculatorNav', () => {
     for (const item of NAV_ITEMS) {
       expect(queryByTestId(TESTIDS.navLink(item.path))).not.toBeNull();
     }
-    // Home + 6 calculators.
-    expect(NAV_ITEMS).toHaveLength(7);
+    // Home + 6 calculators + About.
+    expect(NAV_ITEMS).toHaveLength(8);
     unmount();
   });
 

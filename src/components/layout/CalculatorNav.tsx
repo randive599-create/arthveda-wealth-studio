@@ -47,7 +47,7 @@ export function CalculatorNav() {
 
         {/* Desktop: horizontal links */}
         <ul
-          className="hidden items-center gap-1 xl:flex"
+          className="hidden items-center gap-1 xl:flex xl:flex-wrap xl:justify-end"
           data-testid={TESTIDS.navMenuDesktop}
         >
           {NAV_ITEMS.map((item) => {

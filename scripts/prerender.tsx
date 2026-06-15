@@ -38,6 +38,8 @@ import {
   buildStepUpBreadcrumbJsonLd,
   buildStepUpFaqJsonLd,
 } from '../src/pages/sip-vs-stepup/stepUpContent';
+import { AboutContent } from '../src/pages/about/AboutContent';
+import { ABOUT_INTRO, ABOUT_META, buildAboutOrganizationJsonLd } from '../src/pages/about/aboutContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -274,6 +276,16 @@ writeRoute(
   [{ key: 'stepup-breadcrumb', json: buildStepUpBreadcrumbJsonLd() }],
 );
 
+// --- /about-us ---------------------------------------------------------------
+
+writeRoute(
+  'about-us.html',
+  ABOUT_META,
+  'about-organization',
+  buildAboutOrganizationJsonLd(),
+  renderLandingBody('About', 'About ArthVeda', ABOUT_INTRO, <AboutContent />),
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -324,6 +336,6 @@ writeFileSync(resolve(DIST, 'index.html'), homeHtml);
 // eslint-disable-next-line no-console
 console.log(
   'prerender: wrote dist/index.html, dist/sip-calculator.html, dist/retirement-calculator.html, ' +
-    'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html and ' +
-    'dist/sip-vs-stepup-sip-calculator.html',
+    'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html, ' +
+    'dist/sip-vs-stepup-sip-calculator.html and dist/about-us.html',
 );

@@ -63,8 +63,9 @@ export interface NavItem {
   label: string;
 }
 
-/** Top-navigation items: Home followed by every calculator. */
+/** Top-navigation items: Home, every calculator, then About. */
 export const NAV_ITEMS: NavItem[] = [
   { path: '/', label: 'Home' },
   ...CALCULATORS.map((c) => ({ path: c.path, label: c.label })),
+  { path: '/about-us', label: 'About Us' },
 ];

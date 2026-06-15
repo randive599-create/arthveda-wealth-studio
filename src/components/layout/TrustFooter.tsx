@@ -16,6 +16,21 @@ export function TrustFooter() {
           Figures assume constant rates and monthly compounding and will differ from actual market
           outcomes.
         </p>
+        <nav aria-label="Footer" className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+          <a
+            href="/"
+            className="text-sm font-medium text-ink-secondary underline-offset-2 hover:text-ink hover:underline"
+          >
+            Home
+          </a>
+          <a
+            href="/about-us"
+            data-testid={TESTIDS.footerAbout}
+            className="text-sm font-medium text-ink-secondary underline-offset-2 hover:text-ink hover:underline"
+          >
+            About Us
+          </a>
+        </nav>
         <p className="mt-4 text-sm text-ink-secondary" data-testid={TESTIDS.footerContact}>
           Contact:{' '}
           <a

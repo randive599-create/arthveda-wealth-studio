@@ -9,6 +9,14 @@
 export const TESTIDS = {
   appShell: 'app-shell',
 
+  // About page
+  aboutPage: 'about-page',
+  aboutOffer: 'about-offer',
+  aboutOfferLink: (href: string) => `about-offer-${href === '/' ? 'home' : href.replace(/^\//, '')}`,
+  aboutDisclaimer: 'about-disclaimer',
+  aboutContact: 'about-contact',
+  footerAbout: 'footer-about',
+
   // Sitewide calculator navigation (top bar)
   calculatorNav: 'calculator-nav',
   navBrand: 'nav-brand',
