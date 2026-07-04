@@ -1,8 +1,9 @@
 /**
  * Sitewide footer — a structured premium finance footer.
  *
- * Five columns (brand + four link groups) over a bottom bar carrying the
- * copyright and the educational disclaimer. Present on every screen. All
+ * A brand block alongside five link columns (Investment Calculators, Company,
+ * Learn, Legal, Connect) over a bottom bar carrying the copyright, the
+ * educational disclaimer, and a positioning line. Present on every screen. All
  * content is static (no images, no async), so the footer introduces no layout
  * shift. Column headings are <h2> and each group is a labelled <nav> for
  * accessibility. Uses only existing design tokens — emerald/white/mist with a
@@ -28,12 +29,7 @@ const CALCULATOR_LINKS: FooterLink[] = [
   { href: '/fire-calculator', label: 'FIRE Calculator' },
 ];
 
-const COMPANY_LINKS: FooterLink[] = [
-  { href: '/about-us', label: 'About Us' },
-  { href: '/contact-us', label: 'Contact Us' },
-];
-
-const RESOURCE_ITEMS: string[] = ['Blog', 'Financial Guides', 'FAQs'];
+const COMPANY_LINKS: FooterLink[] = [{ href: '/about-us', label: 'About Us' }];
 
 const LEGAL_LINKS: FooterLink[] = [
   { href: '/privacy-policy', label: 'Privacy Policy' },
@@ -99,8 +95,8 @@ export function TrustFooter() {
       data-testid={TESTIDS.trustFooter}
     >
       <div className="mx-auto w-full max-w-[1400px] px-5 py-12 sm:px-8 sm:py-14">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-12">
-          {/* Section 1 — Brand + social */}
+        <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-12">
+          {/* Brand */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2.5">
               <BrandMark size={28} />
@@ -113,62 +109,71 @@ export function TrustFooter() {
               investment calculators, practical financial planning tools, and educational
               resources.
             </p>
-            <div className="mt-6">
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink">
-                Follow us
-              </p>
-              <div className="mt-3">
-                <InstagramButton variant="icon" testId={TESTIDS.footerInstagram} />
-              </div>
-            </div>
           </div>
 
-          {/* Section 2 — Investment Calculators */}
-          <FooterColumn id="calculators" title="Investment Calculators" className="lg:col-span-2">
-            {CALCULATOR_LINKS.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className={LINK_CLASS}>
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </FooterColumn>
+          {/* Link columns: Investment Calculators, Company, Learn, Legal, Connect */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-5">
+            <FooterColumn id="calculators" title="Investment Calculators">
+              {CALCULATOR_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className={LINK_CLASS}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </FooterColumn>
 
-          {/* Section 3 — Company */}
-          <FooterColumn id="company" title="Company" className="lg:col-span-2">
-            {COMPANY_LINKS.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  data-testid={link.href === '/about-us' ? TESTIDS.footerAbout : undefined}
-                  className={LINK_CLASS}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </FooterColumn>
+            <FooterColumn id="company" title="Company">
+              {COMPANY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    data-testid={link.href === '/about-us' ? TESTIDS.footerAbout : undefined}
+                    className={LINK_CLASS}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </FooterColumn>
 
-          {/* Section 4 — Resources (not yet available) */}
-          <FooterColumn id="resources" title="Resources" className="lg:col-span-2">
-            {RESOURCE_ITEMS.map((item) => (
-              <li key={item} className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-ink-secondary">{item}</span>
+            <FooterColumn id="learn" title="Learn">
+              <li className="flex flex-wrap items-center gap-2">
+                <span className="text-sm text-ink-secondary">Blog</span>
                 <ComingSoonBadge />
               </li>
-            ))}
-          </FooterColumn>
+            </FooterColumn>
 
-          {/* Section 5 — Legal */}
-          <FooterColumn id="legal" title="Legal" className="lg:col-span-2">
-            {LEGAL_LINKS.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className={LINK_CLASS}>
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </FooterColumn>
+            <FooterColumn id="legal" title="Legal">
+              {LEGAL_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className={LINK_CLASS}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </FooterColumn>
+
+            {/* Connect — Contact Us + Instagram */}
+            <nav aria-labelledby="footer-col-connect">
+              <h2
+                id="footer-col-connect"
+                className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink"
+              >
+                Connect
+              </h2>
+              <ul className="mt-4 space-y-2.5">
+                <li>
+                  <a href="/contact-us" className={LINK_CLASS}>
+                    Contact Us
+                  </a>
+                </li>
+              </ul>
+              <div className="mt-4">
+                <InstagramButton variant="icon" testId={TESTIDS.footerInstagram} />
+              </div>
+            </nav>
+          </div>
         </div>
 
         {/* Bottom bar */}
@@ -179,6 +184,10 @@ export function TrustFooter() {
           <p className="mt-2 max-w-3xl text-xs leading-relaxed text-ink-secondary">
             Investment calculators are intended for educational and planning purposes only. Actual
             investment returns may differ from projections.
+          </p>
+          <p className="mt-2 max-w-3xl text-xs leading-relaxed text-ink-secondary">
+            Built for Indian investors seeking smarter SIP, retirement, SWP, FIRE, and lumpsum
+            investment planning.
           </p>
         </div>
       </div>
