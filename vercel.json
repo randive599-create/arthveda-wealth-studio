@@ -10,6 +10,7 @@
     { "source": "/fire-calculator", "destination": "/fire-calculator.html" },
     { "source": "/sip-vs-stepup-sip-calculator", "destination": "/sip-vs-stepup-sip-calculator.html" },
     { "source": "/about-us", "destination": "/about-us.html" },
+    { "source": "/contact-us", "destination": "/contact-us.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

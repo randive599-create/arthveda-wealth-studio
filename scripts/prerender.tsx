@@ -40,6 +40,14 @@ import {
 } from '../src/pages/sip-vs-stepup/stepUpContent';
 import { AboutContent } from '../src/pages/about/AboutContent';
 import { ABOUT_INTRO, ABOUT_META, buildAboutOrganizationJsonLd } from '../src/pages/about/aboutContent';
+import { ContactContent } from '../src/pages/contact/ContactContent';
+import {
+  CONTACT_INTRO,
+  CONTACT_META,
+  buildContactBreadcrumbJsonLd,
+  buildContactFaqJsonLd,
+  buildContactPageJsonLd,
+} from '../src/pages/contact/contactContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -286,6 +294,20 @@ writeRoute(
   renderLandingBody('About', 'About ArthVeda', ABOUT_INTRO, <AboutContent />),
 );
 
+// --- /contact-us -------------------------------------------------------------
+
+writeRoute(
+  'contact-us.html',
+  CONTACT_META,
+  'contact-faq',
+  buildContactFaqJsonLd(),
+  renderLandingBody('Contact', 'Contact ArthVeda', CONTACT_INTRO, <ContactContent />),
+  [
+    { key: 'contact-page', json: buildContactPageJsonLd() },
+    { key: 'contact-breadcrumb', json: buildContactBreadcrumbJsonLd() },
+  ],
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -337,5 +359,5 @@ writeFileSync(resolve(DIST, 'index.html'), homeHtml);
 console.log(
   'prerender: wrote dist/index.html, dist/sip-calculator.html, dist/retirement-calculator.html, ' +
     'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html, ' +
-    'dist/sip-vs-stepup-sip-calculator.html and dist/about-us.html',
+    'dist/sip-vs-stepup-sip-calculator.html, dist/about-us.html and dist/contact-us.html',
 );
