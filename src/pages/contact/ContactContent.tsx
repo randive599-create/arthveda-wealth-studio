@@ -5,24 +5,41 @@
  * SectionHeading primitives — no new visual language.
  */
 
-import { ArrowUpRight, Mail, MessageSquare, Lightbulb, Plus, Instagram } from 'lucide-react';
+import { ArrowUpRight, Mail, MessageSquare, Lightbulb, Plus, Instagram, MapPin, Clock } from 'lucide-react';
 import { Card } from '../../components/primitives/Card';
 import { SectionHeading } from '../../components/primitives/SectionHeading';
 import { InstagramButton } from '../../components/social/InstagramButton';
+import { ContactForm } from './ContactForm';
 import { INSTAGRAM_HANDLE, SOCIAL_DISPLAY_NAME } from '../../lib/social';
 import { TESTIDS } from '../../lib/testids';
 import {
   CONTACT_EMAIL,
   CONTACT_FAQ,
   CONTACT_INTERNAL_LINKS,
+  CONTACT_LOCATION,
   CONTACT_PURPOSES,
   CONTACT_REASONS,
+  CONTACT_RESPONSE_TIME,
 } from './contactContent';
 
 export function ContactContent() {
   return (
     <div className="space-y-8">
-      {/* 1 — Ways to Contact */}
+      {/* 1 — Send Us a Message (contact form) */}
+      <Card className="p-6">
+        <SectionHeading
+          eyebrow="Message us"
+          title="Send Us a Message"
+          description="Fill in the form below and we'll get back to you by email."
+        />
+        <p className="mt-3 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+          <Clock size={13} strokeWidth={2} aria-hidden="true" />
+          {CONTACT_RESPONSE_TIME}
+        </p>
+        <ContactForm />
+      </Card>
+
+      {/* 2 — Ways to Contact */}
       <Card className="p-6">
         <SectionHeading eyebrow="Get in touch" title="Ways to Contact" />
         <div className="mt-4 space-y-4">
@@ -61,14 +78,14 @@ export function ContactContent() {
         </div>
       </Card>
 
-      {/* 2 — Connect With Us (premium cards) */}
+      {/* 3 — Connect With Us (premium cards) */}
       <Card className="p-6" data-testid={TESTIDS.contactConnect}>
         <SectionHeading
           eyebrow="Social"
           title="Connect With Us"
-          description="Reach us directly by email or follow along on Instagram."
+          description="Reach us by email, follow along on Instagram, or see where we're based."
         />
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {/* Instagram card */}
           <div className="flex h-full flex-col rounded-[var(--radius-control)] border border-hairline p-5 transition-colors hover:border-accent">
             <div className="flex items-center gap-2.5">
@@ -110,10 +127,27 @@ export function ContactContent() {
               </a>
             </div>
           </div>
+
+          {/* Location card */}
+          <div
+            className="flex h-full flex-col rounded-[var(--radius-control)] border border-hairline p-5 transition-colors hover:border-accent"
+            data-testid={TESTIDS.contactLocation}
+          >
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-control)] bg-accent-wash text-accent">
+                <MapPin size={18} strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <span className="font-heading text-lg font-bold leading-snug text-ink">Location</span>
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+              We're based in India and operate online.
+            </p>
+            <p className="mt-4 font-mono text-sm font-medium text-ink">{CONTACT_LOCATION}</p>
+          </div>
         </div>
       </Card>
 
-      {/* 3 — Why Contact Us? */}
+      {/* 4 — Why Contact Us? */}
       <Card className="p-6">
         <SectionHeading
           eyebrow="How we can help"
@@ -138,7 +172,7 @@ export function ContactContent() {
         </div>
       </Card>
 
-      {/* 3 — Frequently Asked Questions */}
+      {/* 5 — Frequently Asked Questions */}
       <Card className="p-6">
         <SectionHeading
           eyebrow="Knowledge"
@@ -170,7 +204,7 @@ export function ContactContent() {
         </div>
       </Card>
 
-      {/* 4 — Explore Our Tools (internal links) */}
+      {/* 6 — Explore Our Tools (internal links) */}
       <Card className="p-6">
         <SectionHeading
           eyebrow="Explore"

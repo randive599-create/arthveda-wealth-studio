@@ -20,6 +20,12 @@ export const CONTACT_INTRO =
 export const CONTACT_EMAIL = 'info@arthvedawealth.in';
 export const CONTACT_WEBSITE = 'https://arthvedawealth.in';
 
+/** City / region / country only — deliberately not a full postal address. */
+export const CONTACT_LOCATION = 'Pune, Maharashtra, India';
+
+/** Expected turnaround, shown near the contact form as a trust signal. */
+export const CONTACT_RESPONSE_TIME = 'We aim to respond within 2–3 business days.';
+
 /** Reasons a user might contact ArthVeda. */
 export const CONTACT_PURPOSES: string[] = [
   'General enquiries',
@@ -174,6 +180,13 @@ export function buildContactPageJsonLd(): string {
       name: 'ArthVeda Wealth Studio',
       url: CONTACT_WEBSITE,
       email: CONTACT_EMAIL,
+      // City / region / country only — no street address.
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Pune',
+        addressRegion: 'Maharashtra',
+        addressCountry: 'IN',
+      },
       contactPoint: {
         '@type': 'ContactPoint',
         email: CONTACT_EMAIL,

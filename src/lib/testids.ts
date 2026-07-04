@@ -258,6 +258,9 @@ export const TESTIDS = {
   aboutConnectInstagram: 'about-connect-instagram',
   contactConnect: 'contact-connect',
   contactConnectInstagram: 'contact-connect-instagram',
+  contactForm: 'contact-form',
+  contactFormSubmit: 'contact-form-submit',
+  contactLocation: 'contact-location',
 } as const;
 
 type TestIdValue = (typeof TESTIDS)[keyof typeof TESTIDS];
