@@ -15,6 +15,7 @@
     { "source": "/terms-and-conditions", "destination": "/terms-and-conditions.html" },
     { "source": "/disclaimer", "destination": "/disclaimer.html" },
     { "source": "/cookie-policy", "destination": "/cookie-policy.html" },
+    { "source": "/editorial-policy", "destination": "/editorial-policy.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

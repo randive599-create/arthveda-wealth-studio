@@ -65,6 +65,9 @@ const DisclaimerPage = lazy(() =>
 const CookiePage = lazy(() =>
   import('./pages/cookies/CookiePage').then((m) => ({ default: m.CookiePage })),
 );
+const EditorialPage = lazy(() =>
+  import('./pages/editorial/EditorialPage').then((m) => ({ default: m.EditorialPage })),
+);
 
 // Recharts is a large dependency; load the charts lazily so it is split into
 // its own chunk and does not block the initial paint of the studio shell.
@@ -133,6 +136,7 @@ const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
   '/terms-and-conditions': TermsPage,
   '/disclaimer': DisclaimerPage,
   '/cookie-policy': CookiePage,
+  '/editorial-policy': EditorialPage,
 };
 
 export default function App() {
