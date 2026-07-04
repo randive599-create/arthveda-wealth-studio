@@ -182,7 +182,7 @@ describe('renderReport', () => {
     const { doc, state } = createFakeDoc();
     renderReport(model, { mountain: fakeImage, donut: fakeImage }, () => doc);
     const brandLines = state.texts.filter(
-      (t) => t.text.includes('ArthVeda Private Office') && t.text.includes('info@arthvedawealth.in'),
+      (t) => t.text.includes('ArthVeda Wealth Studio') && t.text.includes('info@arthvedawealth.in'),
     );
     expect(brandLines.length).toBe(state.pageCount);
   });

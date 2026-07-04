@@ -30,7 +30,7 @@ export interface AboutOffering {
 export const ABOUT_OFFERINGS: AboutOffering[] = [
   {
     href: '/',
-    label: 'Wealth Projection Studio',
+    label: 'Wealth Studio',
     description: 'Model SIP, lumpsum and SWP together with milestones, charts and a year-by-year ledger.',
   },
   ...CALCULATORS.map((c) => ({ href: c.path, label: c.label, description: c.description })),
@@ -51,7 +51,7 @@ export function buildAboutOrganizationJsonLd(): string {
   return JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'ArthVeda',
+    name: 'ArthVeda Wealth Studio',
     url: ABOUT_WEBSITE,
     email: ABOUT_EMAIL,
     logo: 'https://arthvedawealth.in/favicon.svg',

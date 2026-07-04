@@ -173,7 +173,7 @@ export function buildTermsWebPageJsonLd(): string {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'ArthVeda',
+      name: 'ArthVeda Wealth Studio',
       url: TERMS_WEBSITE,
       email: TERMS_EMAIL,
     },

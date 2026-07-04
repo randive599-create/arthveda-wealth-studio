@@ -49,7 +49,7 @@ describe('buildReportModel — income + inflation', () => {
 
   it('populates cover metadata', () => {
     expect(model.cover.brand).toBe('ARTHVEDA');
-    expect(model.cover.division).toBe('PRIVATE OFFICE');
+    expect(model.cover.division).toBe('WEALTH STUDIO');
     expect(model.cover.title).toBe('Wealth Projection Report');
     expect(model.cover.generatedDate).toBe('7 June 2026');
     expect(model.cover.currencyLabel).toContain('Indian Rupee');

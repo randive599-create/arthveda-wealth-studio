@@ -165,8 +165,8 @@ export function buildReportModel(result: ProjectionResult, now: Date = new Date(
 
   const cover: ReportCover = {
     brand: 'ARTHVEDA',
-    division: 'PRIVATE OFFICE',
-    product: 'Wealth Projection Studio',
+    division: 'WEALTH STUDIO',
+    product: '',
     tagline:
       'Visualize every stage of your financial journey — accumulation, growth, preservation, ' +
       'and income — in one institutional-grade projection studio.',

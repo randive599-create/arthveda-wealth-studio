@@ -6,9 +6,7 @@
  * hierarchy:
  *
  *   1. ARTHVEDA            — oversized serif wordmark, the dominant element.
- *   2. PRIVATE OFFICE      — wide-tracked mono divider, flanked by hairlines.
- *   3. Wealth Projection   — serif subtitle in secondary ink.
- *      Studio
+ *   2. WEALTH STUDIO       — wide-tracked mono divider, flanked by hairlines.
  *
  * Generous vertical breathing space frames the lockup; the tagline and trust
  * line sit beneath, centered and measured for calm readability.
@@ -37,14 +35,10 @@ export function StudioHeader() {
         <div className="mt-5 flex items-center gap-3 sm:gap-4">
           <span className="h-px w-8 bg-hairline sm:w-16" aria-hidden="true" />
           <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent sm:text-sm sm:tracking-[0.42em]">
-            Private Office
+            Wealth Studio
           </span>
           <span className="h-px w-8 bg-hairline sm:w-16" aria-hidden="true" />
         </div>
-
-        <p className="mt-5 font-heading text-2xl font-bold italic leading-tight text-ink-secondary sm:text-3xl">
-          Wealth Projection Studio
-        </p>
 
         <p
           className="mt-8 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base"

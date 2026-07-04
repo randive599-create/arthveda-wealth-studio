@@ -1,4 +1,4 @@
-# ArthVeda · Private Office — Wealth Projection Studio
+# ArthVeda Wealth Studio
 
 Institutional-grade wealth projection studio for long-term investors. Model
 accumulation, growth, preservation, and income in a single deterministic engine.

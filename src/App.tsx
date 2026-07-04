@@ -95,7 +95,7 @@ const FaqSection = lazy(() =>
   import('./components/faq/FaqSection').then((m) => ({ default: m.FaqSection })),
 );
 
-/** The default Wealth Projection Studio (home page). */
+/** The default Wealth Studio home page. */
 function StudioPage() {
   return (
     <AppShell

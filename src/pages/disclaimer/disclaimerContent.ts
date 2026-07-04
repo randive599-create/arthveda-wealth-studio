@@ -184,7 +184,7 @@ export function buildDisclaimerWebPageJsonLd(): string {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'ArthVeda',
+      name: 'ArthVeda Wealth Studio',
       url: DISCLAIMER_WEBSITE,
       email: DISCLAIMER_EMAIL,
     },

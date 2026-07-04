@@ -1,4 +1,4 @@
-# ArthVeda · Wealth Projection Studio — Deployment Guide
+# ArthVeda Wealth Studio — Deployment Guide
 
 A fully client-side React + Vite single-page application. No backend, no
 database, no environment variables, no API keys.

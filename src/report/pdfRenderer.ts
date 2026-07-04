@@ -326,7 +326,7 @@ function renderCover(w: ReportWriter, model: ReportModel): void {
   doc.setFont(FONT_SERIF, 'bold').setFontSize(15).setTextColor(INK);
   doc.text('ArthVeda', wordmarkX, MARGIN.top + 13);
   doc.setFont(FONT_MONO, 'normal').setFontSize(7).setTextColor(ACCENT);
-  doc.text('PRIVATE OFFICE', wordmarkX, MARGIN.top + 25);
+  doc.text('WEALTH STUDIO', wordmarkX, MARGIN.top + 25);
 
   const contactX = A4.width - MARGIN.right;
   doc.setFont(FONT_MONO, 'normal').setFontSize(8).setTextColor(ACCENT);
@@ -347,9 +347,13 @@ function renderCover(w: ReportWriter, model: ReportModel): void {
   doc.text(model.cover.division, centerX, y, { align: 'center' });
   y += 28;
 
-  doc.setFont(FONT_SERIF, 'normal').setFontSize(18).setTextColor(INK_SECONDARY);
-  doc.text(model.cover.product, centerX, y, { align: 'center' });
-  y += 40;
+  // The optional product line is only drawn when present, so the cover lockup
+  // stays clean when the brand is expressed solely by the wordmark + division.
+  if (model.cover.product) {
+    doc.setFont(FONT_SERIF, 'normal').setFontSize(18).setTextColor(INK_SECONDARY);
+    doc.text(model.cover.product, centerX, y, { align: 'center' });
+    y += 40;
+  }
 
   doc.setFont(FONT_MONO, 'normal').setFontSize(10).setTextColor(INK_SECONDARY);
   const tagline = doc.splitTextToSize(model.cover.tagline, contentWidth() - 80);
@@ -583,7 +587,7 @@ function renderLedger(w: ReportWriter, model: ReportModel): void {
  * the page margins. It uses two rows so the compliance text, page number, and
  * full brand line all fit without colliding:
  *   - row 1: disclaimer (left)              ·  "Page X of Y" (right)
- *   - row 2: "ArthVeda Private Office · arthvedawealth.in · info@arthvedawealth.in" (centered)
+ *   - row 2: "ArthVeda Wealth Studio · arthvedawealth.in · info@arthvedawealth.in" (centered)
  * Row 1 is 6.5pt; the centered brand line is 6pt (≈245pt wide), comfortably
  * inside the ~500pt content width.
  */
@@ -596,7 +600,7 @@ function stampFooters(doc: PdfDoc): void {
   const leftX = MARGIN.left;
   const rightX = A4.width - MARGIN.right;
   const centerX = A4.width / 2;
-  const brandLine = `ArthVeda Private Office · ${WEBSITE} · ${EMAIL}`;
+  const brandLine = `ArthVeda Wealth Studio · ${WEBSITE} · ${EMAIL}`;
 
   for (let page = 1; page <= total; page += 1) {
     doc.setPage(page);

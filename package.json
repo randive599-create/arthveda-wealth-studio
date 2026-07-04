@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "ArthVeda · Private Office — Wealth Projection Studio. Institutional-grade wealth projection engine and studio.",
+  "description": "ArthVeda Wealth Studio. Institutional-grade wealth projection engine and studio.",
   "engines": {
     "node": ">=20"
   },

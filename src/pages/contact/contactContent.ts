@@ -171,7 +171,7 @@ export function buildContactPageJsonLd(): string {
     description: CONTACT_META.description,
     mainEntity: {
       '@type': 'Organization',
-      name: 'ArthVeda',
+      name: 'ArthVeda Wealth Studio',
       url: CONTACT_WEBSITE,
       email: CONTACT_EMAIL,
       contactPoint: {

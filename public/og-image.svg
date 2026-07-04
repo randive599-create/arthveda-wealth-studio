@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="ArthVeda Private Office — Wealth Projection Studio. Visualize every stage of your financial journey in one institutional-grade projection studio.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="ArthVeda Wealth Studio. Visualize every stage of your financial journey in one institutional-grade projection studio.">
   <!-- Canvas -->
   <rect width="1200" height="630" fill="#FFFFFF"/>
 
@@ -20,10 +20,10 @@
 
   <!-- Division divider -->
   <line x1="96" y1="196" x2="128" y2="196" stroke="#E5E7EB" stroke-width="1"/>
-  <text x="140" y="201" font-family="IBM Plex Mono, monospace" font-size="17" font-weight="600" letter-spacing="6" fill="#064E3B">PRIVATE OFFICE</text>
+  <text x="140" y="201" font-family="IBM Plex Mono, monospace" font-size="17" font-weight="600" letter-spacing="6" fill="#064E3B">WEALTH STUDIO</text>
 
   <!-- Product title -->
-  <text x="96" y="300" font-family="Cormorant Garamond, Georgia, serif" font-size="74" font-weight="700" font-style="italic" fill="#111827">Wealth Projection Studio</text>
+  <text x="96" y="300" font-family="Cormorant Garamond, Georgia, serif" font-size="74" font-weight="700" font-style="italic" fill="#111827">Wealth Studio</text>
 
   <!-- Tagline (two lines, manually balanced) -->
   <text x="96" y="372" font-family="Work Sans, system-ui, sans-serif" font-size="27" font-weight="400" fill="#4B5563">Visualize every stage of your financial journey — accumulation,</text>

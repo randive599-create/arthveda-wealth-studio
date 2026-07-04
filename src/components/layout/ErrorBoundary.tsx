@@ -54,7 +54,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
         className="flex min-h-screen flex-col items-center justify-center bg-canvas px-6 text-center"
       >
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
-          ArthVeda · Private Office
+          ArthVeda Wealth Studio
         </p>
         <h1 className="mt-4 font-heading text-3xl font-bold text-ink">Something went wrong</h1>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-secondary">

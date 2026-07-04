@@ -125,7 +125,7 @@ function renderHeader(doc: Doc, result: RetirementResult, generated: string): vo
   doc.setFont(REPORT_FONT_MONO, 'normal');
   doc.setFontSize(7);
   doc.setTextColor(ACCENT);
-  doc.text('PRIVATE OFFICE', MARGIN.left, MARGIN.top + 16);
+  doc.text('WEALTH STUDIO', MARGIN.left, MARGIN.top + 16);
 
   const rightX = A4.width - MARGIN.right;
   doc.setFontSize(8);
@@ -241,7 +241,7 @@ function stampFooters(doc: Doc): void {
     doc.text(`Page ${page} of ${total}`, rightX, y, { align: 'right' });
     doc.setFontSize(6);
     doc.setTextColor(ACCENT);
-    doc.text(`ArthVeda Private Office · ${WEBSITE} · ${EMAIL}`, A4.width / 2, y + 9, {
+    doc.text(`ArthVeda Wealth Studio · ${WEBSITE} · ${EMAIL}`, A4.width / 2, y + 9, {
       align: 'center',
     });
   }

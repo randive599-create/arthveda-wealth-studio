@@ -458,10 +458,10 @@ const homeBody = renderToStaticMarkup(
   <div className="mx-auto w-full max-w-[1400px] space-y-6 px-5 py-10 sm:px-8">
     <header>
       <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-secondary">
-        ArthVeda · Private Office
+        ArthVeda Wealth Studio
       </p>
       <h1 className="mt-2 font-heading text-3xl font-bold leading-tight text-ink sm:text-4xl">
-        Wealth Projection Studio — SIP, Lumpsum &amp; SWP Calculator
+        Wealth Studio — SIP, Lumpsum &amp; SWP Calculator
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base">
         Model SIP, lumpsum and SWP investments with annual step-up, inflation adjustment and

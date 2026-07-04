@@ -33,7 +33,7 @@ export interface AppShellProps {
   /**
    * Whether to render the ArthVeda brand hero (StudioHeader) above the grid.
    *
-   * Defaults to `true` for the home Wealth Projection Studio (`/`). The
+   * Defaults to `true` for the home Wealth Studio (`/`). The
    * dedicated calculator landing pages pass `false`: their own page H1 + intro
    * must lead the page so the calculator-specific content sits above the fold,
    * and so the page exposes a single, calculator-specific <h1> for SEO rather
@@ -45,7 +45,7 @@ export interface AppShellProps {
    *
    *   - 'studio' (default): the 4/12 sticky Parameters column + 8/12 studio
    *     column, with the store-backed sticky summary bar. Used by the generic
-   *     Wealth Projection Studio and the SEO landing pages.
+   *     Wealth Studio and the SEO landing pages.
    *   - 'full': a single full-width content column with no parameters aside and
    *     no store-backed summary bar. Used by self-contained pages (the
    *     dedicated FIRE calculator) that own their entire layout and do not read

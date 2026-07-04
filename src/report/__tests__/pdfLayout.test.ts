@@ -167,7 +167,7 @@ const isPageNumber = (s: string) => /^Page \d+ of \d+$/.test(s);
 const isEyebrow = (s: string) => /^SECTION \d+$/.test(s);
 // The footer brand line carries the office name, website, and contact email.
 const isBrandLine = (s: string) =>
-  s.includes('ArthVeda Private Office') && s.includes(WEBSITE) && s.includes(EMAIL);
+  s.includes('ArthVeda Wealth Studio') && s.includes(WEBSITE) && s.includes(EMAIL);
 const isFooterText = (s: string) =>
   s === FOOTER_DISCLAIMER || isPageNumber(s) || isBrandLine(s);
 

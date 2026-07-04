@@ -6,7 +6,7 @@ import { TESTIDS } from '../../../lib/testids';
 
 /**
  * The brand hero (StudioHeader, with its oversized "ArthVeda" wordmark <h1>)
- * must appear only on the home Wealth Projection Studio. Calculator landing
+ * must appear only on the home Wealth Studio. Calculator landing
  * pages opt out via `showHero={false}` so their own page <h1> + intro lead the
  * page and there is no duplicate, generic <h1>.
  */

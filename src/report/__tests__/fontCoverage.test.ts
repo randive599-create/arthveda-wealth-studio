@@ -93,7 +93,7 @@ const REQUIRED = Array.from(
     (
       'https://arthvedawealth.in' +
       'info@arthvedawealth.in' +
-      'ArthVeda Private Office' +
+      'ArthVeda Wealth Studio' +
       'Illustrative projections only. Not investment advice.' +
       'Page of' +
       'abcdefghijklmnopqrstuvwxyz' +

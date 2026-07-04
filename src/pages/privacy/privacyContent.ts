@@ -127,7 +127,7 @@ export function buildPrivacyWebPageJsonLd(): string {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'ArthVeda',
+      name: 'ArthVeda Wealth Studio',
       url: PRIVACY_WEBSITE,
       email: PRIVACY_EMAIL,
     },
