@@ -71,4 +71,5 @@ export const NAV_ITEMS: NavItem[] = [
   { path: '/contact-us', label: 'Contact Us' },
   { path: '/privacy-policy', label: 'Privacy Policy' },
   { path: '/terms-and-conditions', label: 'Terms & Conditions' },
+  { path: '/disclaimer', label: 'Disclaimer' },
 ];

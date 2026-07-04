@@ -48,6 +48,12 @@ export function TrustFooter() {
           >
             Terms &amp; Conditions
           </a>
+          <a
+            href="/disclaimer"
+            className="text-sm font-medium text-ink-secondary underline-offset-2 hover:text-ink hover:underline"
+          >
+            Disclaimer
+          </a>
         </nav>
         <p className="mt-4 text-sm text-ink-secondary" data-testid={TESTIDS.footerContact}>
           Contact:{' '}

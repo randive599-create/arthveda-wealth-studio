@@ -62,6 +62,13 @@ import {
   buildTermsBreadcrumbJsonLd,
   buildTermsWebPageJsonLd,
 } from '../src/pages/terms/termsContent';
+import { DisclaimerContent } from '../src/pages/disclaimer/DisclaimerContent';
+import {
+  DISCLAIMER_INTRO,
+  DISCLAIMER_META,
+  buildDisclaimerBreadcrumbJsonLd,
+  buildDisclaimerWebPageJsonLd,
+} from '../src/pages/disclaimer/disclaimerContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -344,6 +351,17 @@ writeRoute(
   [{ key: 'terms-breadcrumb', json: buildTermsBreadcrumbJsonLd() }],
 );
 
+// --- /disclaimer -------------------------------------------------------------
+
+writeRoute(
+  'disclaimer.html',
+  DISCLAIMER_META,
+  'disclaimer-webpage',
+  buildDisclaimerWebPageJsonLd(),
+  renderLandingBody('Legal', 'Disclaimer', DISCLAIMER_INTRO, <DisclaimerContent />),
+  [{ key: 'disclaimer-breadcrumb', json: buildDisclaimerBreadcrumbJsonLd() }],
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -396,5 +414,5 @@ console.log(
   'prerender: wrote dist/index.html, dist/sip-calculator.html, dist/retirement-calculator.html, ' +
     'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html, ' +
     'dist/sip-vs-stepup-sip-calculator.html, dist/about-us.html, dist/contact-us.html, ' +
-    'dist/privacy-policy.html and dist/terms-and-conditions.html',
+    'dist/privacy-policy.html, dist/terms-and-conditions.html and dist/disclaimer.html',
 );

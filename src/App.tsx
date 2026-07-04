@@ -59,6 +59,9 @@ const PrivacyPage = lazy(() =>
 const TermsPage = lazy(() =>
   import('./pages/terms/TermsPage').then((m) => ({ default: m.TermsPage })),
 );
+const DisclaimerPage = lazy(() =>
+  import('./pages/disclaimer/DisclaimerPage').then((m) => ({ default: m.DisclaimerPage })),
+);
 
 // Recharts is a large dependency; load the charts lazily so it is split into
 // its own chunk and does not block the initial paint of the studio shell.
@@ -125,6 +128,7 @@ const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
   '/contact-us': ContactPage,
   '/privacy-policy': PrivacyPage,
   '/terms-and-conditions': TermsPage,
+  '/disclaimer': DisclaimerPage,
 };
 
 export default function App() {
