@@ -74,6 +74,9 @@ const MethodologyPage = lazy(() =>
 const TrustPage = lazy(() =>
   import('./pages/trust/TrustPage').then((m) => ({ default: m.TrustPage })),
 );
+const RiskPage = lazy(() =>
+  import('./pages/risk/RiskPage').then((m) => ({ default: m.RiskPage })),
+);
 
 // Recharts is a large dependency; load the charts lazily so it is split into
 // its own chunk and does not block the initial paint of the studio shell.
@@ -145,6 +148,7 @@ const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
   '/editorial-policy': EditorialPage,
   '/calculator-methodology': MethodologyPage,
   '/why-trust-our-calculators': TrustPage,
+  '/risk-disclosure': RiskPage,
 };
 
 export default function App() {

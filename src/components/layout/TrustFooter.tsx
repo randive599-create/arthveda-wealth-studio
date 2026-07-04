@@ -78,6 +78,12 @@ export function TrustFooter() {
           >
             Why Trust Our Calculators
           </a>
+          <a
+            href="/risk-disclosure"
+            className="text-sm font-medium text-ink-secondary underline-offset-2 hover:text-ink hover:underline"
+          >
+            Risk Disclosure
+          </a>
         </nav>
         <p className="mt-4 text-sm text-ink-secondary" data-testid={TESTIDS.footerContact}>
           Contact:{' '}
