@@ -20,6 +20,19 @@ export const ABOUT_INTRO =
 export const ABOUT_EMAIL = 'info@arthvedawealth.in';
 export const ABOUT_WEBSITE = 'https://arthvedawealth.in';
 
+/**
+ * Founder identity (E-E-A-T / ownership transparency). Deliberately free of any
+ * professional-advice credentials: ArthVeda is an educational platform, and the
+ * founder is described only as its independent creator. Used by both the
+ * "Meet the Founder" section and the Organization JSON-LD, so the displayed
+ * name and the structured data never drift.
+ */
+export const ABOUT_FOUNDER = {
+  name: 'Suyog Randive',
+  initials: 'SR',
+  role: 'Independent creator of ArthVeda Wealth Studio',
+} as const;
+
 export interface AboutOffering {
   href: string;
   label: string;
@@ -58,6 +71,11 @@ export function buildAboutOrganizationJsonLd(): string {
     description:
       'ArthVeda is a wealth planning and financial projection platform that helps individuals ' +
       'visualize their financial future through advanced planning calculators and projection tools.',
+    founder: {
+      '@type': 'Person',
+      name: ABOUT_FOUNDER.name,
+      description: ABOUT_FOUNDER.role,
+    },
     contactPoint: {
       '@type': 'ContactPoint',
       email: ABOUT_EMAIL,

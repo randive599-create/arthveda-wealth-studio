@@ -11,6 +11,7 @@ export const TESTIDS = {
 
   // About page
   aboutPage: 'about-page',
+  aboutFounder: 'about-founder',
   aboutOffer: 'about-offer',
   aboutOfferLink: (href: string) => `about-offer-${href === '/' ? 'home' : href.replace(/^\//, '')}`,
   aboutDisclaimer: 'about-disclaimer',

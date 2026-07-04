@@ -11,7 +11,13 @@ import { SectionHeading } from '../../components/primitives/SectionHeading';
 import { InstagramButton } from '../../components/social/InstagramButton';
 import { SOCIAL_DISPLAY_NAME } from '../../lib/social';
 import { TESTIDS } from '../../lib/testids';
-import { ABOUT_DISCLAIMERS, ABOUT_EMAIL, ABOUT_OFFERINGS, ABOUT_WEBSITE } from './aboutContent';
+import {
+  ABOUT_DISCLAIMERS,
+  ABOUT_EMAIL,
+  ABOUT_FOUNDER,
+  ABOUT_OFFERINGS,
+  ABOUT_WEBSITE,
+} from './aboutContent';
 
 const PHILOSOPHY: { title: string; body: string }[] = [
   {
@@ -53,7 +59,62 @@ export function AboutContent() {
         </p>
       </Card>
 
-      {/* 3 — What We Offer */}
+      {/* 3 — Meet the Founder */}
+      <Card className="p-6" data-testid={TESTIDS.aboutFounder}>
+        <SectionHeading eyebrow="Founder" title="Meet the Founder" />
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start">
+          {/* Monogram avatar (decorative — the name is provided in text alongside it). */}
+          <div
+            className="flex h-20 w-20 shrink-0 items-center justify-center rounded-[var(--radius-card)] bg-accent text-canvas"
+            aria-hidden="true"
+          >
+            <span className="font-heading text-2xl font-bold tracking-tight">
+              {ABOUT_FOUNDER.initials}
+            </span>
+          </div>
+
+          <div className="min-w-0">
+            <h3 className="font-heading text-xl font-bold leading-snug text-ink">
+              {ABOUT_FOUNDER.name}
+            </h3>
+            <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+              {ABOUT_FOUNDER.role}
+            </p>
+
+            <p className="mt-4 text-sm leading-relaxed text-ink-secondary sm:text-base">
+              {ABOUT_FOUNDER.name} brings years of experience from the manufacturing industry, where
+              disciplined processes and long-term thinking guide every decision. Away from his
+              profession, he has a strong personal interest in investing, financial planning, and
+              long-term wealth creation.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-ink-secondary sm:text-base">
+              He built ArthVeda Wealth Studio to help Indian investors make better financial
+              decisions through transparent, easy-to-use calculators.
+            </p>
+
+            {/* Mission statement — why ArthVeda Wealth Studio was created (founder's voice). */}
+            <blockquote className="mt-5 border-l-2 border-accent bg-mist px-5 py-4">
+              <p className="font-heading text-base italic leading-relaxed text-ink sm:text-lg">
+                &ldquo;I created ArthVeda Wealth Studio to give everyday investors the clear, honest
+                planning tools I was looking for myself &mdash; free from jargon, sales pressure, and
+                hidden assumptions.&rdquo;
+              </p>
+              <footer className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-secondary">
+                &mdash; {ABOUT_FOUNDER.name}, Founder
+              </footer>
+            </blockquote>
+
+            {/* Transparency note — humble, no fabricated credentials. */}
+            <p className="mt-4 text-xs leading-relaxed text-ink-secondary">
+              Suyog is passionate about financial planning and building practical tools for
+              investors. He is an independent creator &mdash; not a financial advisor &mdash; and
+              ArthVeda does not provide investment advice.
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      {/* 4 — What We Offer */}
       <Card className="p-6" data-testid={TESTIDS.aboutOffer}>
         <SectionHeading
           eyebrow="What we offer"
@@ -90,7 +151,7 @@ export function AboutContent() {
         </div>
       </Card>
 
-      {/* 4 — Our Philosophy */}
+      {/* 5 — Our Philosophy */}
       <Card className="p-6">
         <SectionHeading eyebrow="How we think" title="Our Philosophy" />
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -103,7 +164,7 @@ export function AboutContent() {
         </div>
       </Card>
 
-      {/* 5 — Important Note */}
+      {/* 6 — Important Note */}
       <Card className="border-risk-strong p-6" data-testid={TESTIDS.aboutDisclaimer}>
         <SectionHeading eyebrow="Please note" title="Important Note" />
         <p className="mt-4 text-sm leading-relaxed text-ink-secondary">
@@ -120,7 +181,7 @@ export function AboutContent() {
         </ul>
       </Card>
 
-      {/* 6 — Contact Information */}
+      {/* 7 — Contact Information */}
       <Card className="p-6" data-testid={TESTIDS.aboutContact}>
         <SectionHeading eyebrow="Get in touch" title="Contact Information" />
         <div className="mt-4 space-y-3">
@@ -145,7 +206,7 @@ export function AboutContent() {
         </div>
       </Card>
 
-      {/* 7 — Connect With ArthVeda */}
+      {/* 8 — Connect With ArthVeda */}
       <Card className="p-6" data-testid={TESTIDS.aboutConnect}>
         <SectionHeading eyebrow="Social" title="Connect With ArthVeda" />
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base">
