@@ -48,6 +48,13 @@ import {
   buildContactFaqJsonLd,
   buildContactPageJsonLd,
 } from '../src/pages/contact/contactContent';
+import { PrivacyContent } from '../src/pages/privacy/PrivacyContent';
+import {
+  PRIVACY_INTRO,
+  PRIVACY_META,
+  buildPrivacyBreadcrumbJsonLd,
+  buildPrivacyWebPageJsonLd,
+} from '../src/pages/privacy/privacyContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -308,6 +315,17 @@ writeRoute(
   ],
 );
 
+// --- /privacy-policy ---------------------------------------------------------
+
+writeRoute(
+  'privacy-policy.html',
+  PRIVACY_META,
+  'privacy-webpage',
+  buildPrivacyWebPageJsonLd(),
+  renderLandingBody('Legal', 'Privacy Policy', PRIVACY_INTRO, <PrivacyContent />),
+  [{ key: 'privacy-breadcrumb', json: buildPrivacyBreadcrumbJsonLd() }],
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -359,5 +377,6 @@ writeFileSync(resolve(DIST, 'index.html'), homeHtml);
 console.log(
   'prerender: wrote dist/index.html, dist/sip-calculator.html, dist/retirement-calculator.html, ' +
     'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html, ' +
-    'dist/sip-vs-stepup-sip-calculator.html, dist/about-us.html and dist/contact-us.html',
+    'dist/sip-vs-stepup-sip-calculator.html, dist/about-us.html, dist/contact-us.html ' +
+    'and dist/privacy-policy.html',
 );

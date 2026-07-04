@@ -53,6 +53,9 @@ const AboutPage = lazy(() =>
 const ContactPage = lazy(() =>
   import('./pages/contact/ContactPage').then((m) => ({ default: m.ContactPage })),
 );
+const PrivacyPage = lazy(() =>
+  import('./pages/privacy/PrivacyPage').then((m) => ({ default: m.PrivacyPage })),
+);
 
 // Recharts is a large dependency; load the charts lazily so it is split into
 // its own chunk and does not block the initial paint of the studio shell.
@@ -117,6 +120,7 @@ const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
   '/sip-vs-stepup-sip-calculator': SipVsStepUpCalculatorPage,
   '/about-us': AboutPage,
   '/contact-us': ContactPage,
+  '/privacy-policy': PrivacyPage,
 };
 
 export default function App() {

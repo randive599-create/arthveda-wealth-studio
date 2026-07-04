@@ -36,6 +36,12 @@ export function TrustFooter() {
           >
             Contact Us
           </a>
+          <a
+            href="/privacy-policy"
+            className="text-sm font-medium text-ink-secondary underline-offset-2 hover:text-ink hover:underline"
+          >
+            Privacy Policy
+          </a>
         </nav>
         <p className="mt-4 text-sm text-ink-secondary" data-testid={TESTIDS.footerContact}>
           Contact:{' '}

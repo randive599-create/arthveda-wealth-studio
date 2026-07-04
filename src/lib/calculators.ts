@@ -63,10 +63,11 @@ export interface NavItem {
   label: string;
 }
 
-/** Top-navigation items: Home, every calculator, then About and Contact. */
+/** Top-navigation items: Home, every calculator, then About, Contact, and Privacy. */
 export const NAV_ITEMS: NavItem[] = [
   { path: '/', label: 'Home' },
   ...CALCULATORS.map((c) => ({ path: c.path, label: c.label })),
   { path: '/about-us', label: 'About Us' },
   { path: '/contact-us', label: 'Contact Us' },
+  { path: '/privacy-policy', label: 'Privacy Policy' },
 ];
