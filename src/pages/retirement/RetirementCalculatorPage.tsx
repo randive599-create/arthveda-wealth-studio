@@ -1,7 +1,7 @@
 /**
  * /retirement-calculator — a dedicated Retirement Planner.
  *
- * Unlike the generic Wealth Projection studio, this page renders a purpose-built
+ * Unlike the generic Wealth Studio, this page renders a purpose-built
  * two-phase retirement planner (accumulation + drawdown) via <RetirementPlanner
  * />: retirement-specific inputs, the corpus-required / projected / gap /
  * sustainability outputs, accumulation / drawdown / gap charts, and a retirement

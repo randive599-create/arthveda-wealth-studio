@@ -1,7 +1,7 @@
 /**
  * /sip-calculator — a dedicated SIP Calculator India experience.
  *
- * Unlike a generic Wealth Projection studio, this page renders a purpose-built
+ * Unlike a generic Wealth Studio, this page renders a purpose-built
  * SIP calculator (Basic + Advanced inputs, SIP-specific primary and advanced
  * results, SIP charts, a Monthly-SIP → Corpus comparison, and a SIP PDF report)
  * via <SipCalculator />. It keeps the existing SIP SEO content, FAQ, FAQPage
