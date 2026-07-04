@@ -19,6 +19,7 @@ import { ProjectionTable } from './components/table/ProjectionTable';
 import { DownloadReportButton } from './components/report/DownloadReportButton';
 import { ShareScenarioButton } from './components/report/ShareScenarioButton';
 import { ExploreCalculators } from './components/navigation/ExploreCalculators';
+import { CommunitySection } from './components/social/CommunitySection';
 import { getCurrentPath } from './lib/path';
 
 // Route-split each calculator landing page so the home studio bundle does not
@@ -125,6 +126,7 @@ function StudioPage() {
             <FaqSection />
           </Suspense>
           <ExploreCalculators currentPath="/" />
+          <CommunitySection />
         </>
       }
     />

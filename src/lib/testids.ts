@@ -247,6 +247,16 @@ export const TESTIDS = {
 
   trustFooter: 'trust-footer',
   footerContact: 'footer-contact',
+  footerInstagram: 'footer-instagram',
+
+  // Social / community
+  instagramLink: 'instagram-link',
+  communitySection: 'community-section',
+  communityInstagram: 'community-instagram',
+  aboutConnect: 'about-connect',
+  aboutConnectInstagram: 'about-connect-instagram',
+  contactConnect: 'contact-connect',
+  contactConnectInstagram: 'contact-connect-instagram',
 } as const;
 
 type TestIdValue = (typeof TESTIDS)[keyof typeof TESTIDS];

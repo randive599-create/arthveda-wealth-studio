@@ -8,6 +8,8 @@
 import { ArrowUpRight, Mail, Globe, XCircle } from 'lucide-react';
 import { Card } from '../../components/primitives/Card';
 import { SectionHeading } from '../../components/primitives/SectionHeading';
+import { InstagramButton } from '../../components/social/InstagramButton';
+import { SOCIAL_DISPLAY_NAME } from '../../lib/social';
 import { TESTIDS } from '../../lib/testids';
 import { ABOUT_DISCLAIMERS, ABOUT_EMAIL, ABOUT_OFFERINGS, ABOUT_WEBSITE } from './aboutContent';
 
@@ -140,6 +142,22 @@ export function AboutContent() {
               {ABOUT_WEBSITE}
             </a>
           </p>
+        </div>
+      </Card>
+
+      {/* 7 — Connect With ArthVeda */}
+      <Card className="p-6" data-testid={TESTIDS.aboutConnect}>
+        <SectionHeading eyebrow="Social" title="Connect With ArthVeda" />
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base">
+          Stay connected with {SOCIAL_DISPLAY_NAME} for regular investing insights, financial
+          education, calculator updates, and wealth-building ideas.
+        </p>
+        <div className="mt-5">
+          <InstagramButton
+            variant="solid"
+            label={`Follow ${SOCIAL_DISPLAY_NAME}`}
+            testId={TESTIDS.aboutConnectInstagram}
+          />
         </div>
       </Card>
     </div>

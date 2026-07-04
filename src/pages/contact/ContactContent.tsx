@@ -5,9 +5,12 @@
  * SectionHeading primitives — no new visual language.
  */
 
-import { ArrowUpRight, Mail, MessageSquare, Lightbulb, Plus } from 'lucide-react';
+import { ArrowUpRight, Mail, MessageSquare, Lightbulb, Plus, Instagram } from 'lucide-react';
 import { Card } from '../../components/primitives/Card';
 import { SectionHeading } from '../../components/primitives/SectionHeading';
+import { InstagramButton } from '../../components/social/InstagramButton';
+import { INSTAGRAM_HANDLE, SOCIAL_DISPLAY_NAME } from '../../lib/social';
+import { TESTIDS } from '../../lib/testids';
 import {
   CONTACT_EMAIL,
   CONTACT_FAQ,
@@ -58,7 +61,59 @@ export function ContactContent() {
         </div>
       </Card>
 
-      {/* 2 — Why Contact Us? */}
+      {/* 2 — Connect With Us (premium cards) */}
+      <Card className="p-6" data-testid={TESTIDS.contactConnect}>
+        <SectionHeading
+          eyebrow="Social"
+          title="Connect With Us"
+          description="Reach us directly by email or follow along on Instagram."
+        />
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {/* Instagram card */}
+          <div className="flex h-full flex-col rounded-[var(--radius-control)] border border-hairline p-5 transition-colors hover:border-accent">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-control)] bg-gold-wash text-gold">
+                <Instagram size={18} strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <span className="font-heading text-lg font-bold leading-snug text-ink">Instagram</span>
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+              Follow {SOCIAL_DISPLAY_NAME} ({INSTAGRAM_HANDLE}) for investing insights and
+              calculator tips.
+            </p>
+            <div className="mt-4">
+              <InstagramButton
+                variant="outline"
+                label={`Follow ${INSTAGRAM_HANDLE}`}
+                testId={TESTIDS.contactConnectInstagram}
+              />
+            </div>
+          </div>
+
+          {/* Email card */}
+          <div className="flex h-full flex-col rounded-[var(--radius-control)] border border-hairline p-5 transition-colors hover:border-accent">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-control)] bg-accent-wash text-accent">
+                <Mail size={18} strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <span className="font-heading text-lg font-bold leading-snug text-ink">Email</span>
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-ink-secondary">
+              For enquiries, feedback, bug reports and partnerships.
+            </p>
+            <div className="mt-4">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="font-mono text-sm font-medium text-accent underline-offset-2 hover:text-accent-hover hover:underline"
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* 3 — Why Contact Us? */}
       <Card className="p-6">
         <SectionHeading
           eyebrow="How we can help"

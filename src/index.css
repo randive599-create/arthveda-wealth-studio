@@ -38,6 +38,11 @@
   --color-hairline: #e5e7eb;
   --color-mist: #f9fafb;
 
+  /* Restrained premium gold — used sparingly for accents (never as a fill for
+     large surfaces), preserving the emerald/white institutional identity. */
+  --color-gold: #b0863a;
+  --color-gold-wash: #faf6ea;
+
   /* Typography */
   --font-heading: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Work Sans', system-ui, sans-serif;
