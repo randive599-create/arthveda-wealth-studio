@@ -4,6 +4,7 @@
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { Analytics } from '@vercel/analytics/react';
 import App from './App';
 import { ErrorBoundary } from './components/layout/ErrorBoundary';
 import { initAnalytics } from './analytics/ga4';
@@ -22,6 +23,7 @@ createRoot(container).render(
   <StrictMode>
     <ErrorBoundary>
       <App />
+      <Analytics />
     </ErrorBoundary>
   </StrictMode>,
 );
