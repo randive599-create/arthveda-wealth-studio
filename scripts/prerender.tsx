@@ -81,6 +81,12 @@ import {
   EDITORIAL_META,
   buildEditorialBreadcrumbJsonLd,
 } from '../src/pages/editorial/editorialContent';
+import { MethodologyContent } from '../src/pages/methodology/MethodologyContent';
+import {
+  METHODOLOGY_INTRO,
+  METHODOLOGY_META,
+  buildMethodologyBreadcrumbJsonLd,
+} from '../src/pages/methodology/methodologyContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -394,6 +400,21 @@ writeRoute(
   renderLandingBody('Editorial', 'Editorial Policy', EDITORIAL_INTRO, <EditorialContent />),
 );
 
+// --- /calculator-methodology -------------------------------------------------
+
+writeRoute(
+  'calculator-methodology.html',
+  METHODOLOGY_META,
+  'methodology-breadcrumb',
+  buildMethodologyBreadcrumbJsonLd(),
+  renderLandingBody(
+    'Methodology',
+    'Calculator Methodology',
+    METHODOLOGY_INTRO,
+    <MethodologyContent />,
+  ),
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -447,5 +468,5 @@ console.log(
     'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html, ' +
     'dist/sip-vs-stepup-sip-calculator.html, dist/about-us.html, dist/contact-us.html, ' +
     'dist/privacy-policy.html, dist/terms-and-conditions.html, dist/disclaimer.html, ' +
-    'dist/cookie-policy.html and dist/editorial-policy.html',
+    'dist/cookie-policy.html, dist/editorial-policy.html and dist/calculator-methodology.html',
 );

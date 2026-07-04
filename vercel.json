@@ -16,6 +16,7 @@
     { "source": "/disclaimer", "destination": "/disclaimer.html" },
     { "source": "/cookie-policy", "destination": "/cookie-policy.html" },
     { "source": "/editorial-policy", "destination": "/editorial-policy.html" },
+    { "source": "/calculator-methodology", "destination": "/calculator-methodology.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
