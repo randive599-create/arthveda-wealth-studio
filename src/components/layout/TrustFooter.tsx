@@ -1,8 +1,8 @@
 /**
  * Sitewide footer — a structured premium finance footer.
  *
- * A brand block alongside five link columns (Investment Calculators, Company,
- * Learn, Legal, Connect) over a bottom bar carrying the copyright, the
+ * A brand block alongside four link columns (Investment Calculators, Company,
+ * Legal, Connect) over a bottom bar carrying the copyright, the
  * educational disclaimer, and a positioning line. Present on every screen. All
  * content is static (no images, no async), so the footer introduces no layout
  * shift. Column headings are <h2> and each group is a labelled <nav> for
@@ -45,20 +45,6 @@ const LEGAL_LINKS: FooterLink[] = [
 const LINK_CLASS =
   'text-sm text-ink-secondary underline-offset-2 transition-colors duration-150 ' +
   'hover:text-accent hover:underline focus-visible:outline-none focus-visible:text-accent';
-
-/** A subtle, non-interactive "Coming Soon" badge for unbuilt resources. */
-function ComingSoonBadge() {
-  return (
-    <span
-      className="
-        inline-flex items-center rounded-[var(--radius-control)] border border-hairline
-        bg-mist px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-secondary
-      "
-    >
-      Coming Soon
-    </span>
-  );
-}
 
 /** A titled footer column with its own accessible landmark. */
 function FooterColumn({
@@ -111,8 +97,8 @@ export function TrustFooter() {
             </p>
           </div>
 
-          {/* Link columns: Investment Calculators, Company, Learn, Legal, Connect */}
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-5">
+          {/* Link columns: Investment Calculators, Company, Legal, Connect */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
             <FooterColumn id="calculators" title="Investment Calculators">
               {CALCULATOR_LINKS.map((link) => (
                 <li key={link.href}>
@@ -135,13 +121,6 @@ export function TrustFooter() {
                   </a>
                 </li>
               ))}
-            </FooterColumn>
-
-            <FooterColumn id="learn" title="Learn">
-              <li className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-ink-secondary">Blog</span>
-                <ComingSoonBadge />
-              </li>
             </FooterColumn>
 
             <FooterColumn id="legal" title="Legal">
