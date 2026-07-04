@@ -69,6 +69,12 @@ import {
   buildDisclaimerBreadcrumbJsonLd,
   buildDisclaimerWebPageJsonLd,
 } from '../src/pages/disclaimer/disclaimerContent';
+import { CookieContent } from '../src/pages/cookies/CookieContent';
+import {
+  COOKIE_INTRO,
+  COOKIE_META,
+  buildCookieBreadcrumbJsonLd,
+} from '../src/pages/cookies/cookieContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -362,6 +368,16 @@ writeRoute(
   [{ key: 'disclaimer-breadcrumb', json: buildDisclaimerBreadcrumbJsonLd() }],
 );
 
+// --- /cookie-policy ----------------------------------------------------------
+
+writeRoute(
+  'cookie-policy.html',
+  COOKIE_META,
+  'cookie-breadcrumb',
+  buildCookieBreadcrumbJsonLd(),
+  renderLandingBody('Legal', 'Cookie Policy', COOKIE_INTRO, <CookieContent />),
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -414,5 +430,6 @@ console.log(
   'prerender: wrote dist/index.html, dist/sip-calculator.html, dist/retirement-calculator.html, ' +
     'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html, ' +
     'dist/sip-vs-stepup-sip-calculator.html, dist/about-us.html, dist/contact-us.html, ' +
-    'dist/privacy-policy.html, dist/terms-and-conditions.html and dist/disclaimer.html',
+    'dist/privacy-policy.html, dist/terms-and-conditions.html, dist/disclaimer.html ' +
+    'and dist/cookie-policy.html',
 );
