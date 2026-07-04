@@ -1,0 +1,55 @@
+/**
+ * /terms-and-conditions — the ArthVeda Terms & Conditions page.
+ *
+ * A content (non-calculator) page that reuses the shared AppShell (full-width
+ * variant, no hero) and the standard SEO head: title, description, canonical,
+ * Open Graph/Twitter, and WebPage + Breadcrumb JSON-LD schemas.
+ * A prerendered static version is emitted at build time via the same
+ * architecture as the calculator, about, contact, and privacy pages.
+ *
+ * No calculator engine, formula, chart, PDF or existing route is changed.
+ */
+
+import { AppShell } from '../../components/layout/AppShell';
+import { TermsContent } from './TermsContent';
+import {
+  TERMS_INTRO,
+  TERMS_META,
+  buildTermsBreadcrumbJsonLd,
+  buildTermsWebPageJsonLd,
+} from './termsContent';
+import { useSeoHead } from '../shared/useSeoHead';
+
+export function TermsPage() {
+  useSeoHead({
+    meta: TERMS_META,
+    extraJsonLd: [
+      { key: 'terms-webpage', build: buildTermsWebPageJsonLd },
+      { key: 'terms-breadcrumb', build: buildTermsBreadcrumbJsonLd },
+    ],
+  });
+
+  return (
+    <AppShell
+      variant="full"
+      showHero={false}
+      studio={
+        <div className="space-y-8" data-testid="terms-page">
+          <header>
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-secondary">
+              Legal
+            </p>
+            <h1 className="mt-2 font-heading text-3xl font-bold leading-tight text-ink sm:text-4xl">
+              Terms &amp; Conditions
+            </h1>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base">
+              {TERMS_INTRO}
+            </p>
+          </header>
+
+          <TermsContent />
+        </div>
+      }
+    />
+  );
+}
