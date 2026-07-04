@@ -87,6 +87,12 @@ import {
   METHODOLOGY_META,
   buildMethodologyBreadcrumbJsonLd,
 } from '../src/pages/methodology/methodologyContent';
+import { TrustContent } from '../src/pages/trust/TrustContent';
+import {
+  TRUST_INTRO,
+  TRUST_META,
+  buildTrustBreadcrumbJsonLd,
+} from '../src/pages/trust/trustContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -415,6 +421,21 @@ writeRoute(
   ),
 );
 
+// --- /why-trust-our-calculators ----------------------------------------------
+
+writeRoute(
+  'why-trust-our-calculators.html',
+  TRUST_META,
+  'trust-breadcrumb',
+  buildTrustBreadcrumbJsonLd(),
+  renderLandingBody(
+    'Trust & Transparency',
+    'Why You Can Trust Our Calculators',
+    TRUST_INTRO,
+    <TrustContent />,
+  ),
+);
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -468,5 +489,6 @@ console.log(
     'dist/swp-calculator.html, dist/lumpsum-calculator.html, dist/fire-calculator.html, ' +
     'dist/sip-vs-stepup-sip-calculator.html, dist/about-us.html, dist/contact-us.html, ' +
     'dist/privacy-policy.html, dist/terms-and-conditions.html, dist/disclaimer.html, ' +
-    'dist/cookie-policy.html, dist/editorial-policy.html and dist/calculator-methodology.html',
+    'dist/cookie-policy.html, dist/editorial-policy.html, dist/calculator-methodology.html ' +
+    'and dist/why-trust-our-calculators.html',
 );

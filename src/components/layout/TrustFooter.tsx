@@ -72,6 +72,12 @@ export function TrustFooter() {
           >
             Calculator Methodology
           </a>
+          <a
+            href="/why-trust-our-calculators"
+            className="text-sm font-medium text-ink-secondary underline-offset-2 hover:text-ink hover:underline"
+          >
+            Why Trust Our Calculators
+          </a>
         </nav>
         <p className="mt-4 text-sm text-ink-secondary" data-testid={TESTIDS.footerContact}>
           Contact:{' '}
