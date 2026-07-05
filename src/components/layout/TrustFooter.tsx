@@ -14,6 +14,7 @@ import type { ReactNode } from 'react';
 import { BrandMark } from './BrandMark';
 import { InstagramButton } from '../social/InstagramButton';
 import { TESTIDS } from '../../lib/testids';
+import { hasPublishedArticles } from '../../pages/learn/learnContent';
 
 interface FooterLink {
   href: string;
@@ -29,9 +30,11 @@ const CALCULATOR_LINKS: FooterLink[] = [
   { href: '/fire-calculator', label: 'FIRE Calculator' },
 ];
 
+// "Learn" is only surfaced once at least one article is published, so the
+// footer link stays hidden until the section has real content.
 const COMPANY_LINKS: FooterLink[] = [
   { href: '/about-us', label: 'About Us' },
-  { href: '/learn', label: 'Learn' },
+  ...(hasPublishedArticles() ? [{ href: '/learn', label: 'Learn' }] : []),
 ];
 
 const LEGAL_LINKS: FooterLink[] = [

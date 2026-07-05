@@ -27,6 +27,8 @@ export function ArticleHero({ article }: ArticleHeroProps) {
         {article.heroSummary}
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-secondary">
+        <span>By {article.author.name}</span>
+        <span aria-hidden="true" className="h-3 w-px bg-hairline" />
         <span className="inline-flex items-center gap-2">
           <Clock size={13} strokeWidth={1.75} aria-hidden="true" />
           {article.readingMinutes} min read

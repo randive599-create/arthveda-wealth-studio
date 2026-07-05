@@ -24,8 +24,9 @@ describe('CalculatorNav', () => {
     for (const item of NAV_ITEMS) {
       expect(queryByTestId(TESTIDS.navLink(item.path))).not.toBeNull();
     }
-    // Home + 6 calculators + Learn + About Us + Contact Us + Privacy + Terms + Disclaimer.
-    expect(NAV_ITEMS).toHaveLength(13);
+    // Home + 6 calculators + About Us + Contact Us + Privacy + Terms + Disclaimer.
+    // "Learn" is intentionally excluded until at least one article is published.
+    expect(NAV_ITEMS).toHaveLength(12);
     unmount();
   });
 

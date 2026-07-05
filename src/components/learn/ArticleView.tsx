@@ -14,6 +14,7 @@ import type { LearnArticle } from '../../pages/learn/learnContent';
 import { ArticleBody } from './ArticleBody';
 import { ArticleFaq } from './ArticleFaq';
 import { ArticleHero } from './ArticleHero';
+import { AuthorByline } from './AuthorByline';
 import { KeyTakeaways } from './KeyTakeaways';
 import { References } from './References';
 import { RelatedArticles } from './RelatedArticles';
@@ -37,6 +38,7 @@ export function ArticleView({ article }: ArticleViewProps) {
           <KeyTakeaways items={article.keyTakeaways} />
           <ArticleBody sections={article.sections} />
           {article.faqs ? <ArticleFaq faqs={article.faqs} /> : null}
+          <AuthorByline author={article.author} />
           <References references={article.references} />
         </div>
       </div>

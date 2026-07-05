@@ -24,6 +24,37 @@ import type { FaqEntry } from '../../components/faq/faqData';
 export const LEARN_WEBSITE = 'https://arthvedawealth.in';
 
 /* -------------------------------------------------------------------------- */
+/* Author (mandatory — E-E-A-T for a YMYL financial site)                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Every article MUST attribute a named author. This is a Google E-E-A-T
+ * requirement for Your-Money-or-Your-Life (financial) content and feeds both
+ * the on-page byline and the Article JSON-LD `author` (as a schema.org Person).
+ */
+export interface ArticleAuthor {
+  /** Full display name, e.g. "Suyog Randive". */
+  name: string;
+  /** Role / title, e.g. "Founder, ArthVeda Wealth Studio". */
+  role: string;
+  /** Short bio (1–2 sentences) shown in the "About the author" byline. */
+  bio: string;
+}
+
+/**
+ * Default author for ArthVeda editorial content. New articles can reuse this or
+ * supply their own author. Deliberately avoids advisory credentials (no
+ * "Financial Advisor" / "SEBI Registered" claims) — see the About page tone.
+ */
+export const DEFAULT_AUTHOR: ArticleAuthor = {
+  name: 'Suyog Randive',
+  role: 'Founder, ArthVeda Wealth Studio',
+  bio:
+    'Independent creator of ArthVeda Wealth Studio. Passionate about financial planning and ' +
+    'building practical, transparent tools that help Indian investors make better decisions.',
+};
+
+/* -------------------------------------------------------------------------- */
 /* Categories                                                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -129,8 +160,12 @@ export interface LearnArticle {
   /** Sources / further reading. */
   references?: ArticleReference[];
 
-  /** Optional author display name; defaults to the publisher organisation. */
-  author?: string;
+  /**
+   * Article author (MANDATORY). Full name, role and a short bio are required so
+   * every guide is transparently attributed. `dateModified` (last updated) and
+   * `readingMinutes` (reading time) above complete the editorial by-line.
+   */
+  author: ArticleAuthor;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -209,6 +244,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       { label: 'AMFI — Association of Mutual Funds in India', url: 'https://www.amfiindia.com/' },
       { label: 'SEBI — Investor education', url: 'https://investor.sebi.gov.in/' },
     ],
+    author: DEFAULT_AUTHOR,
   },
   {
     slug: 'sip-vs-lumpsum',
@@ -257,6 +293,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     relatedCalculators: ['/sip-calculator', '/lumpsum-calculator'],
     relatedArticles: ['what-is-sip'],
     references: [{ label: 'AMFI — Association of Mutual Funds in India', url: 'https://www.amfiindia.com/' }],
+    author: DEFAULT_AUTHOR,
   },
 ];
 
@@ -272,6 +309,15 @@ export function articleUrl(slug: string): string {
 /** Only published articles are ever exposed publicly (listings, sitemap, prerender). */
 export function getPublishedArticles(): LearnArticle[] {
   return LEARN_ARTICLES.filter((a) => a.status === 'published');
+}
+
+/**
+ * True once at least one article is published. Drives the conditional exposure
+ * of the Learn section in the top navigation and footer — the entry points stay
+ * hidden until there is real content to link to.
+ */
+export function hasPublishedArticles(): boolean {
+  return LEARN_ARTICLES.some((a) => a.status === 'published');
 }
 
 /**
@@ -372,7 +418,12 @@ export function buildArticleJsonLd(article: LearnArticle): string {
     description: article.description,
     datePublished: article.datePublished,
     dateModified: article.dateModified,
-    author: { '@type': 'Organization', name: article.author ?? 'ArthVeda Wealth Studio' },
+    author: {
+      '@type': 'Person',
+      name: article.author.name,
+      jobTitle: article.author.role,
+      description: article.author.bio,
+    },
     publisher: {
       '@type': 'Organization',
       name: 'ArthVeda Wealth Studio',

@@ -8,6 +8,8 @@
  * consistent across the site.
  */
 
+import { hasPublishedArticles } from '../pages/learn/learnContent';
+
 export interface CalculatorEntry {
   /** Canonical route path (no trailing slash). */
   path: string;
@@ -63,11 +65,17 @@ export interface NavItem {
   label: string;
 }
 
-/** Top-navigation items: Home, every calculator, then informational pages. */
+/**
+ * Top-navigation items: Home, every calculator, then informational pages.
+ *
+ * The "Learn" link is only included once at least one article is published
+ * (`hasPublishedArticles()`), so the section stays hidden from the primary
+ * navigation until it has real content to point to.
+ */
 export const NAV_ITEMS: NavItem[] = [
   { path: '/', label: 'Home' },
   ...CALCULATORS.map((c) => ({ path: c.path, label: c.label })),
-  { path: '/learn', label: 'Learn' },
+  ...(hasPublishedArticles() ? [{ path: '/learn', label: 'Learn' }] : []),
   { path: '/about-us', label: 'About Us' },
   { path: '/contact-us', label: 'Contact Us' },
   { path: '/privacy-policy', label: 'Privacy Policy' },
