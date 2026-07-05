@@ -269,7 +269,7 @@ export async function generateSipReport(
     { label: 'Maturity Value', value: money(result.maturityValue), emphasis: 'accent' },
     { label: 'Wealth Created', value: money(result.wealthCreated), emphasis: 'accent' },
     { label: 'Wealth Multiplier', value: `${result.wealthMultiplier.toFixed(2)}x` },
-    { label: 'XIRR / CAGR', value: `${result.xirrPct.toFixed(2)}%` },
+    { label: 'Annualised Return (XIRR / CAGR)', value: `${result.xirrPct.toFixed(2)}%` },
   ]);
 
   // Advanced assumptions.

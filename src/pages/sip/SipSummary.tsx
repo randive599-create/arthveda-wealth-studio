@@ -63,7 +63,7 @@ export function SipSummary({ result }: SipSummaryProps) {
           testId={TESTIDS.sipOutput('wealth-created')}
         />
         <MetricCard
-          label="Total Gain"
+          label="Total Return (%)"
           value={`${result.totalGainPct.toFixed(1)}%`}
           subValue="Absolute return"
           testId={TESTIDS.sipOutput('total-gain')}
@@ -99,7 +99,7 @@ export function SipSummary({ result }: SipSummaryProps) {
             testId={TESTIDS.sipOutput('step-up-benefit')}
           />
           <MetricCard
-            label="XIRR / CAGR"
+            label="Annualised Return (XIRR / CAGR)"
             value={`${result.xirrPct.toFixed(2)}%`}
             subValue="Annualised return (approx.)"
             testId={TESTIDS.sipOutput('xirr')}

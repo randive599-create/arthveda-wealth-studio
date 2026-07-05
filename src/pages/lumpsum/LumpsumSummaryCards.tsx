@@ -33,7 +33,7 @@ export function LumpsumSummaryCards({ result }: LumpsumSummaryCardsProps) {
           </span>
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-secondary">
-              Final Corpus
+              Final Value (Corpus)
             </p>
             <p className="font-heading text-3xl font-bold leading-tight text-accent">
               {money(result.finalCorpus)}
@@ -48,13 +48,13 @@ export function LumpsumSummaryCards({ result }: LumpsumSummaryCardsProps) {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          label="Total Gain"
+          label="Investment Gains (Returns Earned)"
           value={money(result.totalGain)}
           subValue="Corpus minus investment"
           testId={TESTIDS.lumpsumOutput('total-gain')}
         />
         <MetricCard
-          label="CAGR"
+          label="Annual Growth Rate (CAGR)"
           value={`${result.cagrPct.toFixed(2)}%`}
           subValue="Compound annual growth"
           testId={TESTIDS.lumpsumOutput('cagr')}

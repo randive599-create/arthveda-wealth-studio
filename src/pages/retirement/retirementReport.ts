@@ -301,7 +301,7 @@ export async function generateRetirementReport(
   w.pairs([
     { label: 'Current Age', value: `${inputs.currentAge} years` },
     { label: 'Retirement Age', value: `${inputs.retirementAge} years` },
-    { label: 'Current Corpus', value: money(inputs.currentCorpus) },
+    { label: 'Current Retirement Savings', value: money(inputs.currentCorpus) },
     { label: 'Monthly Investment', value: money(inputs.monthlyInvestment) },
     { label: 'Annual Step-Up', value: formatPercent(inputs.annualStepUpPct) },
     { label: 'Expected Return', value: formatPercent(inputs.expectedReturnPct) },

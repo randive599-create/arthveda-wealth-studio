@@ -53,7 +53,7 @@ export function RetirementControls({ inputs, onChange }: RetirementControlsProps
           testIdBase="retirement-retirement-age"
         />
         <SliderInput
-          label="Current Corpus"
+          label="Current Retirement Savings"
           value={inputs.currentCorpus}
           min={0}
           max={50_000_000}

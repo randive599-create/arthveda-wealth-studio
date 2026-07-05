@@ -278,10 +278,10 @@ export async function generateStepUpReport(
   w.pairs([
     { label: 'Normal SIP Corpus', value: money(result.normalCorpus) },
     { label: 'Step-Up SIP Corpus', value: money(result.stepUpCorpus), emphasis: 'accent' },
-    { label: 'Additional Wealth Created', value: money(result.additionalWealthCreated) },
-    { label: 'Difference in Corpus', value: money(result.differenceInCorpus), emphasis: 'accent' },
+    { label: 'Additional Investment Gains', value: money(result.additionalWealthCreated) },
+    { label: 'Difference in Final Corpus', value: money(result.differenceInCorpus), emphasis: 'accent' },
     { label: 'Total Invested Amount', value: money(result.totalInvested) },
-    { label: 'Total Gain', value: money(result.totalGain) },
+    { label: 'Investment Gains (Returns Earned)', value: money(result.totalGain) },
     { label: 'Wealth Multiplier', value: `${result.wealthMultiplier.toFixed(2)}x` },
   ]);
 

@@ -28,7 +28,7 @@ export function StepUpComparisonTable({ result }: StepUpComparisonTableProps) {
         <table className="w-full min-w-[40rem] border-collapse text-left">
           <thead className="sticky top-0 bg-canvas">
             <tr className="border-b border-hairline">
-              {['Year', 'Monthly SIP', 'Annual Investment', 'Normal SIP', 'Step-Up SIP', 'Difference'].map(
+              {['Year', 'Monthly SIP', 'Annual Investment', 'Normal SIP', 'Step-Up SIP', 'Difference in Final Corpus'].map(
                 (heading) => (
                   <th
                     key={heading}

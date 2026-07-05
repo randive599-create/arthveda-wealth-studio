@@ -259,8 +259,8 @@ export async function generateLumpsumReport(
   w.heading('Lumpsum Plan Summary', 'Section 1');
   w.pairs([
     { label: 'Final Corpus', value: money(result.finalCorpus), emphasis: 'accent' },
-    { label: 'Total Gain', value: money(result.totalGain) },
-    { label: 'CAGR', value: `${result.cagrPct.toFixed(2)}%` },
+    { label: 'Investment Gains (Returns Earned)', value: money(result.totalGain) },
+    { label: 'Annual Growth Rate (CAGR)', value: `${result.cagrPct.toFixed(2)}%` },
     { label: 'Inflation-Adjusted Corpus', value: money(result.inflationAdjustedCorpus) },
     { label: 'Wealth Multiplier', value: `${result.wealthMultiplier.toFixed(2)}x` },
   ]);

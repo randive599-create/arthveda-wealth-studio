@@ -84,13 +84,13 @@ export function StepUpSummary({ result }: StepUpSummaryProps) {
       {/* Primary comparison outputs. */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <MetricCard
-          label="Additional Wealth Created"
+          label="Additional Investment Gains"
           value={money(result.additionalWealthCreated)}
           subValue="Extra returns vs normal SIP"
           testId={TESTIDS.stepUpOutput('additional-wealth')}
         />
         <MetricCard
-          label="Difference in Corpus"
+          label="Difference in Final Corpus"
           value={money(result.differenceInCorpus)}
           subValue="Step-Up minus Normal"
           testId={TESTIDS.stepUpOutput('difference')}
@@ -102,7 +102,7 @@ export function StepUpSummary({ result }: StepUpSummaryProps) {
           testId={TESTIDS.stepUpOutput('total-invested')}
         />
         <MetricCard
-          label="Total Gain"
+          label="Investment Gains (Returns Earned)"
           value={money(result.totalGain)}
           subValue="Step-Up SIP returns"
           testId={TESTIDS.stepUpOutput('total-gain')}
