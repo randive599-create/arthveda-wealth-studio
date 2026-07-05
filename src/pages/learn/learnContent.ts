@@ -12,11 +12,10 @@
  *     optional FAQPage) shared by the client `useSeoHead` hook and the static
  *     prerender.
  *
- * PHASE 1 NOTE: No real articles are published yet. The two entries below are
- * clearly-labelled development placeholders with `status: 'draft'` — they are
- * excluded from prerendering, the sitemap, and every public listing, so they
- * never appear in production. They exist only to exercise the article template
- * and reusable components during development.
+ * PUBLISHING STATUS: `what-is-sip` is a fully-written, published article. Any
+ * entry still marked `status: 'draft'` (e.g. `sip-vs-lumpsum`) is a work in
+ * progress — drafts are excluded from prerendering, the sitemap, and every
+ * public listing, so they never appear in production until published.
  */
 
 import type { FaqEntry } from '../../components/faq/faqData';
@@ -199,7 +198,7 @@ export interface LearnArticle {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Registry (Phase 1: development placeholders only, all `draft`)             */
+/* Registry (`what-is-sip` published; `sip-vs-lumpsum` still a draft)          */
 /* -------------------------------------------------------------------------- */
 
 const PLACEHOLDER_NOTE =
