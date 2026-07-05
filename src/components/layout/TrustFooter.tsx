@@ -29,7 +29,10 @@ const CALCULATOR_LINKS: FooterLink[] = [
   { href: '/fire-calculator', label: 'FIRE Calculator' },
 ];
 
-const COMPANY_LINKS: FooterLink[] = [{ href: '/about-us', label: 'About Us' }];
+const COMPANY_LINKS: FooterLink[] = [
+  { href: '/about-us', label: 'About Us' },
+  { href: '/learn', label: 'Learn' },
+];
 
 const LEGAL_LINKS: FooterLink[] = [
   { href: '/privacy-policy', label: 'Privacy Policy' },

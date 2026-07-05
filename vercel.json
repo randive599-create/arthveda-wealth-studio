@@ -19,6 +19,8 @@
     { "source": "/calculator-methodology", "destination": "/calculator-methodology.html" },
     { "source": "/why-trust-our-calculators", "destination": "/why-trust-our-calculators.html" },
     { "source": "/risk-disclosure", "destination": "/risk-disclosure.html" },
+    { "source": "/learn", "destination": "/learn.html" },
+    { "source": "/learn/:slug", "destination": "/learn/:slug.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

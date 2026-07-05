@@ -67,6 +67,7 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   { path: '/', label: 'Home' },
   ...CALCULATORS.map((c) => ({ path: c.path, label: c.label })),
+  { path: '/learn', label: 'Learn' },
   { path: '/about-us', label: 'About Us' },
   { path: '/contact-us', label: 'Contact Us' },
   { path: '/privacy-policy', label: 'Privacy Policy' },

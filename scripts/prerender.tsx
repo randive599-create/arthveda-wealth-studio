@@ -18,7 +18,7 @@
  * Run via: vite-node scripts/prerender.tsx (chained after `vite build`).
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -99,6 +99,19 @@ import {
   RISK_META,
   buildRiskBreadcrumbJsonLd,
 } from '../src/pages/risk/riskContent';
+import { LearnHome } from '../src/pages/learn/LearnHome';
+import { ArticleView } from '../src/components/learn/ArticleView';
+import {
+  LEARN_META,
+  LEARN_WEBSITE,
+  articleMeta,
+  buildArticleBreadcrumbJsonLd,
+  buildArticleFaqJsonLd,
+  buildArticleJsonLd,
+  buildLearnBreadcrumbJsonLd,
+  buildLearnCollectionJsonLd,
+  getPublishedArticles,
+} from '../src/pages/learn/learnContent';
 
 const DIST = resolve(process.cwd(), 'dist');
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8');
@@ -452,6 +465,52 @@ writeRoute(
   renderLandingBody('Risk', 'Risk Disclosure', RISK_INTRO, <RiskContent />),
 );
 
+// --- /learn (homepage) -------------------------------------------------------
+
+const learnBody = renderToStaticMarkup(
+  <div className="mx-auto w-full max-w-[1400px] px-5 py-10 sm:px-8">
+    <LearnHome />
+  </div>,
+);
+writeRoute(
+  'learn.html',
+  LEARN_META,
+  'learn-collection',
+  buildLearnCollectionJsonLd(),
+  learnBody,
+  [{ key: 'learn-breadcrumb', json: buildLearnBreadcrumbJsonLd() }],
+);
+
+// --- /learn/<slug> (published articles only) ---------------------------------
+//
+// Draft articles are intentionally skipped: they are never prerendered, so they
+// are unreachable in production (the /learn/:slug rewrite resolves only to a
+// prerendered .html). Each published article also flows into the sitemap below.
+
+const publishedArticles = getPublishedArticles();
+if (publishedArticles.length > 0) {
+  mkdirSync(resolve(DIST, 'learn'), { recursive: true });
+}
+for (const article of publishedArticles) {
+  const articleBody = renderToStaticMarkup(
+    <div className="mx-auto w-full max-w-[1400px] px-5 py-10 sm:px-8">
+      <ArticleView article={article} />
+    </div>,
+  );
+  const faqJsonLd = buildArticleFaqJsonLd(article);
+  writeRoute(
+    `learn/${article.slug}.html`,
+    articleMeta(article),
+    'article',
+    buildArticleJsonLd(article),
+    articleBody,
+    [
+      { key: 'article-breadcrumb', json: buildArticleBreadcrumbJsonLd(article) },
+      ...(faqJsonLd ? [{ key: 'article-faq', json: faqJsonLd }] : []),
+    ],
+  );
+}
+
 // --- / (home) ----------------------------------------------------------------
 
 const homeBody = renderToStaticMarkup(
@@ -499,6 +558,41 @@ const homeBody = renderToStaticMarkup(
 const homeHtml = injectIntoRoot(template, homeBody);
 writeFileSync(resolve(DIST, 'index.html'), homeHtml);
 
+// --- sitemap: inject Learn URLs ----------------------------------------------
+//
+// public/sitemap.xml stays the single source for the core routes. Here we
+// augment the *built* dist/sitemap.xml with the Learn homepage and every
+// PUBLISHED article, so the sitemap stays automatically in sync with the
+// content registry (drafts are excluded, so no unpublished URLs leak).
+
+const sitemapPath = resolve(DIST, 'sitemap.xml');
+try {
+  const sitemap = readFileSync(sitemapPath, 'utf8');
+  const learnEntries = [
+    { loc: LEARN_META.canonical, changefreq: 'weekly', priority: '0.7' },
+    ...getPublishedArticles().map((article) => ({
+      loc: `${LEARN_WEBSITE}/learn/${article.slug}`,
+      changefreq: 'monthly',
+      priority: '0.6',
+      lastmod: article.dateModified,
+    })),
+  ];
+  const xml = learnEntries
+    .map((e) => {
+      const lastmod = 'lastmod' in e && e.lastmod ? `\n    <lastmod>${e.lastmod}</lastmod>` : '';
+      return (
+        `  <url>\n    <loc>${e.loc}</loc>${lastmod}\n` +
+        `    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>\n`
+      );
+    })
+    .join('');
+  if (!sitemap.includes('/learn</loc>') && !sitemap.includes('/learn<')) {
+    writeFileSync(sitemapPath, sitemap.replace('</urlset>', `${xml}</urlset>`));
+  }
+} catch {
+  // dist/sitemap.xml not present — skip silently.
+}
+
 // eslint-disable-next-line no-console
 console.log(
   'prerender: wrote dist/index.html, dist/sip-calculator.html, dist/retirement-calculator.html, ' +
@@ -506,5 +600,8 @@ console.log(
     'dist/sip-vs-stepup-sip-calculator.html, dist/about-us.html, dist/contact-us.html, ' +
     'dist/privacy-policy.html, dist/terms-and-conditions.html, dist/disclaimer.html, ' +
     'dist/cookie-policy.html, dist/editorial-policy.html, dist/calculator-methodology.html, ' +
-    'dist/why-trust-our-calculators.html and dist/risk-disclosure.html',
+    'dist/why-trust-our-calculators.html, dist/risk-disclosure.html, dist/learn.html' +
+    (getPublishedArticles().length > 0
+      ? ` and ${getPublishedArticles().length} dist/learn/*.html article page(s)`
+      : ' (no published articles yet)'),
 );

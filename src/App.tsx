@@ -78,6 +78,14 @@ const TrustPage = lazy(() =>
 const RiskPage = lazy(() =>
   import('./pages/risk/RiskPage').then((m) => ({ default: m.RiskPage })),
 );
+// Learn section: the homepage and the dynamic article route are each their own
+// lazily-loaded chunk, so the Learn code never touches the calculator bundles.
+const LearnHomePage = lazy(() =>
+  import('./pages/learn/LearnHomePage').then((m) => ({ default: m.LearnHomePage })),
+);
+const LearnArticlePage = lazy(() =>
+  import('./pages/learn/LearnArticlePage').then((m) => ({ default: m.LearnArticlePage })),
+);
 
 // Recharts is a large dependency; load the charts lazily so it is split into
 // its own chunk and does not block the initial paint of the studio shell.
@@ -151,10 +159,13 @@ const ROUTES: Record<string, LazyExoticComponent<() => JSX.Element>> = {
   '/calculator-methodology': MethodologyPage,
   '/why-trust-our-calculators': TrustPage,
   '/risk-disclosure': RiskPage,
+  '/learn': LearnHomePage,
 };
 
 export default function App() {
-  const RoutePage = ROUTES[getCurrentPath()];
+  const path = getCurrentPath();
+
+  const RoutePage = ROUTES[path];
   if (RoutePage) {
     return (
       <Suspense fallback={null}>
@@ -162,5 +173,16 @@ export default function App() {
       </Suspense>
     );
   }
+
+  // Dynamic Learn article routes: /learn/<slug>. The article page resolves the
+  // slug from the current path itself.
+  if (path.startsWith('/learn/')) {
+    return (
+      <Suspense fallback={null}>
+        <LearnArticlePage />
+      </Suspense>
+    );
+  }
+
   return <StudioPage />;
 }
