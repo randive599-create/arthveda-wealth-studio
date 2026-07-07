@@ -14,7 +14,6 @@
 
 import { Shield } from 'lucide-react';
 import { TESTIDS } from '../../lib/testids';
-import { BrandMark } from './BrandMark';
 
 const TAGLINE =
   'Visualize every stage of your financial journey — accumulation, growth, preservation, and income — in one institutional-grade projection studio.';
@@ -23,7 +22,19 @@ export function StudioHeader() {
   return (
     <header className="border-b border-hairline bg-canvas" data-testid={TESTIDS.header}>
       <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center px-5 py-12 text-center sm:px-8 sm:py-20">
-        <BrandMark size={56} testId={TESTIDS.brandMark} />
+        {/* Primary brand element — the trimmed web logo (transparent border
+            removed so the artwork fills the box), sized larger than the navbar
+            logo: 72 / 84 / 96px. Inline aspect-ratio matches the asset (246x256)
+            so there is no distortion and no layout shift. The padded master PNG
+            and all other branding assets are unchanged. */}
+        <img
+          src="/brand/arthveda-logo-web.png"
+          alt="ArthVeda Wealth"
+          data-testid={TESTIDS.brandMark}
+          className="h-[72px] w-auto sm:h-[84px] lg:h-24"
+          style={{ aspectRatio: '246 / 256', objectFit: 'contain' }}
+          decoding="async"
+        />
 
         <h1
           className="mt-7 font-heading text-5xl font-bold leading-[0.95] tracking-[-0.01em] text-ink sm:text-6xl lg:text-7xl"
