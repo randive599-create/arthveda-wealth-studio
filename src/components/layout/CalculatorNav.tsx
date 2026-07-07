@@ -36,13 +36,14 @@ export function CalculatorNav() {
         <a
           href="/"
           data-testid={TESTIDS.navBrand}
-          className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          aria-label="ArthVeda Wealth — Home"
+          className="inline-flex items-center rounded-[var(--radius-control)] outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
-          <BrandMark size={28} />
-          <span className="font-heading text-xl font-bold leading-none text-ink">ArthVeda</span>
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-ink-secondary sm:inline">
-            Calculators
-          </span>
+          {/* The official logo already contains the full wordmark, so no
+              separate brand text is needed. Sized responsively (~36 / 40 / 44px)
+              via the optimized web asset; the square intrinsic dimensions keep
+              the box reserved so there is no layout shift. */}
+          <BrandMark className="h-9 w-auto sm:h-10 lg:h-11" />
         </a>
 
         {/* Desktop: horizontal links */}
