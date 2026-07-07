@@ -39,11 +39,13 @@ export function CalculatorNav() {
           aria-label="ArthVeda Wealth — Home"
           className="inline-flex items-center rounded-[var(--radius-control)] outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
-          {/* The official logo already contains the full wordmark, so no
-              separate brand text is needed. Sized responsively (~36 / 40 / 44px)
-              via the optimized web asset; the square intrinsic dimensions keep
-              the box reserved so there is no layout shift. */}
-          <BrandMark className="h-9 w-auto sm:h-10 lg:h-11" />
+          {/* The official logo is the primary header branding — it already
+              contains the full wordmark, so no separate brand text is needed.
+              Sized responsively (56 / 64 / 72px) via the optimized web asset;
+              w-auto + the square intrinsic dimensions preserve the exact aspect
+              ratio (no crop/stretch) and keep the box reserved (no layout
+              shift). */}
+          <BrandMark className="h-14 w-auto sm:h-16 lg:h-[72px]" />
         </a>
 
         {/* Desktop: horizontal links */}
