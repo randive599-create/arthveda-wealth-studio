@@ -15,7 +15,6 @@ import { Menu, X } from 'lucide-react';
 import { NAV_ITEMS } from '../../lib/calculators';
 import { getCurrentPath, isActivePath } from '../../lib/path';
 import { TESTIDS } from '../../lib/testids';
-import { BrandMark } from './BrandMark';
 
 const LINK_BASE =
   'rounded-[var(--radius-control)] px-3 py-2 text-[13px] font-medium transition-colors';
@@ -39,13 +38,19 @@ export function CalculatorNav() {
           aria-label="ArthVeda Wealth — Home"
           className="inline-flex items-center rounded-[var(--radius-control)] outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
-          {/* The official logo is the primary header branding — it already
-              contains the full wordmark, so no separate brand text is needed.
-              Sized responsively (56 / 64 / 72px) via the optimized web asset;
-              w-auto + the square intrinsic dimensions preserve the exact aspect
-              ratio (no crop/stretch) and keep the box reserved (no layout
-              shift). */}
-          <BrandMark className="h-14 w-auto sm:h-16 lg:h-[72px]" />
+          {/* Trimmed web logo — the master's transparent border is removed so
+              the artwork fills the box and reads as the primary header brand
+              (it already contains the full wordmark). Sized responsively
+              (56 / 64 / 72px); the inline aspect-ratio matches the asset
+              (246x256) so there is no distortion and no layout shift. The padded
+              master PNG is kept unchanged for PDFs, downloads and branding. */}
+          <img
+            src="/brand/arthveda-logo-web.png"
+            alt="ArthVeda Wealth"
+            className="h-14 w-auto sm:h-16 lg:h-[72px]"
+            style={{ aspectRatio: '246 / 256', objectFit: 'contain' }}
+            decoding="async"
+          />
         </a>
 
         {/* Desktop: horizontal links */}
