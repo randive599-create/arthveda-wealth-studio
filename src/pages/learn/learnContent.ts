@@ -1079,7 +1079,7 @@ export function buildArticleJsonLd(article: LearnArticle): string {
       '@type': 'Organization',
       name: 'ArthVeda Wealth Studio',
       url: LEARN_WEBSITE,
-      logo: `${LEARN_WEBSITE}/favicon.svg`,
+      logo: `${LEARN_WEBSITE}/brand/arthveda-logo.png`,
     },
     image: `${LEARN_WEBSITE}/og-image.png`,
     mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl(article.slug) },

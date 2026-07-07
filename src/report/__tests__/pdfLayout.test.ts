@@ -222,14 +222,19 @@ describe('PDF layout — footer zone (issue 1)', () => {
 });
 
 describe('PDF branding — logo & website', () => {
-  it('draws the vector brand mark on the first page (top-left header)', () => {
-    const { state } = render();
-    const page1Shapes = state.shapes.filter((s) => s.page === 1);
-    // Rounded square + two chevron triangles = the favicon monogram as vectors.
-    expect(page1Shapes.some((s) => s.kind === 'roundedRect')).toBe(true);
-    expect(page1Shapes.filter((s) => s.kind === 'triangle').length).toBeGreaterThanOrEqual(2);
+  it('embeds the official brand logo image in the top-left header', () => {
+    // Supply the logo (as the live pipeline does) and assert it is drawn as an
+    // image in the top-left header band, inside the page margins.
+    const model = buildReportModel(bigInrResult(), FIXED_DATE);
+    const { doc, state } = createGeometryDoc();
+    renderReport(model, { mountain: fakeImage, donut: fakeImage, logo: fakeImage }, () => doc);
 
-    // The mark sits in the top-left header band, inside the margins.
+    const headerLogo = state.images.find(
+      (img) => img.page === 1 && img.y < 120 && img.x >= MARGIN.left - 0.5,
+    );
+    expect(headerLogo).toBeDefined();
+
+    // The wordmark accompanies the logo in the top-left header band.
     const headerText = state.texts.find((t) => t.page === 1 && t.text === 'ArthVeda');
     expect(headerText).toBeDefined();
     expect(headerText!.x).toBeGreaterThanOrEqual(MARGIN.left - 0.5);

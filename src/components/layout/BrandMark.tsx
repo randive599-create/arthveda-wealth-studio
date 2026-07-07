@@ -1,8 +1,12 @@
 /**
- * The ArthVeda monogram: an emerald square enclosing a serif "A" with an
- * emerald cross-bar accent. Rendered inline as SVG so it scales crisply and
- * needs no network request. Decorative — labelled via the wordmark beside it.
+ * The official ArthVeda Wealth logo (the stylized "A" with gold growth bars and
+ * arc above the wordmark). Rendered as a lightweight, transparent PNG so it
+ * stays crisp on screen while keeping the page weight tiny — the web derivative
+ * is ~19 KB, downscaled from the 1024px master. Square footprint (size × size)
+ * so it drops into every existing layout slot the old monogram occupied.
  */
+
+const LOGO_SRC = '/brand/arthveda-logo-192.png';
 
 export interface BrandMarkProps {
   size?: number;
@@ -12,18 +16,15 @@ export interface BrandMarkProps {
 
 export function BrandMark({ size = 36, className, testId }: BrandMarkProps) {
   return (
-    <svg
+    <img
+      src={LOGO_SRC}
       width={size}
       height={size}
-      viewBox="0 0 32 32"
+      alt="ArthVeda Wealth"
       className={className}
-      role="img"
-      aria-label="ArthVeda"
       data-testid={testId}
-    >
-      <rect width="32" height="32" rx="6" fill="#064E3B" />
-      <path d="M16 6 L25 26 H20.5 L16 15 L11.5 26 H7 Z" fill="#FFFFFF" />
-      <rect x="13.4" y="19.2" width="5.2" height="2.2" fill="#10B981" />
-    </svg>
+      decoding="async"
+      style={{ objectFit: 'contain' }}
+    />
   );
 }

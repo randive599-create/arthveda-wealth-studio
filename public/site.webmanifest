@@ -1,0 +1,23 @@
+{
+  "name": "ArthVeda Wealth Studio",
+  "short_name": "ArthVeda",
+  "description": "Institutional-grade SIP, lumpsum, SWP and retirement wealth projection studio for long-term investors.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#064E3B",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

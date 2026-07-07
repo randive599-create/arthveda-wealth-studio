@@ -11,7 +11,7 @@
  */
 
 import type { ProjectionResult } from '../engine/types';
-import { captureChart, type CapturedImage, type ChartCapturer } from './captureChart';
+import { captureChart, loadBrandLogo, type CapturedImage, type ChartCapturer } from './captureChart';
 import { A4 } from './pageLayout';
 import { renderReport, type PdfDoc, type PdfFactory } from './pdfRenderer';
 import { registerReportFonts } from './registerFonts';
@@ -80,14 +80,15 @@ export async function generateReport(
   const model = buildReportModel(result, now);
 
   report(0.25, 'charts');
-  const [mountain, donut] = await Promise.all([
+  const [mountain, donut, logo] = await Promise.all([
     safeCapture(options.mountainEl, capturer),
     safeCapture(options.donutEl, capturer),
+    loadBrandLogo(),
   ]);
 
   report(0.6, 'rendering');
   const factory = options.factory ?? (await defaultFactory());
-  const doc = renderReport(model, { mountain, donut }, factory);
+  const doc = renderReport(model, { mountain, donut, logo }, factory);
 
   report(0.9, 'saving');
   const fileName = buildReportFileName(now);

@@ -36,8 +36,6 @@ import { REPORT_FONT_MONO, REPORT_FONT_SERIF } from './registerFonts';
 const INK = '#111827';
 const INK_SECONDARY = '#4b5563';
 const ACCENT = '#064e3b';
-const EMERALD = '#10b981';
-const WHITE = '#ffffff';
 const HAIRLINE = '#e5e7eb';
 const MIST = '#f9fafb';
 
@@ -154,6 +152,8 @@ export type PdfFactory = () => PdfDoc;
 export interface ReportCharts {
   mountain?: CapturedImage;
   donut?: CapturedImage;
+  /** The official ArthVeda logo, embedded in the first-page header. */
+  logo?: CapturedImage;
 }
 
 interface Cursor {
@@ -283,45 +283,37 @@ class ReportWriter {
 }
 
 /**
- * Draw the ArthVeda brand mark as crisp vector primitives — the same monogram
- * used on the website (public/favicon.svg / BrandMark): an emerald rounded
- * square enclosing a white "A" chevron with an emerald accent bar. Drawing it
- * with native PDF vectors (rather than a raster image) keeps it sharp at any
- * size, preserves the exact 1:1 aspect ratio, and never pixelates. Coordinates
- * mirror the favicon's 32-unit viewBox, scaled to `size`.
+ * Draw the official ArthVeda Wealth logo (the raster brand asset) into the
+ * report header. The small transparent PNG derivative is embedded via
+ * `addImage`, sourced from `public/brand/arthveda-logo-192.png` and downscaled
+ * into a ~30pt box, so it stays crisp in print while keeping the PDF small.
+ * When no logo image is supplied (e.g. in unit tests, or if the asset fails to
+ * load) the mark is simply omitted and the wordmark carries the branding.
  */
-function drawBrandMark(doc: PdfDoc, x: number, y: number, size: number): void {
-  const k = size / 32;
-  const px = (v: number) => x + v * k;
-  const py = (v: number) => y + v * k;
-
-  // Emerald rounded square.
-  doc.setFillColor(ACCENT);
-  doc.roundedRect(x, y, size, size, 6 * k, 6 * k, 'F');
-
-  // White "A" chevron = a solid triangle with the centre notched out by an
-  // emerald triangle the same colour as the square (matches favicon path).
-  doc.setFillColor(WHITE);
-  doc.triangle(px(16), py(6), px(25), py(26), px(7), py(26), 'F');
-  doc.setFillColor(ACCENT);
-  doc.triangle(px(16), py(15), px(20.5), py(26), px(11.5), py(26), 'F');
-
-  // Emerald accent cross-bar.
-  doc.setFillColor(EMERALD);
-  doc.rect(px(13.4), py(19.2), 5.2 * k, 2.2 * k, 'F');
+function drawBrandLogo(
+  doc: PdfDoc,
+  logo: CapturedImage | undefined,
+  x: number,
+  y: number,
+  size: number,
+): void {
+  if (!logo) {
+    return;
+  }
+  doc.addImage(logo.dataUrl, 'PNG', x, y, size, size);
 }
 
 /** Render the cover page. The writer's first page is reused as the cover. */
-function renderCover(w: ReportWriter, model: ReportModel): void {
+function renderCover(w: ReportWriter, model: ReportModel, logo?: CapturedImage): void {
   const doc = w.document;
   const centerX = A4.width / 2;
 
-  // Letterhead header (first page): brand mark + wordmark on the left, and the
+  // Letterhead header (first page): brand logo + wordmark on the left, and the
   // website + contact email right-aligned opposite it. The two blocks sit in
   // the same top band but at opposite margins, so they never overlap, and a
   // hairline rule beneath separates the header from the cover content below.
   const markSize = 30;
-  drawBrandMark(doc, MARGIN.left, MARGIN.top, markSize);
+  drawBrandLogo(doc, logo, MARGIN.left, MARGIN.top, markSize);
   const wordmarkX = MARGIN.left + markSize + 12;
   doc.setFont(FONT_SERIF, 'bold').setFontSize(15).setTextColor(INK);
   doc.text('ArthVeda', wordmarkX, MARGIN.top + 13);
@@ -628,7 +620,7 @@ export function renderReport(model: ReportModel, charts: ReportCharts, factory: 
   const w = new ReportWriter(doc);
 
   // Page 1 — Cover.
-  renderCover(w, model);
+  renderCover(w, model, charts.logo);
 
   // Reserve enough body to keep a heading with the first ~two rows of its
   // table so a heading is never stranded at the bottom of a page.

@@ -25,6 +25,44 @@ export interface CapturedImage {
 export type ChartCapturer = (element: HTMLElement) => Promise<CapturedImage>;
 
 /**
+ * Load the official ArthVeda logo as a {@link CapturedImage} for embedding in
+ * the PDF header. Uses the small transparent web derivative (not the 1 MB+
+ * master) drawn through a canvas to obtain a PNG data URL. Best-effort: returns
+ * `undefined` if the DOM/canvas is unavailable or the image fails to load, so
+ * report generation never fails on branding.
+ */
+export async function loadBrandLogo(
+  url = '/brand/arthveda-logo-192.png',
+): Promise<CapturedImage | undefined> {
+  try {
+    if (typeof document === 'undefined' || typeof Image === 'undefined') {
+      return undefined;
+    }
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.decoding = 'async';
+    img.src = url;
+    await img.decode();
+    const width = img.naturalWidth;
+    const height = img.naturalHeight;
+    if (!width || !height) {
+      return undefined;
+    }
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return undefined;
+    }
+    ctx.drawImage(img, 0, 0);
+    return { dataUrl: canvas.toDataURL('image/png'), width, height };
+  } catch {
+    return undefined;
+  }
+}
+
+/**
  * Capture a DOM element to a high-resolution PNG. Uses a 2x scale for crisp
  * output on the page and a white background to match the report surface.
  */

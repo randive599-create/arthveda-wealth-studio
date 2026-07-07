@@ -8,9 +8,10 @@ import { registerReportFonts } from '../registerFonts';
 import { A4 } from '../pageLayout';
 import type { PdfDoc } from '../pdfRenderer';
 
-// Real-engine test: proves the branding (vector logo + footer website)
-// renders through actual jsPDF — i.e. triangle()/roundedRect() exist and the
-// document is produced — for a multi-page INR report.
+// Real-engine test: proves the branding (header wordmark + footer website)
+// renders through actual jsPDF and a populated multi-page INR document is
+// produced. The logo image is supplied by the live pipeline via addImage; it
+// is omitted here so this test exercises the graceful no-logo branding path.
 describe('real jsPDF branding render', () => {
   it('renders a branded multi-page INR PDF with no errors', () => {
     const result = buildProjection(
@@ -35,8 +36,8 @@ describe('real jsPDF branding render', () => {
       return doc as unknown as PdfDoc;
     };
 
-    // Charts omitted: this asserts the branding path (vector logo + footer
-    // website) renders through the real engine; charts are unrelated raster I/O.
+    // Charts + logo omitted: this asserts the branding path (header wordmark +
+    // footer website) renders through the real engine; images are raster I/O.
     const doc = renderReport(model, {}, factory);
     expect(doc.getNumberOfPages()).toBeGreaterThan(5);
     const bytes = doc.output('arraybuffer') as ArrayBuffer;

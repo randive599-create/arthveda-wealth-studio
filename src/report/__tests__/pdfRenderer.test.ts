@@ -167,14 +167,22 @@ describe('renderReport', () => {
     expect(allText).toContain('Wealth Projection Report');
   });
 
-  it('draws the vector brand mark on the first page', () => {
+  it('embeds the official brand logo image in the header when provided', () => {
     const model = buildReportModel(bigResult(), FIXED_DATE);
     const { doc, state } = createFakeDoc();
-    renderReport(model, { mountain: fakeImage, donut: fakeImage }, () => doc);
-    // The brand mark is one rounded square + two chevron triangles (vectors,
-    // not a raster image), so it stays crisp at any scale.
-    expect(state.roundedRects).toBeGreaterThanOrEqual(1);
-    expect(state.triangles).toBeGreaterThanOrEqual(2);
+    // Only the logo image is supplied (no charts), so exactly one image is drawn.
+    renderReport(model, { logo: fakeImage }, () => doc);
+    expect(state.images).toBe(1);
+    // The wordmark still accompanies the logo in the header lockup.
+    expect(state.texts.map((t) => t.text)).toContain('ArthVeda');
+  });
+
+  it('omits the brand logo gracefully when none is provided', () => {
+    const model = buildReportModel(bigResult(), FIXED_DATE);
+    const { doc, state } = createFakeDoc();
+    renderReport(model, {}, () => doc);
+    expect(state.images).toBe(0);
+    expect(state.pageCount).toBeGreaterThan(5);
   });
 
   it('shows the website and contact email in the footer brand line on every page', () => {

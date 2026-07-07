@@ -67,7 +67,7 @@ export function buildAboutOrganizationJsonLd(): string {
     name: 'ArthVeda Wealth Studio',
     url: ABOUT_WEBSITE,
     email: ABOUT_EMAIL,
-    logo: 'https://arthvedawealth.in/favicon.svg',
+    logo: 'https://arthvedawealth.in/brand/arthveda-logo.png',
     description:
       'ArthVeda is a wealth planning and financial projection platform that helps individuals ' +
       'visualize their financial future through advanced planning calculators and projection tools.',
