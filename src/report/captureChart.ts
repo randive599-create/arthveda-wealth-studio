@@ -26,10 +26,21 @@ export type ChartCapturer = (element: HTMLElement) => Promise<CapturedImage>;
 
 /**
  * Load the official ArthVeda logo as a {@link CapturedImage} for embedding in
- * the PDF header. Uses the small transparent web derivative (not the 1 MB+
- * master) drawn through a canvas to obtain a PNG data URL. Best-effort: returns
- * `undefined` if the DOM/canvas is unavailable or the image fails to load, so
- * report generation never fails on branding.
+ * the PDF header, from the small web derivative (not the 1 MB+ master).
+ *
+ * Two details make this render reliably in the PDF:
+ *   1. The asset is same-origin, so NO `crossOrigin` is set — that attribute was
+ *      unnecessary and made the canvas/image load brittle (cache-mode mismatch
+ *      with the plain <img> the footer already loads), which could yield an
+ *      undefined logo.
+ *   2. The logo is flattened onto white before export, producing an OPAQUE PNG.
+ *      jsPDF embeds opaque PNGs reliably (exactly like the opaque chart images);
+ *      its alpha/soft-mask path silently dropped the transparent logo, so the
+ *      mark never appeared. The PDF page is white, so a white backing looks
+ *      identical to the transparent logo.
+ *
+ * Best-effort: returns `undefined` if the DOM/canvas is unavailable or the image
+ * fails to load, so report generation never fails on branding.
  */
 export async function loadBrandLogo(
   url = '/brand/arthveda-logo-192.png',
@@ -39,7 +50,6 @@ export async function loadBrandLogo(
       return undefined;
     }
     const img = new Image();
-    img.crossOrigin = 'anonymous';
     img.decoding = 'async';
     img.src = url;
     await img.decode();
@@ -55,6 +65,9 @@ export async function loadBrandLogo(
     if (!ctx) {
       return undefined;
     }
+    // Flatten onto white so the exported PNG is opaque (see doc comment above).
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, width, height);
     ctx.drawImage(img, 0, 0);
     return { dataUrl: canvas.toDataURL('image/png'), width, height };
   } catch {
