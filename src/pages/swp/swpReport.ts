@@ -10,6 +10,7 @@
 
 import { A4, MARGIN, contentBottom, contentTop, contentWidth } from '../../report/pageLayout';
 import { registerReportFonts, REPORT_FONT_MONO, REPORT_FONT_SERIF } from '../../report/registerFonts';
+import { loadBrandLogo, drawReportLetterhead, type BrandLogoImage } from '../../report/brandLogo';
 import { formatCurrency, formatPercent } from '../../format/currency';
 import type { SwpInputs, SwpResult } from './swpModel';
 
@@ -35,6 +36,7 @@ interface Doc {
   setLineWidth(width: number): unknown;
   text(text: string, x: number, y: number, options?: { align?: string }): unknown;
   line(x1: number, y1: number, x2: number, y2: number): unknown;
+  addImage(data: string, format: string, x: number, y: number, w: number, h: number): unknown;
   rect(x: number, y: number, w: number, h: number, style?: string): unknown;
   getNumberOfPages(): number;
   save(filename: string): void;
@@ -124,25 +126,13 @@ class Writer {
   }
 }
 
-function renderHeader(doc: Doc, result: SwpResult, generated: string): void {
-  doc.setFont(REPORT_FONT_SERIF, 'bold');
-  doc.setFontSize(15);
-  doc.setTextColor(INK);
-  doc.text('ArthVeda', MARGIN.left, MARGIN.top + 4);
-  doc.setFont(REPORT_FONT_MONO, 'normal');
-  doc.setFontSize(7);
-  doc.setTextColor(ACCENT);
-  doc.text('WEALTH STUDIO', MARGIN.left, MARGIN.top + 16);
-
-  const rightX = A4.width - MARGIN.right;
-  doc.setFontSize(8);
-  doc.setTextColor(INK_SECONDARY);
-  doc.text(WEBSITE, rightX, MARGIN.top + 4, { align: 'right' });
-  doc.text(EMAIL, rightX, MARGIN.top + 16, { align: 'right' });
-
-  doc.setDrawColor(HAIRLINE);
-  doc.setLineWidth(0.5);
-  doc.line(MARGIN.left, MARGIN.top + 26, rightX, MARGIN.top + 26);
+function renderHeader(
+  doc: Doc,
+  result: SwpResult,
+  generated: string,
+  logo?: BrandLogoImage,
+): void {
+  drawReportLetterhead(doc, logo);
 
   // SWP-specific report title.
   doc.setFont(REPORT_FONT_SERIF, 'bold');
@@ -266,7 +256,8 @@ export async function generateSwpReport(
   registerReportFonts(doc as unknown as Parameters<typeof registerReportFonts>[0]);
 
   const typed = doc as unknown as Doc;
-  renderHeader(typed, result, longDate(now));
+  const logo = await loadBrandLogo();
+  renderHeader(typed, result, longDate(now), logo);
 
   const money = (v: number) => formatCurrency(v, result.currency);
   const w = new Writer(typed);
