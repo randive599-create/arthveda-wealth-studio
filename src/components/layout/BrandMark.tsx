@@ -1,36 +1,35 @@
 /**
- * The official ArthVeda Wealth logo (the stylized "A" with gold growth bars and
- * arc above the wordmark). Rendered as a lightweight, transparent PNG so it
- * stays crisp on screen while keeping the page weight tiny — the web derivative
- * is ~19 KB, downscaled from the 1024px master.
+ * The official ArthVeda Wealth logo, used in the footer brand block.
  *
- * Sizing has two modes:
- *   - `size` (px): a fixed square, applied via inline style (header, footer).
- *   - `className`: responsive height utilities such as
- *     `h-14 w-auto sm:h-16 lg:h-[72px]` (top navigation).
+ * Renders the tightly-trimmed web asset (`arthveda-logo-web.png`) — the same one
+ * the top navigation and homepage hero use — so the logo appears consistently
+ * sized (artwork filling the box, not lost in transparent padding) everywhere on
+ * the site. The asset is a lightweight transparent PNG, kept crisp on screen.
  *
- * Crucially it sets NO fixed width/height *attributes* — those would pin the
- * intrinsic box (e.g. 36px) and visually override the Tailwind height classes.
- * A square `aspect-ratio` keeps the box reserved so there is no layout shift in
- * either mode, and the aspect ratio is preserved exactly (no crop/stretch).
+ * `size` sets the rendered HEIGHT in px; the width follows the asset's true
+ * aspect ratio (never square-forced, so there is no crop/stretch), and the
+ * inline `aspect-ratio` reserves the box so there is no layout shift.
  */
 
 import type { CSSProperties } from 'react';
 
-const LOGO_SRC = '/brand/arthveda-logo-192.png';
+const LOGO_SRC = '/brand/arthveda-logo-web.png';
+// Intrinsic dimensions of the trimmed asset (246 x 256), used to preserve the
+// exact aspect ratio and reserve layout space.
+const LOGO_ASPECT = '246 / 256';
 
 export interface BrandMarkProps {
-  /** Fixed square size in px. Omit when sizing via responsive `className`. */
+  /** Rendered height in px. Width follows the logo's aspect ratio. */
   size?: number;
   className?: string;
   testId?: string;
 }
 
 export function BrandMark({ size, className, testId }: BrandMarkProps) {
-  const style: CSSProperties = { objectFit: 'contain', aspectRatio: '1 / 1' };
+  const style: CSSProperties = { objectFit: 'contain', aspectRatio: LOGO_ASPECT };
   if (size != null) {
-    style.width = size;
     style.height = size;
+    style.width = 'auto';
   }
 
   return (
