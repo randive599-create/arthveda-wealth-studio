@@ -520,7 +520,7 @@ const homeBody = renderToStaticMarkup(
         ArthVeda Wealth Studio
       </p>
       <h1 className="mt-2 font-heading text-3xl font-bold leading-tight text-ink sm:text-4xl">
-        Wealth Studio — SIP, Lumpsum &amp; SWP Calculator
+        Wealth Studio
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-secondary sm:text-base">
         Model SIP, lumpsum and SWP investments with annual step-up, inflation adjustment and
