@@ -22,6 +22,19 @@ export function StudioHeader() {
   return (
     <header className="border-b border-hairline bg-canvas" data-testid={TESTIDS.header}>
       <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center px-5 py-12 text-center sm:px-8 sm:py-20">
+        {/*
+          Single, descriptive page-level <h1> for the home Wealth Studio.
+          Visually hidden (sr-only, position:absolute — removed from flow) so
+          the approved brand hero is pixel-for-pixel unchanged and there is no
+          layout shift. The visible "ArthVeda" wordmark below is presentational
+          and is a <p>, not a heading. The text matches the prerendered homepage
+          <h1> so the crawled (pre-JS) and rendered (post-JS) headings are
+          identical — resolving the duplicate/mismatched-H1 issue. StudioHeader
+          renders only on the home page (calculator pages pass showHero={false}
+          and expose their own <h1>), so this adds exactly one H1 to the home.
+        */}
+        <h1 className="sr-only">Wealth Studio — SIP, Lumpsum &amp; SWP Calculator</h1>
+
         {/* Primary brand element — the trimmed web logo (transparent border
             removed so the artwork fills the box), sized larger than the navbar
             logo: 72 / 84 / 96px. Inline aspect-ratio matches the asset (246x256)
@@ -36,12 +49,18 @@ export function StudioHeader() {
           decoding="async"
         />
 
-        <h1
+        {/*
+          Presentational brand wordmark. Demoted from <h1> to <p> so the home
+          page exposes a single, descriptive <h1> (the sr-only heading above).
+          Classes and data-testid are unchanged — this is pixel-for-pixel
+          identical to the previous heading.
+        */}
+        <p
           className="mt-7 font-heading text-5xl font-bold leading-[0.95] tracking-[-0.01em] text-ink sm:text-6xl lg:text-7xl"
           data-testid={TESTIDS.brandWordmark}
         >
           ArthVeda
-        </h1>
+        </p>
 
         <div className="mt-5 flex items-center gap-3 sm:gap-4">
           <span className="h-px w-8 bg-hairline sm:w-16" aria-hidden="true" />
