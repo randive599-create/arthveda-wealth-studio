@@ -51,9 +51,18 @@ export function StudioHeader() {
 
         <div className="mt-5 flex items-center gap-3 sm:gap-4">
           <span className="h-px w-8 bg-hairline sm:w-16" aria-hidden="true" />
-          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent sm:text-sm sm:tracking-[0.42em]">
+          {/*
+            Visible, page-level <h1>. "Wealth Studio" is the page topic (the
+            ArthVeda wordmark above is a <p>). This is a semantic-only change:
+            the element was a <span> and is now an <h1> with the EXACT same
+            Tailwind classes. Tailwind v4 Preflight resets h1 margin to 0 and
+            font-size/font-weight to inherit, and as a flex item its box model
+            is unchanged — so typography, spacing, layout and responsive
+            behaviour are pixel-for-pixel identical. No additional visible text.
+          */}
+          <h1 className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent sm:text-sm sm:tracking-[0.42em]">
             Wealth Studio
-          </span>
+          </h1>
           <span className="h-px w-8 bg-hairline sm:w-16" aria-hidden="true" />
         </div>
 

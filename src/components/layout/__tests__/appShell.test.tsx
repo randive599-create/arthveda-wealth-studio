@@ -5,10 +5,11 @@ import { AppShell } from '../AppShell';
 import { TESTIDS } from '../../../lib/testids';
 
 /**
- * The brand hero (StudioHeader, with its oversized "ArthVeda" wordmark <h1>)
- * must appear only on the home Wealth Studio. Calculator landing
- * pages opt out via `showHero={false}` so their own page <h1> + intro lead the
- * page and there is no duplicate, generic <h1>.
+ * The brand hero (StudioHeader) must appear only on the home Wealth Studio.
+ * Its "ArthVeda" wordmark is a presentational <p>; the page-level <h1> is the
+ * visible "Wealth Studio" hero text (the page topic). Calculator landing pages
+ * opt out via `showHero={false}` so their own page <h1> + intro lead the page
+ * and there is no duplicate, generic <h1>.
  */
 describe('AppShell hero visibility', () => {
   afterEach(() => {
