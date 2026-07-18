@@ -903,8 +903,8 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       'Compare systematic (SIP) investing against a one-time lumpsum investment — the trade-offs, ' +
       'when each makes sense, and how to combine both.',
     heroSummary:
-      'SIP and lumpsum are not rivals — they suit different situations. This guide explains the ' +
-      'trade-offs so you can choose (or blend) with confidence.',
+      'Understand the differences between SIP and lumpsum investing, when each approach works best, and ' +
+      'how to choose the right strategy based on your financial goals, investment horizon, and available funds.',
     datePublished: '2026-07-18',
     dateModified: '2026-07-18',
     readingMinutes: 10,
@@ -919,7 +919,11 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           },
           {
             type: 'callout',
-            text: `Quick answer: Neither a SIP nor a lumpsum is "better" in the abstract — they are simply two ways of putting money into the same mutual funds. A SIP invests a fixed amount at regular intervals (usually monthly), which suits money that arrives steadily, like a salary, and spreads your entry across many dates. A lumpsum invests a single larger amount all at once, which suits a sum you already hold, like a bonus or a maturity payout, and puts the whole amount to work immediately. In both cases your money goes into a market-linked mutual fund, so returns can rise or fall and are never guaranteed.`,
+            text: `Quick answer: Neither a SIP nor a lumpsum is "better" in the abstract — they are simply two ways of putting money into the same mutual funds. A SIP invests a fixed amount at regular intervals (usually monthly), which suits money that arrives steadily, like a salary, and spreads your entry across many dates.`,
+          },
+          {
+            type: 'callout',
+            text: `A lumpsum invests a single larger amount all at once, which suits a sum you already hold, like a bonus or a maturity payout, and puts the whole amount to work immediately. In both cases your money goes into a market-linked mutual fund, so returns can rise or fall and are never guaranteed.`,
           },
         ],
       },
@@ -972,7 +976,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           { type: 'subheading', text: `How a monthly SIP works over time` },
           {
             type: 'paragraph',
-            text: `Picture a 5,000-rupee monthly SIP. On your chosen date each month, 5,000 rupees leaves your bank and buys units of the fund at that day's NAV (the price of one unit). Because the NAV moves with the market, the exact number of units you get differs every month — more units when the price is lower, fewer when it is higher. Month after month these units add up, and the total value of your holding is simply all your accumulated units multiplied by the current NAV. The quiet advantage is consistency: the process runs through calm months and nervous ones alike, so investing becomes a background habit rather than a monthly decision.`,
+            text: `Imagine you invest ₹5,000 every month through a SIP. On your chosen date each month, 5,000 rupees leaves your bank and buys units of the fund at that day's NAV (the price of one unit). Because the NAV moves with the market, the exact number of units you get differs every month — more units when the price is lower, fewer when it is higher. Month after month these units add up, and the total value of your holding is simply all your accumulated units multiplied by the current NAV. The quiet advantage is consistency: the process runs through calm months and nervous ones alike, so investing becomes a background habit rather than a monthly decision.`,
           },
           { type: 'subheading', text: `Rupee cost averaging` },
           {
@@ -1034,6 +1038,12 @@ export const LEARN_ARTICLES: LearnArticle[] = [
             calculatorPath: '/lumpsum-calculator',
             text: `Received a one-time amount? Project how a lumpsum might grow over different periods and return assumptions before you decide.`,
           },
+          {
+            type: 'cta',
+            href: '/learn/what-is-a-mutual-fund',
+            label: 'Read: What Is a Mutual Fund?',
+            text: `New to mutual funds? Our beginner guide explains what a mutual fund is and how it works.`,
+          },
         ],
       },
       {
@@ -1080,6 +1090,10 @@ export const LEARN_ARTICLES: LearnArticle[] = [
               ['Long-term growth potential', 'Depends on fund performance and investment duration', 'Depends on fund performance and investment duration'],
               ['Return guarantee', 'No guarantee of returns', 'No guarantee of returns'],
             ],
+          },
+          {
+            type: 'paragraph',
+            text: `These comparisons are general guidelines rather than fixed rules. Your financial goals, investment horizon, available funds, and risk tolerance should always guide the decision between SIP and lumpsum investing.`,
           },
           {
             type: 'paragraph',
@@ -1354,6 +1368,10 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           {
             type: 'paragraph',
             text: `Whether you choose SIP, lumpsum, or a combination of both, the most important step is to begin investing with a clear plan and remain committed to your long-term financial objectives.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Whichever investment approach you choose, review your portfolio periodically and ensure it continues to align with your financial goals, investment horizon, and risk tolerance.`,
           },
         ],
       },
