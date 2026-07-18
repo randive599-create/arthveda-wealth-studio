@@ -948,7 +948,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
   },
   {
     slug: 'what-is-a-mutual-fund',
-    status: 'draft',
+    status: 'published',
     category: 'sip-mutual-funds',
     title: 'What Is a Mutual Fund? A Beginner\u2019s Guide for Indian Investors',
     seoTitle: 'What Is a Mutual Fund? Beginner\u2019s Guide (India) | ArthVeda Wealth Studio',
