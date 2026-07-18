@@ -201,10 +201,6 @@ export interface LearnArticle {
 /* Registry (`what-is-sip` published; `sip-vs-lumpsum` still a draft)          */
 /* -------------------------------------------------------------------------- */
 
-const PLACEHOLDER_NOTE =
-  'This is placeholder content created during development to validate the article template. ' +
-  'It will be replaced with fully-researched editorial content before this article is published.';
-
 export const LEARN_ARTICLES: LearnArticle[] = [
   {
     slug: 'what-is-sip',
@@ -899,7 +895,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
   },
   {
     slug: 'sip-vs-lumpsum',
-    status: 'draft',
+    status: 'published',
     category: 'sip-mutual-funds',
     title: 'SIP vs Lumpsum: Which Investing Strategy Is Right for You?',
     seoTitle: 'SIP vs Lumpsum: Which Strategy Is Right for You? | ArthVeda',
@@ -909,41 +905,534 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     heroSummary:
       'SIP and lumpsum are not rivals — they suit different situations. This guide explains the ' +
       'trade-offs so you can choose (or blend) with confidence.',
-    datePublished: '2026-07-01',
-    dateModified: '2026-07-01',
-    readingMinutes: 7,
+    datePublished: '2026-07-18',
+    dateModified: '2026-07-18',
+    readingMinutes: 10,
     sections: [
       {
-        id: 'the-core-difference',
-        heading: 'The core difference',
+        id: 'quick-answer',
+        heading: 'Quick Answer',
         blocks: [
-          { type: 'paragraph', text: PLACEHOLDER_NOTE },
-          { type: 'paragraph', text: 'Placeholder explanation of SIP vs lumpsum mechanics.' },
+          {
+            type: 'callout',
+            text: `Why trust this guide? This guide is prepared using publicly available information from authoritative sources such as SEBI and AMFI. It is educational only — ArthVeda Wealth Studio is independent and does not recommend any specific mutual fund, AMC, or product. Nothing here is personalised investment advice, so please weigh your own goals and situation before investing.`,
+          },
+          {
+            type: 'callout',
+            text: `Quick answer: Neither a SIP nor a lumpsum is "better" in the abstract — they are simply two ways of putting money into the same mutual funds. A SIP invests a fixed amount at regular intervals (usually monthly), which suits money that arrives steadily, like a salary, and spreads your entry across many dates. A lumpsum invests a single larger amount all at once, which suits a sum you already hold, like a bonus or a maturity payout, and puts the whole amount to work immediately. In both cases your money goes into a market-linked mutual fund, so returns can rise or fall and are never guaranteed.`,
+          },
         ],
       },
       {
-        id: 'when-each-makes-sense',
-        heading: 'When each makes sense',
+        id: 'sip-and-lumpsum-are-not-different-investments',
+        heading: 'SIP and Lumpsum Are NOT Different Investments',
         blocks: [
+          {
+            type: 'paragraph',
+            text: `The most common confusion for beginners is to treat "SIP" and "lumpsum" as if they were two rival products you have to choose between. They are not. Both are only methods — different ways of moving your money into the very same mutual fund.`,
+          },
+          {
+            type: 'paragraph',
+            text: `It helps to keep the hierarchy straight. The mutual fund is what you actually invest in — the professionally managed basket of shares, bonds, or a mix of both. SIP and lumpsum simply describe how you put money into that basket: a little at a time, or all at once. Change the method and the underlying investment does not change at all.`,
+          },
+          { type: 'subheading', text: `The hierarchy: the fund is the investment, the method is how you enter` },
           {
             type: 'list',
             items: [
-              'Placeholder: SIP suits investing from regular income.',
-              'Placeholder: Lumpsum suits deploying capital you already hold.',
-              'Placeholder: The two can be combined.',
+              `Mutual fund — the investment itself (for example, an equity, debt, or hybrid fund).`,
+              `SIP — a method of entering that fund with a fixed amount at regular intervals.`,
+              `Lumpsum — a method of entering that same fund with one larger amount at once.`,
             ],
+          },
+          {
+            type: 'paragraph',
+            text: `In other words, you do not choose "a SIP" or "a lumpsum" the way you choose a fund. You first decide which fund fits your goal and risk comfort, and then decide how to invest in it — steadily through a SIP, all at once as a lumpsum, or a combination of the two. Because the destination is identical, the real question is never "which is the better investment," but "which method fits the money I have and how it reaches me."`,
+          },
+          {
+            type: 'table',
+            headers: ['Factor', 'SIP', 'Lumpsum'],
+            rows: [
+              ['How you invest', 'A fixed amount at regular intervals (usually monthly)', 'A single larger amount, all at once'],
+              ['Money it suits', 'Money that arrives regularly, like a salary', 'A sum you already hold, like a bonus or maturity payout'],
+              ['Entry timing', 'Spread across many dates and prices', 'A single entry point on one date'],
+              ['Timing risk', 'Lower — averaged over time', 'Higher — depends on the day you invest'],
+              ['Ease for beginners', 'Gentle and largely automatic', 'Needs more comfort with market swings'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'what-is-sip',
+        heading: 'What Is SIP?',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `A SIP, or Systematic Investment Plan, is a method of investing a fixed amount into a mutual fund at regular intervals — most commonly once a month. You decide the amount and the date, set up a one-time auto-debit instruction with your bank, and that amount is invested automatically each period without you having to act again.`,
+          },
+          { type: 'subheading', text: `How a monthly SIP works over time` },
+          {
+            type: 'paragraph',
+            text: `Picture a 5,000-rupee monthly SIP. On your chosen date each month, 5,000 rupees leaves your bank and buys units of the fund at that day's NAV (the price of one unit). Because the NAV moves with the market, the exact number of units you get differs every month — more units when the price is lower, fewer when it is higher. Month after month these units add up, and the total value of your holding is simply all your accumulated units multiplied by the current NAV. The quiet advantage is consistency: the process runs through calm months and nervous ones alike, so investing becomes a background habit rather than a monthly decision.`,
+          },
+          { type: 'subheading', text: `Rupee cost averaging` },
+          {
+            type: 'paragraph',
+            text: `Because your amount is fixed while the NAV keeps changing, your money automatically buys more units when prices fall and fewer when they rise. Over time this tends to even out your average purchase price — an effect known as rupee cost averaging. Here is a simplified illustration of a 3,000-rupee monthly investment:`,
+          },
+          {
+            type: 'table',
+            caption: `Illustrative only, to show how averaging works — not a projection or a promise. Actual NAVs and returns vary and are never guaranteed.`,
+            headers: ['Month', 'Amount invested', 'NAV (rupees)', 'Units bought'],
+            rows: [
+              ['Month 1', '3,000 rupees', '30', '100'],
+              ['Month 2', '3,000 rupees', '20', '150'],
+              ['Month 3', '3,000 rupees', '25', '120'],
+              ['Total', '9,000 rupees', '—', '370'],
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: `Across these three months you invested 9,000 rupees and received 370 units — an average cost of about 24.32 rupees per unit, even though the average of the three NAVs was 25 rupees. Notice Month 2: when the price dropped to 20 rupees, your steady 3,000 rupees quietly picked up the most units. It is worth being honest about what this does and does not do: rupee cost averaging lowers timing risk — the danger of investing everything at a single bad moment — but it does not remove market risk, and it never guarantees a profit.`,
+          },
+          { type: 'subheading', text: `Compounding` },
+          {
+            type: 'paragraph',
+            text: `The second force at work over long periods is compounding. As your investment grows, the returns themselves begin to earn returns, so the value can build on itself the longer you stay invested. This applies to any mutual fund investment, whether you enter through a SIP or a lumpsum — it is driven by time in the market, not by the method you use. As with all market-linked investing, the effect depends on how the fund performs and is not guaranteed.`,
+          },
+          {
+            type: 'cta',
+            calculatorPath: '/sip-calculator',
+            text: `Curious how a monthly SIP could grow? Model your own amount, time horizon, and return assumption and see the projection update.`,
+          },
+          {
+            type: 'cta',
+            href: '/learn/what-is-sip',
+            label: 'Read: What Is SIP?',
+            text: `Want a deeper, step-by-step guide to SIPs — including types, taxation, and common mistakes? Our beginner guide covers it in detail.`,
+          },
+        ],
+      },
+      {
+        id: 'what-is-lumpsum',
+        heading: 'What Is Lumpsum?',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `A lumpsum investment is the opposite approach in terms of timing: instead of spreading your money across many months, you invest a single larger amount into a mutual fund all at once. The fund and the way it works are exactly the same as with a SIP — only the entry is different.`,
+          },
+          { type: 'subheading', text: `How a one-time lumpsum works over time` },
+          {
+            type: 'paragraph',
+            text: `Suppose you invest 3,00,000 rupees as a lumpsum. On the day you invest, the entire amount buys units at that day's NAV, and from that moment your full investment is exposed to the market. There is no averaging across dates — your whole entry happens at one price on one day. After that, the value of your units rises and falls with the fund, and over a long horizon it can benefit from compounding. Because the complete amount is working from day one, a lumpsum can do well when markets rise after you invest — and it can feel painful if they fall soon afterwards. That single entry point is why a lumpsum carries more timing risk than a SIP.`,
+          },
+          {
+            type: 'paragraph',
+            text: `A lumpsum tends to fit money you already hold as one sum — a bonus, a maturity payout, a gift, or accumulated savings — rather than money that trickles in each month. It asks for a little more comfort with short-term swings, since you see your whole amount move with the market from the start. Some investors who receive a large sum prefer to stagger it into the market over a few months to soften the timing decision, which blends the two methods. None of this is a recommendation to choose one over the other; the right method depends on the money you have and how it reaches you.`,
+          },
+          {
+            type: 'cta',
+            calculatorPath: '/lumpsum-calculator',
+            text: `Received a one-time amount? Project how a lumpsum might grow over different periods and return assumptions before you decide.`,
+          },
+        ],
+      },
+      {
+        id: 'which-is-better',
+        heading: 'Which Is Better: SIP or Lumpsum?',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `The answer depends on your situation. SIP and lumpsum are not two different investments competing against each other — they are simply two different ways of investing in the same mutual fund. The better approach depends on how your money becomes available, your financial goals, your investment horizon, and how comfortable you are with market movements.`,
+          },
+          {
+            type: 'paragraph',
+            text: `For someone earning a regular salary, a SIP often feels natural because investments can be aligned with monthly income. Instead of waiting to accumulate a large amount, the investor can participate consistently over time. For someone who already has a significant amount available, such as a bonus, maturity amount, or accumulated savings, a lumpsum allows that money to be invested immediately.`,
+          },
+          {
+            type: 'paragraph',
+            text: `The important point is that neither method guarantees better returns. A SIP does not guarantee profits, and a lumpsum does not automatically create higher returns. The outcome depends on the mutual fund chosen, the time period, market performance, and investor behaviour.`,
+          },
+          {
+            type: 'callout',
+            text: `The right question is not "Which method gives higher returns?" but "Which method fits my money flow, goal, and ability to handle market movements?"`,
+          },
+        ],
+      },
+      {
+        id: 'sip-vs-lumpsum-comparison',
+        heading: 'SIP vs Lumpsum: Side-by-Side Comparison',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Both methods invest in the same mutual fund, but the experience of investing can feel very different. The following comparison highlights the practical differences between SIP and lumpsum investing.`,
+          },
+          {
+            type: 'table',
+            headers: ['Factor', 'SIP', 'Lumpsum'],
+            rows: [
+              ['Investment style', 'Regular investments at fixed intervals', 'One-time investment of a larger amount'],
+              ['Source of money', 'Usually suited for regular income like salary', 'Usually suited for money already available'],
+              ['Entry points', 'Multiple investment dates', 'Single investment date'],
+              ['Impact of market timing', 'Spread across different market levels', 'Entire amount depends on one entry point'],
+              ['Investment habit', 'Encourages disciplined investing', 'Requires confidence to invest a larger amount'],
+              ['Automation', 'Can be automated through bank mandates', 'Usually requires a one-time decision'],
+              ['Short-term market fall after investing', 'Only the latest instalment is immediately affected', 'The entire invested amount is affected'],
+              ['Long-term growth potential', 'Depends on fund performance and investment duration', 'Depends on fund performance and investment duration'],
+              ['Return guarantee', 'No guarantee of returns', 'No guarantee of returns'],
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: `The comparison does not mean one method is always superior. A disciplined SIP investor can achieve strong long-term results, while a lumpsum investor who invests suitable money for a long enough period can also benefit from market growth. The method should match the investor's circumstances rather than being selected based on assumptions.`,
+          },
+        ],
+      },
+      {
+        id: 'market-timing',
+        heading: 'Should You Wait for the Market to Fall?',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `A common question among new investors is whether they should wait for a market correction before investing a lumpsum amount. The thought is understandable — buying at a lower price feels attractive. The challenge is that predicting the exact top or bottom of the market is extremely difficult.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Markets can fall after you invest, but they can also continue rising while you wait. An investor who delays investing while waiting for the "right time" may miss periods of market growth. This uncertainty is why many long-term investors focus more on their goals, asset allocation, and investment horizon rather than trying to predict short-term movements.`,
+          },
+          {
+            type: 'paragraph',
+            text: `A SIP naturally spreads investments across multiple dates, which reduces dependence on one particular entry point. A lumpsum investment places the entire amount into the market at one time, making the initial entry date more important. However, over longer periods, the time invested and the quality of the investment often matter more than short-term market movements.`,
+          },
+          {
+            type: 'callout',
+            text: `Market timing is difficult because future prices are unknown. A suitable investment plan focuses on consistency, time horizon, and risk management rather than perfect prediction.`,
+          },
+        ],
+      },
+      {
+        id: 'can-you-combine-both',
+        heading: 'Can You Combine SIP and Lumpsum?',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Yes. SIP and lumpsum are not mutually exclusive. Many investors use both methods at different times because their financial situations change throughout their investing journey.`,
+          },
+          {
+            type: 'paragraph',
+            text: `For example, an investor may continue a monthly SIP from regular income while also investing a yearly bonus or a maturity amount as a lumpsum. This allows regular savings to continue while putting additional available money to work.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Another approach some investors use after receiving a large amount is to gradually move money into the market over time instead of investing everything immediately. This can help reduce the emotional pressure of making one large investment decision, although it does not remove market risk.`,
+          },
+          {
+            type: 'paragraph',
+            text: `The choice between SIP, lumpsum, or a combination depends on your cash flow, investment objective, time horizon, and comfort with market fluctuations.`,
+          },
+          {
+            type: 'callout',
+            text: `SIP and lumpsum are tools that solve different situations. The method should follow your financial reality, not the other way around.`,
+          },
+        ],
+      },
+      {
+        id: 'sip-mistakes-beginners-should-avoid',
+        heading: 'SIP Mistakes Beginners Should Avoid',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `SIP is one of the simplest ways to start investing in mutual funds, but investors can still make mistakes that affect their long-term results.`,
+          },
+          { type: 'subheading', text: `1. Starting SIP Without a Clear Goal` },
+          {
+            type: 'paragraph',
+            text: `Many investors begin SIPs without knowing why they are investing. A SIP works better when it is connected to a specific financial goal, such as building wealth, saving for a major expense, or creating long-term financial security.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Understanding your goal helps you decide the investment amount, time horizon, and suitable mutual fund category.`,
+          },
+          { type: 'subheading', text: `2. Stopping SIP During Market Declines` },
+          {
+            type: 'paragraph',
+            text: `Market corrections are a normal part of investing. Many beginners stop their SIPs when markets fall because they fear losses.`,
+          },
+          {
+            type: 'paragraph',
+            text: `However, continuing SIP investments during market downturns can allow investors to purchase more mutual fund units at lower prices. Stopping investments due to short-term market movements may reduce the benefits of disciplined investing.`,
+          },
+          { type: 'subheading', text: `3. Expecting Guaranteed Returns` },
+          {
+            type: 'paragraph',
+            text: `A SIP is only an investment method. It does not guarantee fixed returns.`,
+          },
+          {
+            type: 'paragraph',
+            text: `The returns depend on the performance of the underlying mutual fund and market conditions. Investors should understand that equity mutual funds require patience and a long-term approach.`,
+          },
+          { type: 'subheading', text: `4. Investing Without Reviewing Progress` },
+          {
+            type: 'paragraph',
+            text: `Starting a SIP is only the first step. Investors should periodically review whether their investments are aligned with their goals, risk tolerance, and changing financial situation.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Regular review does not mean reacting to every market movement, but ensuring that the investment strategy remains suitable.`,
+          },
+        ],
+      },
+      {
+        id: 'lumpsum-mistakes-beginners-should-avoid',
+        heading: 'Lumpsum Mistakes Beginners Should Avoid',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Lumpsum investing can be effective, but investing a large amount at the wrong time or without proper planning can create challenges.`,
+          },
+          { type: 'subheading', text: `1. Investing the Entire Amount Without Planning` },
+          {
+            type: 'paragraph',
+            text: `A common mistake is investing a large amount without considering financial goals, emergency requirements, or investment duration.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Before making a lumpsum investment, investors should ensure they have sufficient emergency savings and a clear purpose for the investment.`,
+          },
+          { type: 'subheading', text: `2. Trying to Predict the Perfect Market Entry` },
+          {
+            type: 'paragraph',
+            text: `Many investors wait for the “best” time to invest or attempt to identify the exact market bottom.`,
+          },
+          {
+            type: 'paragraph',
+            text: `While market valuations can be considered, accurately predicting short-term market movements is extremely difficult. Delaying investment decisions for too long may result in missed opportunities.`,
+          },
+          { type: 'subheading', text: `3. Ignoring Risk Capacity` },
+          {
+            type: 'paragraph',
+            text: `A large investment amount can experience significant short-term fluctuations, especially in equity mutual funds.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Investors should select investments based on their ability to handle market volatility rather than investing only because they have available money.`,
+          },
+          { type: 'subheading', text: `4. Expecting Immediate Results` },
+          {
+            type: 'paragraph',
+            text: `Lumpsum investing does not guarantee quick profits. Markets can move in different directions after investment.`,
+          },
+          {
+            type: 'paragraph',
+            text: `A long-term investment approach and patience are important for allowing wealth creation to happen over time.`,
+          },
+        ],
+      },
+      {
+        id: 'when-should-you-choose-sip',
+        heading: 'When Should You Choose SIP?',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `SIP may be suitable for investors who prefer gradual investing and want to build wealth through regular contributions.`,
+          },
+          {
+            type: 'paragraph',
+            text: `You may consider choosing SIP when:`,
+          },
+          {
+            type: 'list',
+            items: [
+              'You receive regular income, such as salary or business income',
+              'You want to develop a disciplined investing habit',
+              'You are new to mutual fund investing',
+              'You do not want to worry about choosing the perfect market entry point',
+              'You have long-term financial goals',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: `For example, a salaried investor investing ₹10,000 every month through SIP can gradually build a portfolio without requiring a large amount of money upfront.`,
+          },
+          {
+            type: 'paragraph',
+            text: `SIP is particularly useful for investors who value consistency and want investing to become a regular financial habit.`,
+          },
+        ],
+      },
+      {
+        id: 'when-should-you-choose-lumpsum',
+        heading: 'When Should You Choose Lumpsum?',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Lumpsum investment may be suitable when an investor already has a significant amount of money available and understands the risks involved.`,
+          },
+          {
+            type: 'paragraph',
+            text: `You may consider choosing lumpsum when:`,
+          },
+          {
+            type: 'list',
+            items: [
+              'You have received a large amount of money, such as a bonus, inheritance, or business income',
+              'You have a long investment horizon',
+              'You understand market fluctuations and can remain invested during volatility',
+              'Your emergency fund and financial obligations are already managed',
+              'You have a clear investment plan',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: `For example, an investor with ₹5 lakh available for a long-term goal may choose lumpsum investment to get immediate market exposure.`,
+          },
+          {
+            type: 'paragraph',
+            text: `However, investors who are uncomfortable with market timing can consider investing gradually through SIP or using approaches like Systematic Transfer Plans.`,
+          },
+          {
+            type: 'paragraph',
+            text: `The suitable choice depends on personal circumstances rather than a universal rule.`,
+          },
+        ],
+      },
+      {
+        id: 'common-investor-questions-sip-vs-lumpsum',
+        heading: 'Common Investor Questions About SIP vs Lumpsum',
+        blocks: [
+          { type: 'subheading', text: `1. Is SIP safer than lumpsum investment?` },
+          {
+            type: 'paragraph',
+            text: `SIP can reduce the impact of market timing because investments are spread over multiple periods. However, SIP does not eliminate market risk. Both SIP and lumpsum investments are subject to market fluctuations.`,
+          },
+          { type: 'subheading', text: `2. Which gives better returns: SIP or lumpsum?` },
+          {
+            type: 'paragraph',
+            text: `Neither method always provides higher returns. A lumpsum investment may perform better when markets rise after investment, while SIP can perform better when markets experience volatility over the investment period.`,
+          },
+          {
+            type: 'paragraph',
+            text: `The final outcome depends on market conditions, investment duration, and investor behaviour.`,
+          },
+          { type: 'subheading', text: `3. Can I start SIP and lumpsum in the same mutual fund?` },
+          {
+            type: 'paragraph',
+            text: `Yes. Investors can use both methods in the same mutual fund scheme if it matches their investment strategy and financial goals.`,
+          },
+          { type: 'subheading', text: `4. Should beginners choose SIP or lumpsum?` },
+          {
+            type: 'paragraph',
+            text: `Many beginners prefer SIP because it requires smaller regular contributions and helps develop investing discipline. However, beginners with available capital and a long-term plan may also consider lumpsum investing.`,
+          },
+          { type: 'subheading', text: `5. Can I stop my SIP anytime?` },
+          {
+            type: 'paragraph',
+            text: `In most mutual funds, investors can stop future SIP contributions whenever they choose. However, existing investments remain invested unless the investor decides to redeem them.`,
+          },
+          { type: 'subheading', text: `6. Is investing during a market fall always better?` },
+          {
+            type: 'paragraph',
+            text: `Market falls may provide opportunities, but predicting the lowest point is difficult. Investors should focus on a consistent strategy rather than waiting indefinitely for the perfect time.`,
+          },
+        ],
+      },
+      {
+        id: 'conclusion',
+        heading: 'Conclusion',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Choosing between SIP and lumpsum is not about finding a universally better investment method. Both approaches can help investors build wealth when used appropriately and aligned with their financial goals.`,
+          },
+          {
+            type: 'paragraph',
+            text: `SIP is often suitable for investors who earn regular income and prefer disciplined investing over time. Lumpsum investment may be suitable for those who already have a significant amount available and are comfortable with market fluctuations.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Rather than focusing solely on timing the market, investors should develop a long-term investment strategy that matches their goals, risk tolerance, and financial situation. Consistent investing, regular portfolio reviews, and patience are often more important than attempting to predict short-term market movements.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Whether you choose SIP, lumpsum, or a combination of both, the most important step is to begin investing with a clear plan and remain committed to your long-term financial objectives.`,
           },
         ],
       },
     ],
     keyTakeaways: [
-      'SIP averages your entry over time.',
-      'Lumpsum puts capital to work immediately.',
-      'Placeholder takeaway for template validation.',
+      'SIP and lumpsum are different investment methods, not different investment products.',
+      'SIP involves investing a fixed amount regularly, while lumpsum invests a larger amount at one time.',
+      'SIP helps reduce the impact of market timing through regular investing.',
+      'Lumpsum investing offers immediate market exposure but carries higher short-term timing risk.',
+      'The right choice depends on your financial goals, risk tolerance, investment horizon, and available funds.',
+      'Investors can combine SIP and lumpsum strategies based on their circumstances.',
+      'Long-term consistency is generally more important than trying to predict short-term market movements.',
+    ],
+    faqs: [
+      {
+        question: 'Which is better: SIP or lumpsum investment?',
+        answer:
+          'There is no single answer. SIP may be suitable for investors with regular income who prefer ' +
+          'disciplined investing over time, while lumpsum investment may suit those who already have a ' +
+          'larger amount available. The better choice depends on your financial goals, investment horizon, ' +
+          'risk tolerance, and available funds.',
+      },
+      {
+        question: 'Is SIP safer than lumpsum investment?',
+        answer:
+          'SIP helps reduce the impact of investing all your money at one market level because investments ' +
+          'are spread over time. However, both SIP and lumpsum investments are subject to market risk, and ' +
+          'neither guarantees profits or protects against losses.',
+      },
+      {
+        question: 'Can I invest through SIP and lumpsum in the same mutual fund?',
+        answer:
+          'Yes. Investors can combine both methods in the same mutual fund scheme. For example, someone may ' +
+          'invest a bonus as a lumpsum while continuing monthly SIP contributions for long-term wealth creation.',
+      },
+      {
+        question: 'Should I wait for the market to fall before making a lumpsum investment?',
+        answer:
+          'Trying to predict market movements consistently is extremely difficult. Instead of waiting ' +
+          'indefinitely for the perfect opportunity, investors should make decisions based on their financial ' +
+          'plan, investment horizon, and risk tolerance.',
+      },
+      {
+        question: 'Which option is better for beginners: SIP or lumpsum?',
+        answer:
+          'Many beginners choose SIP because it allows them to invest smaller amounts regularly and develop ' +
+          'disciplined investing habits. However, beginners with a long investment horizon and available ' +
+          'capital may also consider lumpsum investing if it aligns with their financial plan.',
+      },
+      {
+        question: 'Can I stop my SIP whenever I want?',
+        answer:
+          'Yes. Most mutual fund SIPs can be stopped, paused, increased, or reduced at any time. Stopping a ' +
+          'SIP only affects future contributions; your existing investments remain invested until you choose ' +
+          'to redeem them.',
+      },
+      {
+        question: 'Does SIP always give better returns than lumpsum?',
+        answer:
+          'No. Returns depend on market performance, investment timing, and how long you stay invested. In ' +
+          'some situations, lumpsum investing may generate higher returns, while in others, SIP may perform ' +
+          'better. Neither approach consistently outperforms the other.',
+      },
+      {
+        question: 'Can I switch from SIP to lumpsum or vice versa?',
+        answer:
+          'Yes. Your investment strategy can change as your financial situation changes. Many investors use ' +
+          'SIP during their earning years and also make occasional lumpsum investments whenever they receive ' +
+          'additional funds such as bonuses or inheritances.',
+      },
     ],
     relatedCalculators: ['/sip-calculator', '/lumpsum-calculator'],
     relatedArticles: ['what-is-sip'],
-    references: [{ label: 'AMFI — Association of Mutual Funds in India', url: 'https://www.amfiindia.com/' }],
+    references: [
+      { label: 'Association of Mutual Funds in India (AMFI)', url: 'https://www.amfiindia.com/' },
+      { label: 'SEBI Investor Education', url: 'https://investor.sebi.gov.in/' },
+      { label: 'Securities and Exchange Board of India (SEBI)', url: 'https://www.sebi.gov.in/' },
+      { label: 'Reserve Bank of India (RBI)', url: 'https://www.rbi.org.in/' },
+    ],
     author: DEFAULT_AUTHOR,
   },
   {
