@@ -2262,6 +2262,2269 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     ],
     author: DEFAULT_AUTHOR,
   },
+  {
+    slug: 'types-of-mutual-funds',
+    status: 'published',
+    category: 'sip-mutual-funds',
+    title: 'Types of Mutual Funds in India: Complete Beginner\'s Guide',
+    seoTitle: 'Types of Mutual Funds in India (2026): Equity, Debt, Hybrid & More Explained',
+    description:
+      'Learn about the different types of mutual funds in India, including equity, debt, hybrid, ' +
+      'solution-oriented, and passive funds. Understand how SEBI classifies mutual funds, how each ' +
+      'category works, and which types are commonly explored for different financial goals.',
+    heroSummary:
+      'Mutual funds in India are available in several categories, each designed for different ' +
+      'investment objectives, risk profiles, and investment horizons. This guide explains SEBI\'s ' +
+      'mutual fund classification framework, the major types of mutual funds, and the key differences ' +
+      'between them to help investors understand how each category works.',
+    datePublished: '2026-07-26',
+    dateModified: '2026-07-26',
+    readingMinutes: 18,
+    sections: [
+      {
+        id: 'quick-answer',
+        heading: 'Quick Answer',
+        blocks: [
+          {
+            type: 'callout',
+            text: `Mutual funds in India are classified by the Securities and Exchange Board of India (SEBI) into five broad categories: Equity Schemes, Debt Schemes, Hybrid Schemes, Solution-Oriented Schemes, and Other Schemes. Each category has a different investment objective, portfolio composition, risk profile, and recommended investment horizon. There is no single "best" type of mutual fund—the right category depends on your financial goal, investment horizon, liquidity needs, and risk tolerance.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Understanding the different types of mutual funds is one of the most important steps before investing. Every mutual fund category is designed to serve a specific purpose, whether it is long-term wealth creation, generating regular income, preserving capital, or planning for goals such as retirement or a child's future. Knowing how these categories differ can help investors evaluate mutual funds more effectively instead of selecting schemes solely based on recent returns or popularity.`,
+          },
+        ],
+      },
+      {
+        id: 'why-understanding-mutual-fund-types-matters',
+        heading: 'Why Understanding Mutual Fund Types Matters',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Many first-time investors search for the "best mutual fund" without first understanding how mutual funds are categorized. In reality, every mutual fund category is designed with a different investment strategy and risk profile. A fund that may be appropriate for one investor could be unsuitable for another depending on factors such as financial goals, investment horizon, liquidity requirements, and comfort with market fluctuations.`,
+          },
+          {
+            type: 'paragraph',
+            text: `For example, an investor planning for retirement several decades away may evaluate different mutual fund categories than someone saving for a short-term purchase within a few years. Similarly, investors with different risk appetites may prefer different categories even when pursuing the same financial goal. Understanding these differences helps investors compare schemes within the appropriate category instead of comparing funds that are designed for entirely different purposes.`,
+          },
+          {
+            type: 'list',
+            items: [
+              `Understand how SEBI classifies mutual funds.`,
+              `Learn the objective of each mutual fund category.`,
+              `Recognize the differences in risk and return characteristics.`,
+              `Identify categories commonly associated with different financial goals.`,
+              `Avoid selecting mutual funds based only on recent performance.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `A mutual fund category should not be chosen solely because it delivered the highest recent returns. Every category serves a different investment purpose, and understanding that purpose is more important than chasing past performance.`,
+          },
+        ],
+      },
+      {
+        id: 'sebi-mutual-fund-classification-framework',
+        heading: 'SEBI\'s Mutual Fund Classification Framework',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `SEBI introduced a standardized mutual fund categorization framework to bring greater consistency, transparency, and comparability across mutual fund schemes. Before this framework, different Asset Management Companies (AMCs) could launch multiple schemes with similar investment objectives, making it difficult for investors to compare funds effectively. The categorization framework helps ensure that every mutual fund category follows clearly defined investment mandates and regulatory requirements.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Under the current framework, mutual funds in India are broadly classified into five major categories. Each category has a distinct investment objective and may contain multiple sub-categories with specific investment mandates. Understanding this structure makes it easier to compare schemes within the same category rather than comparing funds designed for entirely different purposes.`,
+          },
+          {
+            type: 'list',
+            items: [
+              `Equity Schemes`,
+              `Debt Schemes`,
+              `Hybrid Schemes`,
+              `Solution-Oriented Schemes`,
+              `Other Schemes`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `SEBI's categorization framework does not rank mutual fund categories from best to worst. Instead, it defines the investment universe and objective that each category must follow.`,
+          },
+        ],
+      },
+      {
+        id: 'five-broad-types-of-mutual-funds',
+        heading: 'The Five Broad Types of Mutual Funds in India',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `SEBI classifies mutual funds into five broad categories based on the assets they primarily invest in and the investment objectives they seek to achieve. Within each broad category are several sub-categories designed for different investment strategies, market segments, and investor needs. The table below provides a simplified overview before we discuss each category in detail.`,
+          },
+          {
+            type: 'table',
+            caption: `Overview of SEBI's Five Broad Mutual Fund Categories`,
+            headers: ['Category', 'Primary Investments', 'Common Investment Objective'],
+            rows: [
+              ['Equity Schemes', 'Shares of listed companies', 'Long-term capital appreciation'],
+              [
+                'Debt Schemes',
+                'Government securities, corporate bonds, treasury bills, money market instruments, and other fixed-income securities',
+                'Income generation, capital preservation, and liquidity',
+              ],
+              [
+                'Hybrid Schemes',
+                'Combination of equity, debt, and/or other asset classes',
+                'Balanced risk and diversification',
+              ],
+              [
+                'Solution-Oriented Schemes',
+                'Portfolio aligned with specific long-term goals',
+                'Goal-based investing such as retirement or children\'s education',
+              ],
+              [
+                'Other Schemes',
+                'Index-based portfolios or fund-of-funds',
+                'Passive investing or exposure through other mutual fund schemes',
+              ],
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: `Each of these categories serves a different purpose and carries different levels of risk, return potential, and investment horizon. Rather than asking which category is the "best," investors should first understand which category is commonly associated with their financial goal, time horizon, and risk appetite before evaluating individual mutual fund schemes.`,
+          },
+          {
+            type: 'cta',
+            calculatorPath: '/sip-calculator',
+            text: `Not sure which mutual fund category aligns with your financial goal? Use our SIP Calculator to understand how your investment amount, expected returns, and investment horizon can influence long-term wealth creation before selecting a mutual fund category.`,
+          },
+        ],
+      },
+      {
+        id: 'equity-mutual-funds',
+        heading: 'Equity Mutual Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Equity Mutual Funds primarily invest in the shares of listed companies and are designed to help investors participate in the long-term growth potential of businesses. Since these funds invest in the stock market, their value rises and falls with changes in market prices. As a result, Equity Mutual Funds are generally considered suitable for investors who have a longer investment horizon and are comfortable with market fluctuations.`,
+          },
+          {
+            type: 'paragraph',
+            text: `SEBI classifies Equity Mutual Funds into several categories based on factors such as market capitalisation, investment strategy, or the type of companies a fund invests in. Each category follows specific regulatory investment requirements, allowing investors to compare similar funds more effectively and choose schemes that align with their financial goals, risk appetite, and investment horizon.`,
+          },
+          {
+            type: 'paragraph',
+            text: `While Equity Mutual Funds have historically offered the potential for long-term capital appreciation, they also carry higher market risk than many other mutual fund categories. Short-term volatility is a normal characteristic of equity investing, which is why investors should evaluate their financial goals, investment horizon, and ability to tolerate market fluctuations before investing.`,
+          },
+          {
+            type: 'callout',
+            text: `Equity Mutual Funds are generally better suited for long-term wealth creation rather than short-term financial goals because equity markets can experience significant fluctuations over shorter periods.`,
+          },
+        ],
+      },
+      {
+        id: 'understanding-market-capitalisation',
+        heading: 'Understanding Market Capitalisation',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Market capitalisation, often called "market cap," refers to the total market value of a company's outstanding shares. It helps classify companies based on their relative size and is one of the key factors used by SEBI to categorize equity mutual funds. Instead of using fixed rupee-value thresholds, SEBI classifies companies according to their full market capitalisation rankings.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Understanding market capitalisation makes it easier to understand why different equity mutual funds invest in different groups of companies. Generally, larger companies are considered relatively more established, while smaller companies may offer higher growth potential but can also experience greater price volatility. However, every investment involves risk, and market capitalisation alone should not be used to evaluate the quality of a company or a mutual fund.`,
+          },
+          {
+            type: 'table',
+            caption: `SEBI Classification of Companies by Full Market Capitalisation`,
+            headers: ['Company Category', 'SEBI Classification'],
+            rows: [
+              ['Large Cap', '1st to 100th company by full market capitalisation'],
+              ['Mid Cap', '101st to 250th company by full market capitalisation'],
+              ['Small Cap', '251st company onwards by full market capitalisation'],
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Companies can move between Large Cap, Mid Cap, and Small Cap categories over time as their market capitalisation rankings change. Mutual funds adjust their portfolios as required to remain compliant with SEBI regulations.`,
+          },
+        ],
+      },
+      {
+        id: 'large-cap-funds',
+        heading: 'Large Cap Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Large Cap Funds are equity mutual funds that invest predominantly in the shares of large-cap companies. According to SEBI regulations, these funds must invest at least 80% of their total assets in large-cap stocks. Large-cap companies are generally well-established businesses with strong market presence, proven operating history, and relatively stable business models compared to smaller companies.`,
+          },
+          {
+            type: 'table',
+            caption: `Large Cap Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Shares of large-cap companies (Top 100 by full market capitalisation)'],
+              ['SEBI Requirement', 'At least 80% of total assets invested in large-cap stocks'],
+              ['Risk Level', 'Moderate to High'],
+              ['Return Potential', 'Market-linked with potential for long-term capital appreciation'],
+              ['Typical Investment Horizon', '5 years or longer'],
+              ['Suitable For', 'Investors seeking relatively stable equity exposure for long-term goals'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `First-time equity mutual fund investors who understand market risk.`,
+              `Investors with long-term financial goals, typically five years or more.`,
+              `Investors seeking relatively stable exposure within the equity mutual fund category.`,
+              `Investors building a diversified long-term investment portfolio.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Exposure to well-established companies with proven business models.`,
+              `Generally lower volatility than mid-cap and small-cap funds.`,
+              `Suitable for building the equity portion of a long-term investment portfolio.`,
+              `Can be appropriate for first-time equity mutual fund investors who understand market risk.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Large-cap funds can still experience losses during market downturns.`,
+              `They may generate relatively lower growth than mid-cap or small-cap funds during certain market cycles.`,
+              `Long-term investing is generally more suitable than attempting to benefit from short-term market movements.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Large Cap Funds are often considered one of the relatively less volatile categories within equity mutual funds, but they are not risk-free and do not guarantee positive returns.`,
+          },
+        ],
+      },
+      {
+        id: 'mid-cap-funds',
+        heading: 'Mid Cap Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Mid Cap Funds are equity mutual funds that invest predominantly in the shares of mid-cap companies. As per SEBI regulations, these funds must invest at least 65% of their total assets in mid-cap stocks. Mid-cap companies are generally businesses that have moved beyond the early stages of growth but still have significant potential to expand further.`,
+          },
+          {
+            type: 'table',
+            caption: `Mid Cap Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Shares of mid-cap companies (Ranked 101st\u2013250th by full market capitalisation)'],
+              ['SEBI Requirement', 'At least 65% of total assets invested in mid-cap stocks'],
+              ['Risk Level', 'Moderately High'],
+              ['Return Characteristics', 'Higher growth potential with higher volatility than large-cap funds'],
+              ['Typical Investment Horizon', '7 years or longer'],
+              ['Suitable For', 'Investors willing to accept higher volatility in pursuit of long-term growth'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a long investment horizon and higher risk tolerance.`,
+              `Investors seeking potentially higher long-term growth than large-cap funds.`,
+              `Investors who can remain invested during periods of market volatility.`,
+              `Investors looking to diversify an existing equity portfolio.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Higher long-term growth potential compared to large-cap funds.`,
+              `Exposure to businesses that may become future market leaders.`,
+              `Can enhance long-term portfolio growth when combined with other equity fund categories.`,
+              `Suitable for investors comfortable with moderate-to-high market fluctuations.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Mid-cap stocks tend to experience greater price fluctuations than large-cap stocks.`,
+              `Returns can vary significantly across different market cycles.`,
+              `A disciplined long-term investment approach is generally more appropriate than short-term investing.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Mid Cap Funds can offer attractive long-term growth potential, but investors should be prepared for higher volatility and remain invested through market cycles.`,
+          },
+        ],
+      },
+      {
+        id: 'small-cap-funds',
+        heading: 'Small Cap Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Small Cap Funds are equity mutual funds that invest predominantly in the shares of small-cap companies. Under SEBI regulations, these funds must invest at least 65% of their total assets in small-cap stocks. Small-cap companies generally have greater growth potential than larger businesses, but they also tend to experience higher price volatility and business risk.`,
+          },
+          {
+            type: 'table',
+            caption: `Small Cap Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Shares of small-cap companies (Ranked 251st and below by full market capitalisation)'],
+              ['SEBI Requirement', 'At least 65% of total assets invested in small-cap stocks'],
+              ['Risk Level', 'High'],
+              ['Return Characteristics', 'Highest long-term growth potential with higher market volatility'],
+              ['Typical Investment Horizon', '7\u201310 years or longer'],
+              ['Suitable For', 'Experienced investors with a high risk tolerance and long investment horizon'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a high tolerance for market volatility.`,
+              `Investors seeking maximum long-term capital appreciation.`,
+              `Investors who can remain invested for at least seven to ten years.`,
+              `Investors with a well-diversified investment portfolio.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Highest long-term growth potential among diversified equity mutual fund categories.`,
+              `Opportunity to invest in emerging businesses with significant expansion potential.`,
+              `Can meaningfully enhance long-term portfolio returns when combined with other equity fund categories.`,
+              `Suitable for investors with long investment horizons and strong risk tolerance.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Small-cap funds can experience sharp price fluctuations during market corrections.`,
+              `Returns may remain volatile for extended periods.`,
+              `Patience and disciplined long-term investing are essential for this category.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Small Cap Funds have historically delivered strong long-term wealth creation potential in certain market cycles, but they also carry some of the highest levels of risk and volatility among diversified equity mutual funds.`,
+          },
+        ],
+      },
+      {
+        id: 'flexi-cap-funds',
+        heading: 'Flexi Cap Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Flexi Cap Funds are equity mutual funds that can invest across large-cap, mid-cap, and small-cap companies without following fixed allocation limits for each market capitalisation segment. Under SEBI regulations, these funds must invest at least 65% of their total assets in equity and equity-related instruments. The fund manager has the flexibility to adjust the portfolio based on market conditions and investment opportunities.`,
+          },
+          {
+            type: 'table',
+            caption: `Flexi Cap Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Large-cap, mid-cap, and small-cap companies'],
+              ['SEBI Requirement', 'At least 65% of total assets invested in equity and equity-related instruments'],
+              ['Risk Level', 'Moderately High to High'],
+              ['Return Characteristics', 'Diversified growth potential with flexibility across market capitalisation segments'],
+              ['Typical Investment Horizon', '5\u20137 years or longer'],
+              ['Suitable For', 'Investors seeking a single diversified equity fund managed across market capitalisation segments'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking diversification across large-cap, mid-cap, and small-cap companies through a single fund.`,
+              `Investors who prefer allowing the fund manager to decide the allocation across market capitalisation segments.`,
+              `Investors with long-term financial goals and moderate-to-high risk tolerance.`,
+              `First-time equity investors looking for a diversified equity mutual fund.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Provides diversification across different company sizes within one portfolio.`,
+              `Offers flexibility to adapt to changing market conditions.`,
+              `Eliminates the need for investors to manually rebalance allocations across large-cap, mid-cap, and small-cap funds.`,
+              `Can provide a balanced approach to long-term equity investing.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Fund performance depends significantly on the fund manager's allocation decisions.`,
+              `Market volatility can still affect overall portfolio returns.`,
+              `Different Flexi Cap Funds may follow significantly different investment strategies.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Flexi Cap Funds provide diversification with flexibility, making them a popular choice for investors seeking a single long-term equity mutual fund.`,
+          },
+        ],
+      },
+      {
+        id: 'multi-cap-funds',
+        heading: 'Multi Cap Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Multi Cap Funds are equity mutual funds that invest across large-cap, mid-cap, and small-cap companies while maintaining a minimum allocation to each market capitalisation segment. Under SEBI regulations, these funds must invest at least 75% of their total assets in equity and equity-related instruments, with a minimum of 25% each in large-cap, mid-cap, and small-cap stocks. This structure ensures diversified exposure across companies of different sizes.`,
+          },
+          {
+            type: 'table',
+            caption: `Multi Cap Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Large-cap, mid-cap, and small-cap companies'],
+              ['SEBI Requirement', 'At least 75% of total assets in equity and equity-related instruments, with a minimum of 25% each in large-cap, mid-cap, and small-cap stocks'],
+              ['Risk Level', 'High'],
+              ['Return Characteristics', 'Diversified long-term growth across all market capitalisation segments'],
+              ['Typical Investment Horizon', '7 years or longer'],
+              ['Suitable For', 'Investors seeking mandatory diversification across all market capitalisation segments'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking diversified exposure across large-cap, mid-cap, and small-cap companies.`,
+              `Investors who prefer a disciplined allocation framework defined by SEBI.`,
+              `Long-term investors comfortable with equity market volatility.`,
+              `Investors looking for a single diversified equity mutual fund with balanced market capitalisation exposure.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Mandatory allocation across all three market capitalisation segments provides broad diversification.`,
+              `Reduces dependence on any single market-cap segment.`,
+              `Offers exposure to both established companies and emerging growth businesses.`,
+              `Suitable for building a diversified long-term equity portfolio.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `The mandatory allocation requirement may reduce flexibility during changing market conditions.`,
+              `Returns can differ from Flexi Cap Funds because fund managers have less freedom to shift allocations.`,
+              `Investors should remain invested for the long term to benefit from market cycles.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Unlike Flexi Cap Funds, Multi Cap Funds must maintain minimum allocations across large-cap, mid-cap, and small-cap stocks, making diversification a regulatory requirement rather than a portfolio choice.`,
+          },
+        ],
+      },
+      {
+        id: 'elss-funds',
+        heading: 'Equity Linked Savings Scheme (ELSS)',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Equity Linked Savings Scheme (ELSS) is a category of equity mutual funds that offers tax benefits under Section 80C of the Income-tax Act, 1961, while investing predominantly in equity and equity-related instruments. Under SEBI regulations, ELSS funds must invest at least 80% of their total assets in equity and equity-related securities. Investments in ELSS are subject to a mandatory lock-in period of three years, which is the shortest lock-in among tax-saving investment options eligible under Section 80C.`,
+          },
+          {
+            type: 'table',
+            caption: `ELSS Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Equity and equity-related securities'],
+              ['SEBI Requirement', 'At least 80% of total assets invested in equity and equity-related securities'],
+              ['Tax Benefit', 'Eligible for deduction under Section 80C of the Income-tax Act, 1961 (subject to prevailing tax laws)'],
+              ['Lock-in Period', '3 years from the date of each investment'],
+              ['Risk Level', 'High'],
+              ['Suitable For', 'Investors seeking long-term wealth creation along with tax-saving benefits'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Taxpayers looking to claim deductions under Section 80C.`,
+              `Investors with long-term financial goals and high risk tolerance.`,
+              `Individuals seeking equity market exposure while saving taxes.`,
+              `Investors comfortable with the mandatory three-year lock-in period.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Provides the dual benefit of long-term wealth creation potential and tax savings.`,
+              `Shortest lock-in period among tax-saving investments eligible under Section 80C.`,
+              `Professional portfolio management with diversified equity exposure.`,
+              `Suitable for disciplined long-term investing.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Investments cannot be redeemed before the completion of the three-year lock-in period.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `Tax laws may change in the future, affecting available benefits.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `ELSS combines equity investing with tax-saving benefits, but investment decisions should be based on overall financial goals and not solely on tax deductions.`,
+          },
+        ],
+      },
+      {
+        id: 'focused-funds',
+        heading: 'Focused Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Focused Funds are equity mutual funds that invest in a concentrated portfolio of stocks. Under SEBI regulations, these funds can invest in a maximum of 30 stocks while maintaining at least 65% of their total assets in equity and equity-related instruments. The concentrated nature of these funds allows fund managers to build high-conviction portfolios, but it also increases concentration risk.`,
+          },
+          {
+            type: 'table',
+            caption: `Focused Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Concentrated portfolio of equity and equity-related securities'],
+              ['SEBI Requirement', 'At least 65% of total assets invested in equity and equity-related instruments; maximum of 30 stocks'],
+              ['Risk Level', 'High'],
+              ['Return Characteristics', 'Potential for higher returns with higher concentration risk'],
+              ['Typical Investment Horizon', '5\u20137 years or longer'],
+              ['Suitable For', 'Investors comfortable with concentrated equity portfolios and higher risk'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a high risk tolerance.`,
+              `Investors who have confidence in active fund management.`,
+              `Long-term investors seeking potentially higher returns from a concentrated portfolio.`,
+              `Investors who already have a diversified overall investment portfolio.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Concentrated portfolios allow fund managers to focus on their highest-conviction investment ideas.`,
+              `Can outperform diversified equity funds if stock selection is successful.`,
+              `Professional active portfolio management.`,
+              `Suitable for experienced equity investors seeking focused exposure.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Concentration increases the impact of poor-performing stocks on overall returns.`,
+              `Returns may be more volatile than broadly diversified equity funds.`,
+              `Fund manager selection becomes particularly important in this category.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Focused Funds aim to generate long-term wealth through a concentrated portfolio, but higher concentration also increases investment risk.`,
+          },
+        ],
+      },
+      {
+        id: 'value-funds',
+        heading: 'Value Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Value Funds are equity mutual funds that follow a value investing strategy by investing predominantly in stocks that appear undervalued relative to their intrinsic worth. Under SEBI regulations, Value Funds must invest at least 65% of their total assets in equity and equity-related instruments. Fund managers aim to identify companies trading below their estimated intrinsic value with the expectation that their market prices may better reflect their fundamentals over time.`,
+          },
+          {
+            type: 'table',
+            caption: `Value Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Undervalued equity and equity-related securities'],
+              ['SEBI Requirement', 'At least 65% of total assets invested in equity and equity-related instruments'],
+              ['Risk Level', 'Moderately High to High'],
+              ['Return Characteristics', 'Long-term appreciation driven by value investing'],
+              ['Typical Investment Horizon', '7 years or longer'],
+              ['Suitable For', 'Investors who believe in long-term value investing and can remain patient through market cycles'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Long-term investors who prefer a value investing approach.`,
+              `Investors comfortable waiting for market prices to reflect business fundamentals.`,
+              `Investors seeking diversified equity exposure through undervalued companies.`,
+              `Investors with moderate-to-high risk tolerance.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Provides exposure to companies that may be trading below their estimated intrinsic value.`,
+              `Encourages a disciplined long-term investment approach.`,
+              `Can perform well during periods when value investing is favored by the market.`,
+              `Professionally managed diversified equity portfolio.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Undervalued stocks may remain undervalued for extended periods.`,
+              `Performance can lag growth-oriented investment strategies during certain market cycles.`,
+              `Patience is essential to benefit from the value investing approach.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Value Funds follow a long-term investment philosophy, and returns depend on whether the market eventually recognizes the underlying value of portfolio companies.`,
+          },
+        ],
+      },
+      {
+        id: 'contra-funds',
+        heading: 'Contra Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Contra Funds are equity mutual funds that follow a contrarian investment strategy by investing in companies or sectors that are temporarily out of favor with the broader market but are believed to have long-term recovery potential. Under SEBI regulations, Contra Funds must invest at least 65% of their total assets in equity and equity-related instruments. The objective is to benefit from changes in market sentiment over time rather than following prevailing market trends.`,
+          },
+          {
+            type: 'table',
+            caption: `Contra Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['Primary Investment', 'Out-of-favor equity and equity-related securities with long-term recovery potential'],
+              ['SEBI Requirement', 'At least 65% of total assets invested in equity and equity-related instruments'],
+              ['Risk Level', 'High'],
+              ['Return Characteristics', 'Long-term appreciation through contrarian investing'],
+              ['Typical Investment Horizon', '7 years or longer'],
+              ['Suitable For', 'Investors comfortable with contrarian investment strategies and long holding periods'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a long investment horizon and high risk tolerance.`,
+              `Investors who understand that market sentiment can change over time.`,
+              `Investors willing to remain invested even when portfolio holdings are temporarily unpopular.`,
+              `Investors seeking diversification through a contrarian investment approach.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Provides exposure to companies that may be temporarily undervalued due to market sentiment.`,
+              `Can generate attractive long-term returns if recovery expectations materialize.`,
+              `Encourages disciplined investing by avoiding herd behavior.`,
+              `Professionally managed portfolio following a distinct investment strategy.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Recovery in out-of-favor sectors or companies may take longer than expected.`,
+              `Performance can remain weak for extended periods before improving.`,
+              `Requires patience and a long-term investment mindset.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Contra Funds invest against prevailing market sentiment, making them suitable only for investors who understand the risks associated with contrarian investing and can remain patient over the long term.`,
+          },
+        ],
+      },
+      {
+        id: 'debt-mutual-funds',
+        heading: 'Debt Mutual Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Debt Mutual Funds primarily invest in fixed-income securities such as government securities, treasury bills, corporate bonds, commercial papers, certificates of deposit, and other debt instruments. Unlike equity funds, these funds aim to generate relatively stable returns through interest income while preserving capital.`,
+          },
+          {
+            type: 'paragraph',
+            text: `Debt funds are generally less volatile than equity funds because they do not invest primarily in company shares. Instead, their performance depends on factors such as interest rates, credit quality, bond maturity, and overall economic conditions. While they typically offer lower long-term return potential than equity funds, they also experience comparatively lower market volatility.`,
+          },
+          {
+            type: 'paragraph',
+            text: `SEBI classifies debt mutual funds into multiple categories based on the maturity profile and type of debt instruments they invest in. Each category serves a different investment objective, ranging from parking surplus money for a few days to generating stable income over several years.`,
+          },
+          {
+            type: 'table',
+            caption: `Overview of SEBI Debt Mutual Fund Categories`,
+            headers: ['Category', 'Primary Investment Focus', 'Typical Investment Horizon'],
+            rows: [
+              ['Liquid Funds', 'Very short-term money market instruments', 'Few days to 3 months'],
+              ['Overnight Funds', 'Overnight securities', '1 day'],
+              ['Ultra Short Duration Funds', 'Very short-duration debt instruments', '3\u20136 months'],
+              ['Low Duration Funds', 'Short-term debt securities', '6\u201312 months'],
+              ['Money Market Funds', 'Money market instruments', 'Up to 1 year'],
+              ['Short Duration Funds', 'Short- to medium-term debt instruments', '1\u20133 years'],
+              ['Medium Duration Funds', 'Medium-term debt instruments', '3\u20134 years'],
+              ['Medium to Long Duration Funds', 'Medium- to long-term debt instruments', '4\u20137 years'],
+              ['Long Duration Funds', 'Long-maturity debt securities', '7 years or more'],
+              ['Dynamic Bond Funds', 'Debt securities of varying maturities', 'Depends on fund strategy'],
+              ['Corporate Bond Funds', 'Highest-rated corporate bonds', '2\u20134 years'],
+              ['Credit Risk Funds', 'Lower-rated corporate bonds', '3 years or more'],
+              ['Banking & PSU Funds', 'Banking and Public Sector debt', '2\u20134 years'],
+              ['Gilt Funds', 'Government securities', '3\u20135 years or more'],
+              ['Gilt Funds with 10-Year Constant Duration', 'Government securities maintaining 10-year duration', '5 years or more'],
+              ['Floater Funds', 'Floating-rate debt securities', 'Depends on interest-rate cycle'],
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: `Let's now understand each debt mutual fund category in detail so you can identify which one best matches your investment horizon, liquidity needs, and risk tolerance.`,
+          },
+          {
+            type: 'callout',
+            text: `Debt mutual funds are generally suitable for investors seeking relatively stable returns with lower volatility than equity funds, but every category carries its own interest-rate risk, credit risk, and investment horizon.`,
+          },
+        ],
+      },
+      {
+        id: 'liquid-funds',
+        heading: 'Liquid Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Liquid Funds are one of the safest categories of debt mutual funds. They invest in very short-term money market instruments with a maturity of up to 91 days, making them suitable for parking surplus cash while earning potentially better returns than a regular savings account. Due to their short maturity profile, they are generally less sensitive to interest rate fluctuations.`,
+          },
+          {
+            type: 'table',
+            caption: `Liquid Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Requirement', 'Invest only in debt and money market securities with maturity up to 91 days'],
+              ['Primary Investment', 'Treasury Bills, Commercial Papers, Certificates of Deposit, and other money market instruments'],
+              ['Risk Level', 'Very Low'],
+              ['Return Potential', 'Low'],
+              ['Typical Investment Horizon', 'Few days to 3 months'],
+              ['Best For', 'Parking emergency funds and short-term surplus money'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors looking to park surplus cash for a short period.`,
+              `Individuals building or maintaining an emergency fund.`,
+              `Investors seeking high liquidity with relatively low risk.`,
+              `Businesses managing temporary cash balances.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `High liquidity with quick access to funds.`,
+              `Relatively low interest-rate risk.`,
+              `Suitable for emergency savings and temporary cash parking.`,
+              `Potentially better returns than keeping idle money in a savings account.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Returns are not guaranteed.`,
+              `Long-term wealth creation potential is limited.`,
+              `Exit load may apply for very early withdrawals depending on the scheme.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Liquid Funds are designed for capital preservation and liquidity, not for long-term wealth creation. They are most effective when used for short-term cash management rather than long-term investing.`,
+          },
+        ],
+      },
+      {
+        id: 'overnight-funds',
+        heading: 'Overnight Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Overnight Funds invest exclusively in debt securities that mature within one business day. Since the underlying securities mature every day, these funds carry minimal interest-rate risk and are considered one of the lowest-risk categories among debt mutual funds. They are primarily used for temporarily parking money with maximum liquidity and capital preservation.`,
+          },
+          {
+            type: 'table',
+            caption: `Overnight Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Requirement', 'Invest in overnight securities with a maturity of one business day'],
+              ['Primary Investment', 'Overnight money market securities'],
+              ['Risk Level', 'Very Low'],
+              ['Return Potential', 'Low'],
+              ['Typical Investment Horizon', '1 day to a few days'],
+              ['Best For', 'Parking money for extremely short periods with minimal risk'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors parking money for one or a few days.`,
+              `Businesses managing daily cash balances.`,
+              `Investors seeking maximum capital preservation.`,
+              `Investors requiring immediate liquidity with minimal volatility.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Extremely low interest-rate risk.`,
+              `High liquidity.`,
+              `Suitable for very short-term cash management.`,
+              `Very low portfolio volatility.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Return potential is limited.`,
+              `Not suitable for long-term investing.`,
+              `Returns are generally lower than most other debt fund categories.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Overnight Funds prioritize safety and liquidity over returns, making them suitable only for very short-term cash management rather than long-term wealth creation.`,
+          },
+        ],
+      },
+      {
+        id: 'ultra-short-duration-funds',
+        heading: 'Ultra Short Duration Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Ultra Short Duration Funds invest in debt and money market instruments with a Macaulay duration of between 3 and 6 months. These funds aim to generate slightly higher returns than Liquid and Overnight Funds while maintaining relatively low interest-rate risk. They are suitable for investors looking to park money for a few months without taking significant market risk.`,
+          },
+          {
+            type: 'table',
+            caption: `Ultra Short Duration Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Requirement', 'Macaulay duration between 3 and 6 months'],
+              ['Primary Investment', 'Short-term debt and money market instruments'],
+              ['Risk Level', 'Low'],
+              ['Return Potential', 'Low to Moderate'],
+              ['Typical Investment Horizon', '3\u20136 months'],
+              ['Best For', 'Investors seeking better short-term returns with relatively low risk'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with an investment horizon of 3 to 6 months.`,
+              `Investors seeking relatively stable short-term returns.`,
+              `Individuals parking surplus funds for upcoming expenses.`,
+              `Conservative investors willing to accept slightly higher risk than Liquid Funds.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Potentially higher returns than Liquid and Overnight Funds.`,
+              `Relatively low interest-rate risk.`,
+              `Suitable for short-term financial goals.`,
+              `Better diversification across short-term debt securities.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Returns are not guaranteed.`,
+              `Interest-rate movements can affect short-term performance.`,
+              `Not suitable for long-term wealth creation.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Ultra Short Duration Funds offer a balance between liquidity and return potential, making them suitable for investors with short-term financial goals who can stay invested for several months.`,
+          },
+        ],
+      },
+      {
+        id: 'low-duration-funds',
+        heading: 'Low Duration Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Low Duration Funds invest in debt and money market instruments with a Macaulay duration of between 6 months and 12 months. They aim to provide relatively stable returns by investing in slightly longer-duration securities compared to Ultra Short Duration Funds. However, they carry somewhat higher interest-rate risk due to their longer maturity profile.`,
+          },
+          {
+            type: 'table',
+            caption: `Low Duration Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Requirement', 'Macaulay duration between 6 months and 12 months'],
+              ['Primary Investment', 'Short-term debt and money market instruments'],
+              ['Risk Level', 'Low to Moderate'],
+              ['Return Potential', 'Low to Moderate'],
+              ['Typical Investment Horizon', '6\u201312 months'],
+              ['Best For', 'Investors with short-term goals who can accept slightly higher risk than Liquid Funds'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a 6 to 12 month investment horizon.`,
+              `Investors looking for alternatives to traditional short-term deposits.`,
+              `Investors seeking relatively stable returns with moderate liquidity.`,
+              `Conservative investors comfortable with limited interest-rate risk.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Potentially better returns than shorter-duration debt funds.`,
+              `Suitable for short-term financial planning.`,
+              `Lower volatility compared to longer-duration debt funds.`,
+              `Provides exposure to diversified short-term debt instruments.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Returns are not guaranteed.`,
+              `Interest-rate changes can impact returns.`,
+              `Not suitable for very short holding periods.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Low Duration Funds can be useful for investors seeking a balance between stability and return potential over a period of several months, but they should match the investor's time horizon and risk tolerance.`,
+          },
+        ],
+      },
+      {
+        id: 'medium-duration-funds',
+        heading: 'Medium Duration Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Medium Duration Funds invest in debt and money market instruments such that the portfolio maintains a Macaulay duration of between 3 years and 4 years. As per SEBI's debt fund classification, this places them between shorter-duration categories, such as Low Duration Funds, and longer-duration categories. Because their portfolios hold securities with longer maturities, these funds are more sensitive to interest-rate movements than short-duration debt funds, but they also aim to offer relatively higher return potential over a medium-term investment horizon.`,
+          },
+          {
+            type: 'table',
+            caption: `Medium Duration Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing in instruments with a portfolio Macaulay duration of 3 to 4 years'],
+              ['Typical Portfolio Duration', 'Macaulay duration between 3 and 4 years'],
+              ['Primary Investments', 'Corporate bonds, government securities, and other debt and money market instruments'],
+              ['Risk Level', 'Moderate'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '3\u20134 years'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a medium-term investment horizon of around three to four years.`,
+              `Investors who can accept moderate fluctuations in returns caused by interest-rate movements.`,
+              `Investors seeking potentially higher returns than shorter-duration debt funds.`,
+              `Investors looking to diversify a debt allocation beyond very short-term categories.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Potential for higher returns than shorter-duration debt funds over the medium term.`,
+              `Diversified exposure across corporate bonds and government securities.`,
+              `A clearly defined Macaulay duration range that keeps the fund's strategy transparent.`,
+              `Suitable for medium-term financial goals within a debt portfolio.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Longer portfolio duration makes these funds more sensitive to interest-rate changes than short-duration funds.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `The credit quality of the underlying securities can affect overall performance.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Medium Duration Funds sit between short- and long-duration debt categories, offering moderate return potential in exchange for greater interest-rate sensitivity, so they are most appropriate for investors who can genuinely stay invested over a three-to-four-year horizon.`,
+          },
+        ],
+      },
+      {
+        id: 'medium-to-long-duration-funds',
+        heading: 'Medium to Long Duration Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Medium to Long Duration Funds invest in debt and money market instruments such that the portfolio maintains a Macaulay duration of between 4 years and 7 years. Under SEBI's debt fund classification, this positions them above Medium Duration Funds and just below Long Duration Funds. Because the portfolio holds securities with longer maturities, these funds are more sensitive to interest-rate movements: when interest rates fall, longer-duration bond prices tend to rise more, and when rates rise, they tend to fall more. In exchange for accepting this higher interest-rate sensitivity, investors seek relatively higher return potential over a longer investment horizon.`,
+          },
+          {
+            type: 'table',
+            caption: `Medium to Long Duration Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing in instruments with a portfolio Macaulay duration of 4 to 7 years'],
+              ['Typical Portfolio Duration', 'Macaulay duration between 4 and 7 years'],
+              ['Primary Investments', 'Government securities, corporate bonds, and other debt and money market instruments'],
+              ['Risk Level', 'Moderate to High'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '4\u20137 years'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a longer-term investment horizon of around four to seven years.`,
+              `Investors who can tolerate higher fluctuations in returns caused by interest-rate movements.`,
+              `Investors seeking potentially higher returns than medium-duration debt funds.`,
+              `Investors comfortable holding a longer-duration debt allocation through interest-rate cycles.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Potential for higher returns than shorter- and medium-duration debt funds over a longer horizon.`,
+              `Can benefit meaningfully during periods of falling interest rates.`,
+              `Diversified exposure across government securities and corporate bonds.`,
+              `A clearly defined Macaulay duration range that keeps the fund's strategy transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Higher portfolio duration makes these funds notably more sensitive to interest-rate changes, which can increase short-term volatility.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `The category is generally unsuitable for investors with short holding periods.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Medium to Long Duration Funds carry higher duration exposure and therefore greater interest-rate sensitivity than most other debt categories, so they are most appropriate for investors who can genuinely stay invested over a four-to-seven-year horizon and can tolerate interim fluctuations in returns.`,
+          },
+        ],
+      },
+      {
+        id: 'long-duration-funds',
+        heading: 'Long Duration Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Long Duration Funds invest in debt and money market instruments such that the portfolio maintains a Macaulay duration of greater than 7 years. Under SEBI's debt fund classification, this makes them the longest-duration category among debt mutual funds. A longer duration means the portfolio's value reacts more strongly to changes in interest rates: when interest rates fall, the prices of longer-maturity bonds tend to rise significantly, and when interest rates rise, their prices tend to fall just as sharply. This heightened interest-rate sensitivity can lead to meaningful short-term fluctuations in returns, which is why these funds are generally intended for investors with a long investment horizon who can stay invested through complete interest-rate cycles.`,
+          },
+          {
+            type: 'table',
+            caption: `Long Duration Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing in instruments with a portfolio Macaulay duration of more than 7 years'],
+              ['Typical Portfolio Duration', 'Macaulay duration greater than 7 years'],
+              ['Primary Investments', 'Long-maturity government securities, corporate bonds, and other debt instruments'],
+              ['Risk Level', 'High'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '7 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a long investment horizon of seven years or more.`,
+              `Investors who understand debt market and interest-rate cycles.`,
+              `Investors who can tolerate significant interim fluctuations in returns.`,
+              `Investors seeking to benefit from an anticipated long-term decline in interest rates.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Highest sensitivity to falling interest rates, which can enhance returns during rate-cut cycles.`,
+              `Access to long-maturity government securities and high-quality bonds through a single fund.`,
+              `A clearly defined Macaulay duration mandate that keeps the fund's strategy transparent.`,
+              `Can play a specific role in a long-term, duration-aware debt allocation.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `This category carries the highest interest-rate risk among debt funds, so returns can be volatile in the short term.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `The category is generally unsuitable for investors with short- or medium-term goals.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Long Duration Funds carry the highest duration exposure among debt categories and are therefore the most sensitive to interest-rate movements, so they require a genuinely long holding period and are suitable only for investors who understand debt market cycles and can tolerate significant interim volatility.`,
+          },
+        ],
+      },
+      {
+        id: 'dynamic-bond-funds',
+        heading: 'Dynamic Bond Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Dynamic Bond Funds are debt mutual funds that invest across different maturity profiles without being tied to a fixed duration band. Under SEBI's debt fund classification, they are defined as open-ended dynamic debt schemes that invest across duration. Unlike fixed-duration categories such as Low, Medium, or Long Duration Funds, a Dynamic Bond Fund gives the fund manager the flexibility to shift the portfolio between short-maturity and long-maturity securities based on their expectations of how interest rates will move. When the manager anticipates falling interest rates, the portfolio's duration may be increased to benefit from rising bond prices; when rates are expected to rise, duration may be reduced to limit the impact. This flexibility can be an advantage, but because outcomes depend heavily on the manager's interest-rate calls, performance is closely tied to those active management decisions.`,
+          },
+          {
+            type: 'table',
+            caption: `Dynamic Bond Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended dynamic debt scheme investing across duration'],
+              ['Portfolio Strategy', 'Actively adjusts portfolio duration based on the fund manager\'s interest-rate expectations'],
+              ['Primary Investments', 'Government securities, corporate bonds, and other debt and money market instruments across maturities'],
+              ['Risk Level', 'Moderate to High'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '3 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors who prefer to let the fund manager decide portfolio duration rather than choosing a fixed-duration category themselves.`,
+              `Investors with a medium- to long-term investment horizon.`,
+              `Investors who can tolerate fluctuations arising from changes in portfolio duration.`,
+              `Investors comfortable relying on active management through interest-rate cycles.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Flexibility to adjust duration across changing interest-rate environments.`,
+              `Removes the need for investors to time interest-rate movements themselves.`,
+              `Diversified exposure across securities of varying maturities.`,
+              `Can adapt the portfolio as the fund manager's outlook on rates evolves.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Returns depend significantly on the fund manager's interest-rate decisions, which may not always be correct.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `Duration can change over time, so the fund's risk profile is less predictable than fixed-duration categories.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Dynamic Bond Funds offer flexible duration management that shifts with the interest-rate cycle, but because their returns are market-linked and depend on the fund manager's active calls, they are most appropriate for investors who understand active debt management and can stay invested through changing rate environments.`,
+          },
+        ],
+      },
+      {
+        id: 'corporate-bond-funds',
+        heading: 'Corporate Bond Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Corporate Bond Funds are debt mutual funds that invest predominantly in bonds issued by companies. Under SEBI's debt fund classification, a Corporate Bond Fund must invest at least 80% of its total assets in the highest-rated corporate bonds, which means it focuses on high-quality corporate debt securities rather than lower-rated instruments. Unlike Gilt Funds, which invest in government securities carrying no credit risk, Corporate Bond Funds take on the credit risk of the issuing companies — though this is limited by the mandate to hold predominantly top-rated bonds. Their returns are influenced by two main factors: the credit quality of the underlying issuers and the movement of interest rates, since bond prices generally fall when interest rates rise and rise when interest rates fall.`,
+          },
+          {
+            type: 'table',
+            caption: `Corporate Bond Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing predominantly in the highest-rated corporate bonds'],
+              ['Minimum Corporate Bond Allocation', 'At least 80% of total assets in the highest-rated corporate bonds'],
+              ['Primary Investments', 'High-quality corporate bonds and other debt and money market instruments'],
+              ['Risk Level', 'Low to Moderate'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '2\u20134 years'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking relatively stable income from high-quality corporate debt.`,
+              `Investors with a short- to medium-term investment horizon.`,
+              `Investors looking for potentially higher returns than government-security funds while keeping credit risk relatively contained.`,
+              `Conservative investors comfortable with limited credit and interest-rate risk.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Focus on the highest-rated corporate bonds helps keep credit risk relatively low.`,
+              `Potential for higher income than funds investing only in government securities.`,
+              `Diversified exposure across quality corporate issuers.`,
+              `A clearly defined SEBI mandate that keeps the fund's credit-quality focus transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Even highly rated corporate bonds carry some credit risk, unlike government securities.`,
+              `Interest-rate movements can affect the fund's returns.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Corporate Bond Funds focus on high-quality corporate debt, offering higher income potential than government-security funds in exchange for some credit risk, so investors should pay attention to the portfolio's credit quality and remember that returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'credit-risk-funds',
+        heading: 'Credit Risk Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Credit Risk Funds are debt mutual funds that invest predominantly in corporate bonds rated below the highest credit rating. Under SEBI's debt fund classification, a Credit Risk Fund must invest at least 65% of its total assets in corporate bonds below the highest-rated instruments. Because lower-rated bonds carry a greater chance of the issuer delaying or defaulting on payments, these funds take on higher credit risk than Corporate Bond Funds, which focus on the highest-rated debt. In return for accepting this additional risk, investors seek higher return potential, since lower-rated issuers typically pay higher interest to attract lenders. This makes careful credit analysis and issuer quality central to how these funds are managed, as a downgrade or default among the underlying holdings can meaningfully affect returns.`,
+          },
+          {
+            type: 'table',
+            caption: `Credit Risk Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing predominantly in corporate bonds below the highest ratings'],
+              ['Minimum Lower-Rated Corporate Bond Allocation', 'At least 65% of total assets in corporate bonds below the highest-rated instruments'],
+              ['Primary Investments', 'Lower-rated corporate bonds and other debt and money market instruments'],
+              ['Risk Level', 'High'],
+              ['Expected Return Profile', 'Moderate to High'],
+              ['Typical Investment Horizon', '3 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors with a higher risk appetite seeking potentially higher returns from debt.`,
+              `Investors who understand credit risk, downgrades, and default risk.`,
+              `Investors with a medium- to long-term investment horizon.`,
+              `Investors comfortable relying on the fund manager's credit-selection process.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Potential for higher returns than funds investing only in the highest-rated bonds.`,
+              `Higher interest income from lower-rated corporate issuers.`,
+              `Diversified exposure across a range of corporate bond issuers.`,
+              `Active credit selection can add value when issuer quality is assessed well.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Lower-rated bonds carry a higher risk of downgrades and defaults, which can reduce returns.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `This category is generally less suitable for conservative investors seeking capital stability.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Credit Risk Funds pursue higher returns by investing in lower-rated corporate bonds, which means greater exposure to downgrade and default risk, so they suit only investors who understand issuer credit quality and accept that returns are market-linked and can be affected by credit events.`,
+          },
+        ],
+      },
+      {
+        id: 'banking-and-psu-funds',
+        heading: 'Banking and PSU Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Banking and PSU Funds are debt mutual funds that invest predominantly in debt instruments issued by banks, public sector undertakings, public financial institutions, and municipal bodies. Under SEBI's debt fund classification, these funds must invest at least 80% of their total assets in debt instruments of banks, Public Sector Undertakings (PSUs), Public Financial Institutions, and Municipal Bonds. Because these issuers are large, well-established institutions — many of them government-backed — the category is generally associated with high-quality issuers and relatively lower credit risk than funds focused on corporate or lower-rated debt. However, credit risk (the chance an issuer fails to pay) and interest-rate risk (the effect of changing interest rates on bond prices) are two distinct factors: even high-quality issuers do not remove interest-rate risk, so the fund's value can still move as rates change, and returns remain market-linked.`,
+          },
+          {
+            type: 'table',
+            caption: `Banking and PSU Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing predominantly in debt instruments of banks, PSUs, Public Financial Institutions, and Municipal Bonds'],
+              ['Minimum Allocation Requirement', 'At least 80% of total assets in debt instruments of banks, PSUs, Public Financial Institutions, and Municipal Bonds'],
+              ['Primary Investments', 'Debt instruments issued by banks, public sector undertakings, financial institutions, and municipal bodies'],
+              ['Risk Level', 'Low to Moderate'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '2\u20134 years'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking exposure to high-quality institutional issuers.`,
+              `Investors who prefer relatively lower credit risk within debt funds.`,
+              `Investors with a short- to medium-term investment horizon.`,
+              `Conservative investors comfortable with some interest-rate sensitivity.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Focus on strong, well-established institutional issuers helps keep credit risk relatively low.`,
+              `Diversified exposure across banks, PSUs, financial institutions, and municipal bodies.`,
+              `Generally more stable credit quality than corporate or credit-risk-focused debt funds.`,
+              `A clearly defined SEBI mandate that keeps the fund's issuer focus transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Interest-rate movements can still affect returns despite high issuer quality.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `Lower credit risk generally comes with more moderate return potential than higher-risk debt categories.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Banking and PSU Funds focus on debt from high-quality institutional issuers, which typically means lower credit risk than many corporate debt categories, but they remain exposed to interest-rate movements and their returns are still market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'gilt-funds',
+        heading: 'Gilt Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Gilt Funds are debt mutual funds that invest predominantly in government securities issued by the central and state governments. Under SEBI's debt fund classification, a Gilt Fund must invest at least 80% of its total assets in government securities across maturities. Because these securities are backed by the government, they carry minimal credit or default risk — the sovereign is considered the safest borrower in the system. However, being free of credit risk does not make Gilt Funds risk-free: they still carry interest-rate risk, since the prices of government bonds move inversely to interest rates, rising when rates fall and falling when rates rise. As a result, the portfolio's duration and the prevailing interest-rate cycle play a central role in determining Gilt Fund returns, and these funds can show notable short-term fluctuations when interest rates move sharply.`,
+          },
+          {
+            type: 'table',
+            caption: `Gilt Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing predominantly in government securities across maturities'],
+              ['Minimum Government Securities Allocation', 'At least 80% of total assets in government securities'],
+              ['Primary Investments', 'Central and state government securities'],
+              ['Risk Level', 'Moderate to High'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '3\u20135 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking exposure to sovereign-backed securities with minimal credit risk.`,
+              `Investors who understand and can tolerate interest-rate-driven fluctuations.`,
+              `Investors with a medium- to long-term investment horizon.`,
+              `Investors seeking to benefit from an anticipated fall in interest rates.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Minimal credit or default risk due to sovereign backing.`,
+              `Can benefit meaningfully during periods of falling interest rates.`,
+              `Diversified exposure across central and state government securities.`,
+              `A clearly defined SEBI mandate that keeps the fund's government-securities focus transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Despite minimal credit risk, these funds carry significant interest-rate risk and can be volatile in the short term.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `The category is generally less suited to investors with very short holding periods.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Gilt Funds invest in sovereign-backed government securities, which means minimal credit risk, but they remain highly sensitive to interest-rate movements and their returns are still market-linked, so they suit investors who understand interest-rate cycles and can stay invested through them.`,
+          },
+        ],
+      },
+      {
+        id: 'gilt-funds-with-10-year-constant-duration',
+        heading: 'Gilt Funds with 10-Year Constant Duration',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Gilt Funds with 10-Year Constant Duration are debt mutual funds that invest in government securities while maintaining a portfolio Macaulay duration of around 10 years at all times. Under SEBI's debt fund classification, this category must invest at least 80% of its total assets in government securities and keep the portfolio's Macaulay duration at approximately 10 years. This is the key difference from regular Gilt Funds: in an ordinary Gilt Fund the manager can vary the portfolio's duration based on their outlook, whereas this category follows a defined, constant duration target. Holding a consistently long duration makes these funds highly sensitive to interest-rate movements, because longer-duration bonds react more sharply to rate changes — their prices rise significantly when interest rates fall and fall significantly when interest rates rise. As a result, this category is intended for investors who understand duration risk and can tolerate meaningful short-term fluctuations, and its returns remain market-linked.`,
+          },
+          {
+            type: 'table',
+            caption: `Gilt Funds with 10-Year Constant Duration at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing in government securities with a constant portfolio Macaulay duration of around 10 years'],
+              ['Duration Requirement', 'Portfolio Macaulay duration maintained at approximately 10 years'],
+              ['Minimum Government Securities Allocation', 'At least 80% of total assets in government securities'],
+              ['Primary Investments', 'Central and state government securities'],
+              ['Risk Level', 'High'],
+              ['Typical Investment Horizon', '7 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors who understand duration risk and long-duration debt investing.`,
+              `Investors seeking sovereign-backed securities with a consistently long duration.`,
+              `Investors who can tolerate significant interest-rate-driven fluctuations.`,
+              `Investors seeking to benefit from an anticipated long-term fall in interest rates.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Minimal credit or default risk due to investment in sovereign-backed securities.`,
+              `A predictable, constant duration profile that keeps the fund's strategy transparent.`,
+              `Can benefit meaningfully during periods of falling long-term interest rates.`,
+              `Useful as a targeted, duration-specific building block within a debt allocation.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `The constant long duration makes these funds among the most interest-rate-sensitive debt categories, so they can be highly volatile in the short term.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `The category is generally unsuitable for investors with short holding periods or low tolerance for fluctuations.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Gilt Funds with 10-Year Constant Duration combine sovereign-backed government securities with a fixed duration exposure of around 10 years, which means minimal credit risk but very high interest-rate sensitivity, so they suit only investors who understand duration risk and accept that returns are market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'floater-funds',
+        heading: 'Floater Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Floater Funds are debt mutual funds that invest predominantly in floating-rate instruments. Under SEBI's debt fund classification, a Floater Fund must invest at least 65% of its total assets in floating-rate instruments. Unlike fixed-rate bonds, whose coupon (interest) stays the same throughout their term, floating-rate instruments have coupons that are linked to a benchmark interest rate and reset periodically — so the interest they pay rises and falls as the benchmark moves. Because their coupons adjust with interest rates, these funds tend to have lower interest-rate sensitivity than fixed-rate debt when rates are rising, which can make them behave differently across interest-rate cycles. This does not make them risk-free: they still carry credit risk (the chance an issuer fails to pay) and market risk, and their returns remain market-linked rather than guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Floater Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Open-ended debt scheme investing predominantly in floating-rate instruments'],
+              ['Minimum Floating Rate Instrument Allocation', 'At least 65% of total assets in floating-rate instruments'],
+              ['Primary Investments', 'Floating-rate debt securities and other debt and money market instruments'],
+              ['Risk Level', 'Low to Moderate'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', 'Depends on the interest-rate cycle'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors who expect interest rates to rise and prefer lower duration sensitivity.`,
+              `Investors seeking a debt option that adjusts coupon income as benchmark rates move.`,
+              `Investors comfortable with moderate credit and market risk.`,
+              `Investors looking to diversify a debt allocation across different rate structures.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Coupons reset with benchmark rates, which can reduce interest-rate sensitivity in a rising-rate environment.`,
+              `Can help diversify a debt portfolio that is otherwise concentrated in fixed-rate instruments.`,
+              `Interest income may increase as benchmark rates rise.`,
+              `A clearly defined SEBI mandate that keeps the fund's floating-rate focus transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Floating-rate instruments still carry credit risk and market risk despite lower duration sensitivity.`,
+              `Coupon income can fall when benchmark interest rates decline.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Floater Funds focus on floating-rate instruments whose coupons adjust with benchmark rates, which can reduce duration sensitivity compared with fixed-rate debt, but credit and market risks still apply and their returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'hybrid-mutual-funds',
+        heading: 'Hybrid Mutual Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Hybrid Mutual Funds are funds that invest across more than one asset class — most commonly a combination of equity and debt, and sometimes other assets such as gold. Under SEBI's mutual fund classification, hybrid schemes form one of the five broad categories and are further divided into sub-categories based on how much they allocate to equity versus debt. The balance between these asset classes is what shapes each fund's behaviour: a higher equity allocation generally increases both return potential and volatility, while a higher debt allocation tends to add relative stability but lowers long-term growth potential. Because they blend growth-oriented equity with income-oriented debt, hybrid funds are often described as a bridge between pure equity and pure debt categories, offering diversification within a single scheme. Importantly, different hybrid categories follow different equity and debt allocation rules defined by SEBI, so their risk and return characteristics vary considerably from one type to another.`,
+          },
+          {
+            type: 'table',
+            caption: `Hybrid Mutual Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Schemes that invest across multiple asset classes, primarily equity and debt'],
+              ['Core Investment Approach', 'Combining growth-oriented equity with income-oriented debt within a single fund'],
+              ['Equity Exposure', 'Varies by sub-category, ranging from low to high depending on the fund\'s mandate'],
+              ['Debt Exposure', 'Varies by sub-category, used to balance risk and provide relative stability'],
+              ['Risk Level', 'Low to High, depending on the specific hybrid category'],
+              ['Typical Investment Horizon', 'Varies by category, generally medium to long term'],
+            ],
+          },
+          { type: 'subheading', text: `Major Types of Hybrid Mutual Funds` },
+          {
+            type: 'list',
+            items: [
+              `Conservative Hybrid Funds`,
+              `Balanced Hybrid Funds`,
+              `Aggressive Hybrid Funds`,
+              `Dynamic Asset Allocation / Balanced Advantage Funds`,
+              `Multi Asset Allocation Funds`,
+              `Equity Savings Funds`,
+              `Arbitrage Funds`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Diversification across equity and debt within a single fund.`,
+              `A range of sub-categories to suit different risk appetites and goals.`,
+              `Professional management of the equity-debt allocation on the investor's behalf.`,
+              `Can offer a smoother experience than pure equity funds during volatile markets, depending on the category.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Risk and return vary significantly across hybrid categories, so the label "hybrid" alone does not indicate the risk level.`,
+              `Returns are market-linked and are not guaranteed.`,
+              `The equity portion still carries market risk, and the debt portion still carries interest-rate and credit risk.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Hybrid Mutual Funds combine equity and debt in a single scheme, but because each sub-category follows a different allocation strategy, their risk levels range from low to high — and their returns remain market-linked, so it is important to look at the specific category rather than the "hybrid" label alone.`,
+          },
+        ],
+      },
+      {
+        id: 'conservative-hybrid-funds',
+        heading: 'Conservative Hybrid Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Conservative Hybrid Funds are hybrid mutual funds that invest predominantly in debt while keeping a small portion in equity. Under SEBI's mutual fund classification, these funds invest between 10% and 25% of their total assets in equity and equity-related instruments, and between 75% and 90% of their total assets in debt instruments. The name "conservative" reflects this debt-heavy structure: because the large majority of the portfolio sits in fixed-income securities, the fund aims for relative stability and regular income, while the limited equity portion adds a measure of long-term growth potential without exposing the investor to the full volatility of the equity market. In effect, debt dominates the portfolio and shapes most of the fund's behaviour, and the small equity allocation works alongside it to modestly enhance returns over time.`,
+          },
+          {
+            type: 'table',
+            caption: `Conservative Hybrid Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Hybrid scheme investing predominantly in debt, with a small allocation to equity'],
+              ['Equity Allocation', '10% to 25% of total assets in equity and equity-related instruments'],
+              ['Debt Allocation', '75% to 90% of total assets in debt instruments'],
+              ['Risk Level', 'Low to Moderate'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '3 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Conservative investors seeking relative stability with a small degree of equity participation.`,
+              `Investors who want potentially higher returns than pure debt funds while limiting equity exposure.`,
+              `Investors with a medium-term investment horizon.`,
+              `Investors who prefer a debt-oriented portfolio with limited market volatility.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Debt-heavy allocation aims to provide relative stability compared with equity-oriented funds.`,
+              `Small equity exposure can add long-term growth potential to a largely income-oriented portfolio.`,
+              `Diversification across debt and equity within a single fund.`,
+              `A clearly defined SEBI allocation mandate that keeps the fund's conservative approach transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Even a small equity allocation introduces market risk, so returns can still fluctuate.`,
+              `The debt portion carries interest-rate and credit risk.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Conservative Hybrid Funds hold a debt-heavy portfolio with only limited equity exposure, which generally means relatively lower volatility than equity-oriented funds — but they are not risk-free, and their returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'balanced-hybrid-funds',
+        heading: 'Balanced Hybrid Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Balanced Hybrid Funds are hybrid mutual funds designed to hold a relatively even mix of equity and debt. Under SEBI's mutual fund classification, these funds invest between 40% and 60% of their total assets in equity and equity-related instruments, and between 40% and 60% of their total assets in debt instruments, and they are not permitted to use arbitrage in this category. This roughly balanced allocation is what distinguishes them from Conservative Hybrid Funds, which are debt-heavy, and Aggressive Hybrid Funds, which are equity-heavy — Balanced Hybrid Funds sit between the two, aiming for a middle path on both risk and return. A fund house may offer either a Balanced Hybrid Fund or an Aggressive Hybrid Fund, but not both. Since most AMCs opted for the Aggressive Hybrid category, new Balanced Hybrid Funds are generally not launched, although existing schemes continue to operate. As with all hybrid funds, the returns remain market-linked and are not guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Balanced Hybrid Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Hybrid scheme investing in a balanced mix of equity and debt, without arbitrage'],
+              ['Equity Allocation', '40% to 60% of total assets in equity and equity-related instruments'],
+              ['Debt Allocation', '40% to 60% of total assets in debt instruments'],
+              ['Risk Level', 'Moderate to High'],
+              ['Expected Return Profile', 'Moderate'],
+              ['Typical Investment Horizon', '5 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking a roughly balanced mix of equity and debt within a single fund.`,
+              `Investors who want more equity participation than Conservative Hybrid Funds but less than Aggressive Hybrid Funds.`,
+              `Investors with a medium- to long-term investment horizon.`,
+              `Investors comfortable with moderate market fluctuations.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Balanced allocation aims to combine growth potential with a measure of stability.`,
+              `Diversification across equity and debt within a single scheme.`,
+              `A middle-ground risk profile between conservative and aggressive hybrid categories.`,
+              `A clearly defined SEBI allocation mandate that keeps the fund's balanced approach transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `The equity portion carries market risk, and the debt portion carries interest-rate and credit risk.`,
+              `New Balanced Hybrid Funds are generally not launched, so available options in this category are limited.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Balanced Hybrid Funds hold a roughly equal mix of equity and debt, aiming for a moderate risk-return profile between conservative and aggressive hybrids — and while new schemes in this category are generally not launched, existing ones continue to operate, with returns remaining market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'aggressive-hybrid-funds',
+        heading: 'Aggressive Hybrid Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Aggressive Hybrid Funds are hybrid mutual funds that invest predominantly in equity while keeping a smaller allocation to debt. Under SEBI's mutual fund classification, these funds invest between 65% and 80% of their total assets in equity and equity-related instruments, and between 20% and 35% of their total assets in debt instruments. Because equity dominates the portfolio, these funds behave much more like equity-oriented investments than the other hybrid categories — the large equity share drives most of the return potential, while the debt portion adds a cushion that can soften the impact of falling markets. This is what sets them apart from Balanced Hybrid Funds, which hold a roughly even equity-debt split, and Conservative Hybrid Funds, which are debt-heavy. As a result, Aggressive Hybrid Funds generally carry higher risk and higher long-term return potential than other hybrid categories, though they are usually somewhat less volatile than pure equity funds because of the debt component. As with all hybrid funds, the returns remain market-linked and are not guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Aggressive Hybrid Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Hybrid scheme investing predominantly in equity, with a smaller allocation to debt'],
+              ['Equity Allocation', '65% to 80% of total assets in equity and equity-related instruments'],
+              ['Debt Allocation', '20% to 35% of total assets in debt instruments'],
+              ['Risk Level', 'High'],
+              ['Expected Return Profile', 'Moderate to High'],
+              ['Typical Investment Horizon', '5 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking equity-oriented growth with a modest debt cushion.`,
+              `Investors who want higher long-term return potential than balanced or conservative hybrid funds.`,
+              `Investors with a long-term investment horizon.`,
+              `Investors who can tolerate equity-level market fluctuations.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Equity-heavy allocation offers higher long-term growth potential than other hybrid categories.`,
+              `The debt portion can help soften the impact of sharp equity market declines.`,
+              `Diversification across equity and debt within a single fund.`,
+              `A clearly defined SEBI allocation mandate that keeps the fund's equity-oriented approach transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `The large equity allocation means these funds can be volatile, especially in the short term.`,
+              `The debt portion carries interest-rate and credit risk.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Aggressive Hybrid Funds hold an equity-heavy portfolio with a smaller debt allocation, which means higher long-term growth potential but also higher volatility than other hybrid categories — and their returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'dynamic-asset-allocation-or-balanced-advantage-funds',
+        heading: 'Dynamic Asset Allocation / Balanced Advantage Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Dynamic Asset Allocation Funds, also known as Balanced Advantage Funds, are hybrid mutual funds that shift their allocation between equity and debt dynamically rather than following fixed limits. Under SEBI's mutual fund classification, this category is defined by investment in equity and debt that is managed dynamically, which means the fund can move across a wide range of equity and debt exposure without being tied to a fixed split. The fund manager actively adjusts the balance — typically using market valuation measures, risk indicators, or in-house investment models — increasing equity when markets appear attractively valued and reducing it when they appear expensive. The objective is to participate in long-term equity market growth while seeking to reduce downside risk during expensive or volatile market phases, aiming for a smoother investment experience across market cycles. This flexible, model-driven approach is what distinguishes them from Aggressive Hybrid Funds and Balanced Hybrid Funds, which must stay within fixed equity-debt bands. As with all hybrid funds, the returns remain market-linked and are not guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Dynamic Asset Allocation / Balanced Advantage Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Hybrid scheme that invests in equity and debt managed dynamically'],
+              ['Equity Allocation', 'Varies dynamically with no fixed limit, based on the fund\'s model and market conditions'],
+              ['Debt Allocation', 'Varies dynamically with no fixed limit, based on the fund\'s model and market conditions'],
+              ['Portfolio Strategy', 'Actively adjusts equity and debt allocation using valuation measures, risk indicators, or investment models'],
+              ['Risk Level', 'Moderate to High'],
+              ['Typical Investment Horizon', '5 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors who prefer the fund manager to decide equity-debt allocation across market cycles.`,
+              `Investors seeking equity participation with an attempt to limit downside during expensive markets.`,
+              `Investors with a medium- to long-term investment horizon.`,
+              `Investors comfortable with a model-driven, actively managed allocation approach.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Flexibility to adjust equity and debt exposure as market conditions change.`,
+              `Attempts to reduce downside risk during expensive or volatile market phases.`,
+              `Removes the need for investors to time equity and debt allocation themselves.`,
+              `Diversification across equity and debt within a single actively managed fund.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Performance depends significantly on the fund manager's allocation model, which may not always be correct.`,
+              `The equity portion carries market risk and the debt portion carries interest-rate and credit risk.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Dynamic Asset Allocation / Balanced Advantage Funds vary their equity and debt exposure dynamically through active, model-driven management, aiming for flexibility across market cycles — but their outcomes depend on the manager's calls, and their returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'multi-asset-allocation-funds',
+        heading: 'Multi Asset Allocation Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Multi Asset Allocation Funds are hybrid mutual funds that spread their investments across several different asset classes rather than concentrating on just equity and debt. Under SEBI's mutual fund classification, a Multi Asset Allocation Fund must invest in at least three asset classes, with a minimum allocation of 10% to each. In practice, these funds typically combine equity, debt, and at least one additional asset class such as gold — and some may also include instruments like international equities or other commodities, depending on the scheme's mandate. The reasoning behind this structure is diversification: because different asset classes often behave differently under the same market conditions — for example, gold may hold up when equity markets fall — combining them can reduce the impact of any single asset class performing poorly. As a result, the fund's overall performance depends on how these different asset classes behave together over time, rather than on the movement of one market alone. It is important to understand that while spreading money across multiple asset classes reduces concentration risk, it does not eliminate investment risk, and the returns remain market-linked and are not guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Multi Asset Allocation Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Hybrid scheme that invests across at least three asset classes'],
+              ['Minimum Asset Classes', 'At least three asset classes'],
+              ['Minimum Allocation per Asset Class', 'At least 10% of total assets in each asset class'],
+              ['Typical Investments', 'A combination of equity, debt, and at least one additional asset class such as gold, and sometimes other commodities or international equities'],
+              ['Risk Level', 'Moderate to High'],
+              ['Typical Investment Horizon', '5 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking diversification across more than just equity and debt within a single fund.`,
+              `Investors who want exposure to an additional asset class, such as gold, alongside equity and debt.`,
+              `Investors with a medium- to long-term investment horizon.`,
+              `Investors comfortable with the fund manager deciding the mix across asset classes.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Diversification across at least three asset classes can reduce concentration risk.`,
+              `Different asset classes may respond differently to the same market conditions, which can smooth the overall experience.`,
+              `Access to asset classes like gold within a single, professionally managed fund.`,
+              `A clearly defined SEBI mandate that keeps the multi-asset approach transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Diversification reduces concentration risk but does not eliminate investment risk.`,
+              `Performance depends on how multiple asset classes behave together, which can be harder to anticipate.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Multi Asset Allocation Funds diversify across at least three asset classes — combining equity, debt, and at least one more such as gold — which can reduce concentration risk, but diversification does not remove investment risk and the returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'equity-savings-funds',
+        heading: 'Equity Savings Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Equity Savings Funds are hybrid mutual funds that combine three distinct components within a single portfolio: unhedged equity, arbitrage (hedged equity), and debt. Under SEBI's mutual fund classification, these funds must invest a minimum of 65% of total assets in equity and equity-related instruments and a minimum of 10% in debt instruments. A defining nuance of this category is that the 65% equity figure includes both the unhedged equity position, which is exposed to market movements, and the arbitrage position, which is hedged and therefore behaves more like a low-risk, near-cash holding. The actual net (unhedged) equity exposure is typically kept lower and is defined in each scheme's offer document, which is what gives these funds their comparatively moderate risk profile despite carrying an equity-like headline allocation.`,
+          },
+          {
+            type: 'paragraph',
+            text: `The category exists to offer a middle ground between pure equity funds and more conservative options. By keeping only a portion of the portfolio directly exposed to the market and parking the rest in arbitrage and debt, an Equity Savings Fund aims to deliver steadier outcomes than an equity-oriented fund while retaining some participation in equity market growth. The arbitrage sleeve seeks to earn small, relatively stable returns from price differences between the cash and derivatives markets, and the debt sleeve provides income; together they help steady the fund when equity markets are volatile.`,
+          },
+          {
+            type: 'paragraph',
+            text: `In terms of behaviour and risk, Equity Savings Funds generally sit below Aggressive Hybrid Funds on the risk scale, because their true market-linked equity exposure is smaller, while still carrying more equity risk than a purely debt-oriented scheme. Balanced Advantage Funds dynamically adjust their equity and debt allocation based on market valuations or investment models, whereas Equity Savings Funds maintain a structural mix of unhedged equity, arbitrage, and debt instead of dynamically changing asset allocation. The main risks are the market risk of the unhedged equity portion, interest-rate and credit risk in the debt portion, and the possibility that arbitrage opportunities narrow, which can reduce the returns from that sleeve. Because these funds are generally structured to satisfy the equity allocation requirements applicable to equity-oriented mutual funds, they are generally treated as equity-oriented for taxation under the prevailing tax laws, although tax rules can change over time. Return characteristics are typically moderate rather than high, reflecting the limited net equity exposure. As with all hybrid funds, the returns remain market-linked and are not guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Equity Savings Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Hybrid scheme investing in equity, arbitrage, and debt'],
+              ['Minimum Equity and Equity-Related Allocation', 'At least 65% of total assets, including hedged (arbitrage) and unhedged positions'],
+              ['Minimum Debt Allocation', 'At least 10% of total assets in debt and/or money market instruments'],
+              ['Portfolio Strategy', 'Blends unhedged equity for growth, arbitrage for relative stability, and debt for income'],
+              ['Risk Level', 'Moderate'],
+              ['Typical Investment Horizon', '3 years or more'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking some equity participation with lower volatility than equity-oriented hybrid funds.`,
+              `Investors who want a moderate-risk option that blends equity, arbitrage, and debt.`,
+              `Investors with a medium-term investment horizon.`,
+              `Investors who prefer the fund manager to manage the hedged and unhedged equity balance.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Lower net equity exposure than aggressive hybrids can mean comparatively steadier outcomes.`,
+              `The arbitrage and debt components provide a cushion during volatile equity markets.`,
+              `Generally treated as equity-oriented for taxation, subject to prevailing tax laws.`,
+              `A clearly defined SEBI mandate that keeps the three-part strategy transparent.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `The unhedged equity portion still carries market risk, so returns can fluctuate.`,
+              `Returns from the arbitrage sleeve can shrink when arbitrage opportunities are limited.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Equity Savings Funds combine unhedged equity, arbitrage, and debt to offer moderate risk with some equity participation — their strength is a smoother experience than equity-oriented funds, while their main limitation is more modest return potential due to limited net equity exposure, and their returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'arbitrage-funds',
+        heading: 'Arbitrage Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Arbitrage Funds are hybrid mutual funds that primarily seek to generate returns from price differences between the cash (spot) and derivatives (futures) markets instead of taking directional equity exposure. Under SEBI's mutual fund classification, an Arbitrage Fund follows an arbitrage strategy and must invest a minimum of 65% of total assets in equity and equity-related instruments. The strategy works by taking offsetting positions — for example, buying a stock in the cash market while simultaneously selling an equivalent position in the futures market — so that the gain on one leg broadly offsets the movement on the other, and the fund aims to capture the spread between the two prices. A key point for investors to understand is that these funds are not making directional equity bets; they do not rely on markets rising to earn returns.`,
+          },
+          {
+            type: 'paragraph',
+            text: `This offsetting structure is why an Arbitrage Fund can carry high gross equity exposure while its net market exposure remains typically low. The equity holdings are almost fully hedged by opposite derivative positions, so although the portfolio satisfies the 65% equity requirement on a gross basis, its sensitivity to overall market direction is limited. When clear arbitrage opportunities are scarce, surplus cash is commonly invested in debt and/or money market instruments, and margin requirements for the derivative positions are also met from such holdings.`,
+          },
+          {
+            type: 'paragraph',
+            text: `In terms of risk, the most significant factor is that arbitrage opportunities themselves may reduce — in calm or low-volatility markets, the spreads between cash and futures prices can narrow, which can lower the returns available from the strategy. In addition, the debt and money market investments carry interest-rate and credit risk, and, as with all funds, the returns are market-linked and are not guaranteed. Return behaviour is generally influenced by the level of arbitrage spreads and short-term interest rates rather than by equity market performance, so outcomes tend to be relatively steady but are not fixed or assured. Because these funds are generally structured to satisfy the equity allocation requirements applicable to equity-oriented mutual funds, they are generally treated as an equity-oriented mutual fund under the prevailing tax laws, although tax rules can change over time.`,
+          },
+          {
+            type: 'table',
+            caption: `Arbitrage Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Hybrid scheme following an arbitrage strategy in the cash and derivatives segments of the equity market'],
+              ['Minimum Equity and Equity-Related Allocation', 'At least 65% of total assets in equity and equity-related instruments'],
+              ['Investment Strategy', 'Takes offsetting cash and futures positions to capture price differences, with surplus in debt and/or money market instruments'],
+              ['Risk Level', 'Generally Low to Moderate'],
+              ['Typical Investment Horizon', '3 months or more'],
+              ['Tax Treatment', 'Generally treated as an equity-oriented mutual fund under the prevailing tax laws, although tax rules can change over time'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors seeking a low-directional-risk equity-oriented option rather than exposure to market direction.`,
+              `Investors looking to park funds for a short to medium period with relatively low volatility.`,
+              `Investors who understand that returns depend on arbitrage spreads rather than equity performance.`,
+              `Investors comfortable with equity-oriented tax treatment for a largely hedged strategy.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Returns are driven by cash-futures spreads rather than equity market direction, keeping net market exposure low.`,
+              `Hedged positions mean the fund generally experiences lower volatility than directional equity funds.`,
+              `Surplus cash is deployed in debt and money market instruments when arbitrage opportunities are limited.`,
+              `Generally treated as equity-oriented for taxation, subject to prevailing tax laws.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Arbitrage opportunities can reduce in calm markets, which may lower the returns available from the strategy.`,
+              `The debt and money market portion carries interest-rate and credit risk.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Arbitrage Funds aim to earn from cash-futures price differences rather than market direction, so their biggest strength is low net market exposure with relatively steady behaviour — while their biggest limitation is that returns depend on the availability of arbitrage spreads, which can shrink in calm markets, and their returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'solution-oriented-mutual-funds',
+        heading: 'Solution-Oriented Mutual Funds',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `Solution-Oriented Mutual Funds are schemes designed around a specific long-term financial goal rather than a broad investment style. Instead of being defined mainly by where they invest — as equity, debt, or hybrid funds are — these schemes are defined by the objective they are meant to serve. Under SEBI's mutual fund categorization framework, the solution-oriented category consists of two types: the Retirement Fund and the Children's Fund. Both are intended to support long-term financial objectives, and their defining feature is a mandatory lock-in that sets them apart from most other open-ended schemes. A Retirement Fund carries a lock-in of at least 5 years or until retirement age, whichever is earlier, while a Children's Fund carries a lock-in of at least 5 years or until the child attains the age of majority (adulthood), whichever is earlier. This lock-in is intended to encourage disciplined, long-term investing by discouraging premature withdrawals during interim market movements. It is important to note that individual schemes within this category may invest quite differently — some lean towards equity, others towards debt, and many use a mix — so the risk and return characteristics vary considerably from one scheme to another. As with all mutual funds, the returns remain market-linked and are not guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Solution-Oriented Mutual Funds at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'Schemes designed for a specific long-term goal — retirement or a child\'s future — with a mandatory lock-in'],
+              ['Major Categories', 'Retirement Fund and Children\'s Fund'],
+              ['Lock-in Requirement', 'Retirement Fund: at least 5 years or until retirement age, whichever is earlier; Children\'s Fund: at least 5 years or until the child attains the age of majority, whichever is earlier'],
+              ['Investment Approach', 'Varies by scheme, which may invest in equity, debt, or a mix according to its mandate'],
+              ['Risk Level', 'Varies by scheme, depending on the underlying asset allocation'],
+              ['Typical Investment Horizon', 'Long term, aligned with the goal and the applicable lock-in'],
+            ],
+          },
+          { type: 'subheading', text: `Major Types of Solution-Oriented Mutual Funds` },
+          {
+            type: 'list',
+            items: [
+              `Retirement Fund`,
+              `Children's Fund`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `A goal-based structure aligns the investment with a specific long-term objective such as retirement or a child's future.`,
+              `The mandatory lock-in encourages disciplined, long-term investing and discourages premature withdrawals.`,
+              `Provides a dedicated scheme framework built around a single long-term goal rather than a general investment style.`,
+              `Professional management of the portfolio in line with the scheme's stated investment objective.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Mandatory lock-in restricts liquidity, so the investment cannot be redeemed freely before the lock-in ends.`,
+              `Risk depends on the underlying asset allocation, which varies from scheme to scheme.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Solution-Oriented Mutual Funds are built for goal-based investing towards retirement or a child's future, and their mandatory lock-in enforces a long-term commitment that suits these objectives — but because each scheme's asset allocation differs, risk varies by scheme, and the returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'retirement-fund',
+        heading: 'Retirement Fund',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `A Retirement Fund is a Solution-Oriented Mutual Fund designed to help investors build a retirement corpus over the long term. Rather than being defined by a particular asset class, it is defined by its goal — accumulating wealth for the years after an investor stops earning a regular income. Under SEBI's mutual fund categorization framework, a Retirement Fund carries a mandatory lock-in of at least 5 years or until the investor reaches retirement age, whichever is earlier. This lock-in exists to encourage disciplined, long-term investing: by discouraging withdrawals during interim market movements, it helps investors stay committed to a goal that naturally spans decades. It is important to understand that different Retirement Funds may invest quite differently — some are equity-oriented, some debt-oriented, and others follow a hybrid approach — so the risk and return characteristics depend on the individual scheme rather than the category label. For this reason, investors should review a scheme's investment objective, asset allocation, and risk profile before investing. A key advantage of the long investment horizon associated with retirement planning is that it allows compounding to work over an extended period, which can be meaningful for a goal measured in years or decades. As with all mutual funds, the returns remain market-linked and are not guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Retirement Fund at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'A solution-oriented scheme designed to help investors accumulate a retirement corpus'],
+              ['Lock-in Requirement', 'At least 5 years or until the investor reaches retirement age, whichever is earlier'],
+              ['Investment Approach', 'Varies by scheme, which may be equity-oriented, debt-oriented, or hybrid according to its mandate'],
+              ['Risk Level', 'Varies by scheme, depending on the underlying asset allocation'],
+              ['Primary Objective', 'Long-term wealth accumulation for retirement'],
+              ['Typical Investment Horizon', 'Long term, typically spanning many years until retirement'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Investors specifically planning for retirement over a long time horizon.`,
+              `Investors who want a goal-based scheme structured around building a retirement corpus.`,
+              `Investors comfortable with a mandatory lock-in in exchange for disciplined long-term investing.`,
+              `Investors who will review the scheme's asset allocation and risk profile to match their own comfort level.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Purpose-built for long-term retirement planning within a single scheme framework.`,
+              `The mandatory lock-in encourages disciplined investing and discourages premature withdrawals.`,
+              `Professional management of the portfolio in line with the scheme's stated investment objective.`,
+              `A long investment horizon allows compounding to work over an extended period.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Mandatory lock-in limits liquidity, so the investment cannot be redeemed freely before the lock-in ends.`,
+              `Risk depends on the scheme's asset allocation, which varies from one Retirement Fund to another.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Retirement Funds are built for long-term retirement planning, using a compulsory lock-in to enforce the disciplined, multi-year commitment such a goal requires — but because each scheme's asset allocation differs, risk varies by scheme, and the returns remain market-linked.`,
+          },
+        ],
+      },
+      {
+        id: 'childrens-fund',
+        heading: 'Children\'s Fund',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: `A Children's Fund is a Solution-Oriented Mutual Fund designed to help investors build wealth for a child's future financial needs. It is defined by its goal rather than by a specific asset class, and it is commonly used to work towards long-term objectives such as higher education, professional studies, or other major life milestones — though it is important to note that no scheme can guarantee that any particular goal will be met. Under SEBI's mutual fund categorization framework, a Children's Fund carries a mandatory lock-in of at least 5 years or until the child attains the age of majority (18 years), whichever is earlier. This lock-in exists to encourage disciplined, long-term investing, keeping the money committed to a multi-year goal and discouraging withdrawals during interim market movements. Different Children's Funds may invest quite differently — some are equity-oriented, some debt-oriented, and others follow a hybrid approach — so the risk and return characteristics depend on the individual scheme rather than the category label. For this reason, investors should review a scheme's investment objective, asset allocation, and risk profile before investing. Because a child's goal typically lies several years away, the long investment horizon allows compounding to work over time, which can be meaningful for wealth accumulated over many years. As with all mutual funds, the returns remain market-linked and are not guaranteed.`,
+          },
+          {
+            type: 'table',
+            caption: `Children's Fund at a Glance`,
+            headers: ['Attribute', 'Details'],
+            rows: [
+              ['SEBI Category Definition', 'A solution-oriented scheme designed to help investors build wealth for a child\'s future financial needs'],
+              ['Lock-in Requirement', 'At least 5 years or until the child attains the age of majority (18 years), whichever is earlier'],
+              ['Investment Approach', 'Varies by scheme, which may be equity-oriented, debt-oriented, or hybrid according to its mandate'],
+              ['Risk Level', 'Varies by scheme, depending on the underlying asset allocation'],
+              ['Primary Objective', 'Long-term wealth accumulation for a child\'s future needs'],
+              ['Typical Investment Horizon', 'Long term, typically spanning many years towards a child\'s future goal'],
+            ],
+          },
+          { type: 'subheading', text: `Who is it suitable for?` },
+          {
+            type: 'list',
+            items: [
+              `Parents or guardians planning for a child's long-term financial needs.`,
+              `Investors who want a goal-based scheme structured around a child's future.`,
+              `Investors comfortable with a mandatory lock-in in exchange for disciplined long-term investing.`,
+              `Investors who will review the scheme's asset allocation and risk profile to match their own comfort level.`,
+            ],
+          },
+          { type: 'subheading', text: `Advantages` },
+          {
+            type: 'list',
+            items: [
+              `Purpose-built for goal-based investing towards a child's future within a single scheme framework.`,
+              `The mandatory lock-in encourages disciplined investing and discourages premature withdrawals.`,
+              `Professional management of the portfolio in line with the scheme's stated investment objective.`,
+              `A long investment horizon allows compounding to work over an extended period.`,
+            ],
+          },
+          { type: 'subheading', text: `Things to Consider` },
+          {
+            type: 'list',
+            items: [
+              `Mandatory lock-in limits liquidity, so the investment cannot be redeemed freely before the lock-in ends.`,
+              `Risk depends on the scheme's asset allocation, which varies from one Children's Fund to another.`,
+              `Returns are market-linked and are not guaranteed.`,
+            ],
+          },
+          {
+            type: 'callout',
+            text: `Children's Funds are built for goal-based investing towards a child's future, using a compulsory lock-in to enforce the disciplined, long-term commitment such a goal requires — but because each scheme's asset allocation differs, risk varies by scheme, and the returns remain market-linked.`,
+          },
+        ],
+      },
+    ],
+    keyTakeaways: [
+      `A mutual fund pools money from many investors and invests it, through a professional fund manager, in assets such as equity, debt, or other instruments, with each investor owning units proportional to their contribution.`,
+      `SEBI's categorization framework standardizes how schemes are defined and labelled, which makes it easier to compare funds within the same category rather than across funds designed for different purposes.`,
+      `Mutual funds are broadly classified into five categories — Equity, Debt, Hybrid, Solution-Oriented, and Other schemes — each designed to meet different investment objectives and risk profiles.`,
+      `Risk and return are related: categories with higher return potential, such as equity funds, generally carry higher volatility, while debt-oriented categories typically offer steadier but more modest outcomes.`,
+      `The suitable investment horizon varies by category, ranging from a few days for liquid funds to several years for equity and solution-oriented funds, so matching the horizon to the fund is important.`,
+      `Diversification, whether across companies, asset classes, or fund categories, can reduce concentration risk, but it does not eliminate investment risk altogether.`,
+      `Choosing a mutual fund should be based on your financial goals, investment horizon, and risk tolerance rather than solely on recent performance.`,
+      `Mutual fund returns are market-linked and are not guaranteed, so their value can rise or fall with the performance of the underlying assets.`,
+    ],
+    faqs: [
+      {
+        question: `What is the difference between equity, debt, and hybrid mutual funds?`,
+        answer: `The difference comes down to what each primarily invests in and the objective it pursues. Equity mutual funds invest mainly in the shares of companies and aim for long-term capital appreciation, which brings higher market volatility. Debt mutual funds invest in fixed-income securities such as government securities and corporate bonds, generally seeking steadier returns with lower volatility than equity. Hybrid mutual funds combine equity and debt — and sometimes other asset classes — within a single scheme, so their risk sits between the two depending on the allocation. Under SEBI's mutual fund categorization, each is a broad category with its own sub-categories. In every case, the value of your units moves with the underlying market and is not guaranteed.`,
+      },
+      {
+        question: `Which type of mutual fund is suitable for beginners?`,
+        answer: `No single category suits every beginner, because the right choice depends on the individual's financial goal, investment horizon, and comfort with market fluctuations. Someone investing for a goal many years away might consider a diversified equity or hybrid category, while a person who needs the money soon, or who prefers lower volatility, may look at debt-oriented categories. What matters more than the label is matching the fund's objective and risk profile to your own situation. This guide is educational and does not point to any specific scheme. Whatever the category, the returns depend on market performance, the level of risk differs from one category to another, and the scheme documents are worth reviewing before you invest.`,
+      },
+      {
+        question: `How do I choose the right type of mutual fund?`,
+        answer: `Choosing the right type of mutual fund is generally more effective when you start with your financial goal, investment horizon, and risk tolerance rather than with recent performance. Once those are clear, you can identify the broad category whose objective fits them — for example, growth-oriented equity categories for long-term goals, or debt categories for shorter horizons and lower volatility. Within a category, comparing schemes that follow the same mandate is more meaningful than comparing funds built for different purposes. It also helps to read each scheme's investment objective, asset allocation, and risk level in its offer document. Keep in mind that risk differs across categories and that returns are linked to the market rather than assured.`,
+      },
+      {
+        question: `Are mutual funds guaranteed to make money?`,
+        answer: `No. Mutual fund returns are linked to the market, which means the value of your investment can rise or fall with the performance of the underlying assets. No mutual fund can promise a positive return or fully protect against losses, and past performance does not assure future results. Different categories carry different levels of risk — equity-oriented funds tend to be more volatile, while debt-oriented funds are usually steadier but still not risk-free. Diversification can reduce concentration risk, yet it cannot remove investment risk altogether. Because outcomes are uncertain, it is sensible to align the category with your goal and horizon and to review the scheme documents before investing.`,
+      },
+      {
+        question: `What is the safest type of mutual fund?`,
+        answer: `No mutual fund is entirely free of risk, so it is more accurate to talk about relatively lower-risk categories. Among debt funds, categories such as Overnight Funds and Liquid Funds invest in very short-maturity instruments and are generally regarded as among the lower-risk options, largely because they carry limited interest-rate sensitivity. Even these are not risk-free, however: they can be affected by credit events, and their returns still depend on the market rather than being fixed. Risk can also differ from one scheme to another within the same category. Rather than searching for the "safest" fund in absolute terms, it is more useful to match the risk level to your goal and to check the scheme's details before investing.`,
+      },
+      {
+        question: `Can I invest in more than one type of mutual fund?`,
+        answer: `Yes. Investors can hold more than one category at the same time, and doing so is one way to diversify across different objectives, asset classes, and risk levels. For instance, some investors combine equity-oriented and debt-oriented categories to balance growth potential with relative stability. Diversifying across categories can lower concentration risk, though it does not remove investment risk, and holding several schemes with similar mandates may create overlap rather than genuine diversification. The appropriate mix ultimately depends on your goals, horizon, and risk tolerance. This is educational information rather than a recommendation, and each scheme's documents are worth reviewing before investing.`,
+      },
+      {
+        question: `Why does SEBI classify mutual funds into categories?`,
+        answer: `SEBI introduced a standardized categorization framework to bring greater consistency, transparency, and comparability across mutual fund schemes. Before it existed, different fund houses could launch several schemes with similar objectives, which made it hard for investors to compare like with like. Under the framework, each category follows a clearly defined investment mandate, so investors can understand what a scheme is meant to do and compare it against others in the same category rather than against funds designed for entirely different purposes. The framework does not rank categories from best to worst; it simply defines the investment universe and objective that each category must follow.`,
+      },
+      {
+        question: `What is the difference between actively managed and passive mutual funds?`,
+        answer: `The difference lies in how investment decisions are made. In an actively managed fund, a fund manager decides which securities to buy and sell, aiming to pursue the scheme's objective through research and judgment. In a passive fund, such as an index fund, the portfolio is built to track a chosen market index rather than to make active selection decisions. Actively managed funds therefore depend more on the manager's calls, while passive funds aim simply to mirror the index they follow. Both remain market-linked, so their values move with their underlying holdings, and neither promises a positive return. In SEBI's framework, passive schemes such as index funds and fund-of-funds sit within the broad "Other" category.`,
+      },
+      {
+        question: `How does investment horizon affect mutual fund selection?`,
+        answer: `Investment horizon — how long you expect to stay invested — is central to choosing a category, because different categories are built for different timeframes. Very short-term needs may point towards debt categories such as liquid or ultra-short duration funds, which carry limited interest-rate sensitivity. Longer horizons leave more time to absorb short-term volatility, which is why equity and many hybrid or solution-oriented categories are generally associated with multi-year goals. Matching the horizon to the fund helps avoid situations where money is needed before a volatile investment has had time to work. Whatever the horizon, returns depend on the market, and a scheme's details are worth reviewing before investing.`,
+      },
+      {
+        question: `What is the difference between open-ended and close-ended mutual funds?`,
+        answer: `The difference lies in how and when you can buy and sell units. An open-ended mutual fund is available for purchase and redemption on an ongoing basis at the prevailing net asset value, giving investors the flexibility to enter or exit at most times. A close-ended mutual fund is offered for a fixed period and has a defined maturity, so units are generally bought during the initial offer and redeemed at maturity, though such schemes are usually listed on a stock exchange to provide some liquidity in between. Most categories discussed in this guide are open-ended. In either structure, the value of your investment moves with the market and is not guaranteed.`,
+      },
+      {
+        question: `Can the risk level of a mutual fund change over time?`,
+        answer: `Yes, to an extent. A category's broad mandate is set by SEBI, but the risk within that mandate can shift as market conditions and the underlying portfolio change. For example, companies can move between large-cap, mid-cap, and small-cap classifications as their market capitalisation rankings change, and funds adjust their holdings to stay compliant. In debt funds, movements in interest rates and changes in the credit quality of holdings can alter risk. Some categories, such as dynamically managed funds, deliberately vary their allocation over time. This is one reason investors revisit a scheme's current profile periodically. Across every category, returns remain tied to the market and are not assured.`,
+      },
+      {
+        question: `What should I check before investing in a mutual fund?`,
+        answer: `Before investing, it helps to review the scheme's investment objective, the category it belongs to and how it allocates its assets, and its stated risk level, and then to consider whether these fit your own financial goal, investment horizon, and risk tolerance. The scheme's offer document, such as the Scheme Information Document, gives the authoritative detail on how the fund invests and the risks involved. It is also worth understanding that categories behave differently, that diversification lowers but does not remove risk, and that any lock-in or liquidity conditions may apply. This guide is educational only and does not recommend any scheme, and returns are linked to market performance rather than guaranteed.`,
+      },
+    ],
+    relatedCalculators: [
+      '/sip-calculator',
+      '/lumpsum-calculator',
+      '/sip-vs-stepup-sip-calculator',
+      '/retirement-calculator',
+    ],
+    references: [
+      {
+        label: 'Securities and Exchange Board of India (SEBI). SEBI (Mutual Funds) Regulations, 1996.',
+        url: 'https://www.sebi.gov.in',
+      },
+      {
+        label: 'Securities and Exchange Board of India (SEBI). Master Circular for Mutual Funds (SEBI/HO/IMD/IMD-PoD-1/P/CIR/2024/90, dated June 27, 2024) — Chapter 2, Clause 2.6, "Categorization and Rationalization of Mutual Fund Schemes".',
+        url: 'https://www.sebi.gov.in',
+      },
+      {
+        label: 'Securities and Exchange Board of India (SEBI). Categorization and Rationalization of Mutual Fund Schemes (circular superseding Clause 2.6 of the Master Circular dated June 27, 2024).',
+        url: 'https://www.sebi.gov.in/sebi_data/attachdocs/jul-2025/1752835259617.pdf',
+      },
+      {
+        label: 'Securities and Exchange Board of India (SEBI). Investor Education — A Guide to ELSS (Equity-Linked Savings Scheme).',
+        url: 'https://investor.sebi.gov.in/elss.html',
+      },
+      {
+        label: 'Securities and Exchange Board of India (SEBI). Investor Education Portal — Mutual Funds.',
+        url: 'https://investor.sebi.gov.in',
+      },
+      {
+        label: 'Association of Mutual Funds in India (AMFI). Mutual Fund Scheme Categories and Categorization Framework.',
+        url: 'https://www.amfiindia.com',
+      },
+      {
+        label: 'Association of Mutual Funds in India (AMFI). Investor Awareness — Guide to Mutual Funds.',
+        url: 'https://www.amfiindia.com',
+      },
+      {
+        label: 'Reserve Bank of India (RBI). Government Securities Market in India — A Primer.',
+        url: 'https://www.rbi.org.in',
+      },
+      {
+        label: 'Income Tax Department, Government of India. Deduction under Section 80C and Taxation of Capital Gains on Mutual Funds.',
+        url: 'https://www.incometaxindia.gov.in',
+      },
+    ],
+    author: DEFAULT_AUTHOR,
+  },
 ];
 
 /* -------------------------------------------------------------------------- */
