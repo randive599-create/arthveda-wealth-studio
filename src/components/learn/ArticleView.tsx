@@ -31,7 +31,7 @@ export function ArticleView({ article }: ArticleViewProps) {
       <ArticleHero article={article} />
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
-        <aside className="lg:sticky lg:top-6 lg:self-start">
+        <aside className="lg:sticky lg:top-6 lg:self-start lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto">
           <TableOfContents sections={article.sections} />
         </aside>
         <div className="min-w-0 space-y-10">
